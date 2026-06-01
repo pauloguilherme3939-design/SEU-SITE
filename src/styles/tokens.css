@@ -1,0 +1,53 @@
+/* ============================================================
+   DESIGN TOKENS — fonte única da identidade visual
+   Tema escuro, verde esmeralda. Use SEMPRE estas variáveis.
+   ============================================================ */
+:root {
+  /* Cores de fundo */
+  --bg:            #0a0e0d;
+  --bg-soft:       #101614;
+  --card:          #131b18;
+  --card-hi:       #172420;
+
+  /* Linhas e bordas */
+  --line:          rgba(255, 255, 255, 0.08);
+  --line-hi:       rgba(45, 212, 141, 0.35);
+
+  /* Texto */
+  --ink:           #f3f6f4;
+  --muted:         #9aa6a1;
+  --muted-2:       #6b7873;
+
+  /* Acento (esmeralda) */
+  --accent:        #2dd48d;
+  --accent-2:      #1aa86b;
+  --accent-glow:   rgba(45, 212, 141, 0.18);
+
+  /* Detalhe premium */
+  --gold:          #e8c87a;
+  --danger:        #ff7a7a;
+
+  /* WhatsApp */
+  --whats:         #25d366;
+
+  /* Raios */
+  --radius-sm:     10px;
+  --radius:        20px;
+  --radius-lg:     28px;
+  --radius-full:   999px;
+
+  /* Sombras */
+  --shadow:        0 30px 80px -30px rgba(0, 0, 0, 0.7);
+  --shadow-glow:   0 0 60px -20px var(--accent-glow);
+
+  /* Tipografia (carregadas via next/font) */
+  --font-display:  var(--font-sora), system-ui, sans-serif;
+  --font-body:     var(--font-outfit), system-ui, sans-serif;
+
+  /* Layout */
+  --maxw:          1180px;
+  --gutter:        24px;
+
+  /* Transições */
+  --ease:          cubic-bezier(0.16, 1, 0.3, 1);
+}
