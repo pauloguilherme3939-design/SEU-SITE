@@ -155,7 +155,7 @@ export default function Portfolio() {
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`relative z-10 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${theme.linkColor} after:absolute after:inset-0 after:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${theme.linkColor} after:absolute after:inset-0 after:z-10 after:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
                 >
                   {item.demo
                     ? 'Ver projeto demonstrativo'
