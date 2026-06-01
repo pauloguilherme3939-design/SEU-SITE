@@ -65,7 +65,7 @@ function BrowserMock({ accent, name }: { accent: PortfolioItem['accent']; name: 
 /* ── Arrow icon ──────────────────────────────────────────── */
 function ArrowRight() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover/link:translate-x-0.5">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden className="transition-transform group-hover:translate-x-0.5">
       <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
@@ -100,7 +100,7 @@ export default function Portfolio() {
             return (
               <article
                 key={item.id}
-                className={`animate-fade-up flex flex-col rounded-[var(--radius)] border bg-card p-5 transition-all hover:-translate-y-0.5 hover:bg-card-hi ${theme.border}`}
+                className={`animate-fade-up group relative flex flex-col rounded-[var(--radius)] border bg-card p-5 transition-all hover:-translate-y-1 hover:bg-card-hi hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.28)] ${theme.border}`}
                 style={{ animationDelay: `${80 + i * 80}ms` }}
               >
                 {/* Browser mock thumbnail */}
@@ -139,12 +139,12 @@ export default function Portfolio() {
                   ))}
                 </div>
 
-                {/* CTA link */}
+                {/* CTA link — stretched link: o ::after cobre o card inteiro */}
                 <a
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group/link inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${theme.linkColor}`}
+                  className={`relative z-10 inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${theme.linkColor} after:absolute after:inset-0 after:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
                 >
                   {item.demo
                     ? 'Ver projeto demonstrativo'
