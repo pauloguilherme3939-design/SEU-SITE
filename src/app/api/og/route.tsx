@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
+import { site } from '@/data/site';
 
 export const runtime = 'edge';
 
@@ -7,7 +8,7 @@ export function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const title = searchParams.get('title') ?? 'Sites profissionais para pequenos negócios';
   const sub = searchParams.get('sub') ?? 'Domínio incluso · WhatsApp · Google · Pronto em 3 dias';
-  const siteName = 'SeuSite';
+  const siteName = site.name;
 
   const pills = ['✓ Pronto em 3 dias', '✓ Domínio incluso', '✓ Sem mensalidade'];
 

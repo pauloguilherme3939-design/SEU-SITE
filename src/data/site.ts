@@ -4,7 +4,7 @@ export const site = {
   description:
     'Criação de sites profissionais para pequenos negócios com domínio incluso por 1 ano, botão para WhatsApp, SEO inicial e publicação no ar em até 3 dias.',
 
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://seudominio.com.br',
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sites-captacao.vercel.app',
 
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '5516993138450',
 
@@ -21,7 +21,7 @@ export const site = {
   business: {
     legalName: 'Site no Ar Express',
     area: 'Brasil',
-    priceRange: 'R$ 997 – R$ 2.997',
+    priceRange: 'R$ 497 – R$ 2.997',
   },
 } as const;
 

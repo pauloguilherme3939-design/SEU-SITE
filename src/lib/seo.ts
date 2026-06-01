@@ -66,10 +66,6 @@ export function jsonLdOrganization() {
     description: site.description,
     areaServed: site.business.area,
     priceRange: site.business.priceRange,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${site.url}/og/logo.png`,
-    },
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
