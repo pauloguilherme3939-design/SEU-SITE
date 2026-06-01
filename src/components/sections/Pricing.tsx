@@ -41,9 +41,10 @@ export default function Pricing() {
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:items-start">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:items-start">
           {plans.map((plan, i) => {
             const waMsgMap: Record<string, string> = {
+              inicial: 'Olá, Paulo! Tenho interesse no plano Presença Inicial de R$ 497. Quero entender se ele serve para meu negócio.',
               presenca: 'Olá, Paulo! Tenho interesse no plano Presença Rápida de R$ 997. Quero entender se ele serve para meu negócio.',
               express: 'Olá, Paulo! Tenho interesse no plano Profissional Express de R$ 1.497. Quero criar um site com domínio, WhatsApp e Google.',
               empresarial: 'Olá, Paulo! Tenho interesse no plano Empresarial Completo de R$ 2.997. Quero um site mais completo para minha empresa.',

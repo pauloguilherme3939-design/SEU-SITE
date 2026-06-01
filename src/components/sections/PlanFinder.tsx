@@ -9,9 +9,10 @@ import { Button, Container, Section } from '@/components/ui';
 const Q1 = {
   text: 'Qual é o seu principal objetivo?',
   options: [
-    { id: 'presenca',    label: 'Preciso colocar o negócio no ar com o básico bem-feito' },
-    { id: 'express',     label: 'Quero um site profissional com SEO e reconhecido pelo Google' },
-    { id: 'empresarial', label: 'Preciso de um site completo com várias páginas' },
+    { id: 'inicial',     label: 'Preciso de algo simples e acessível para apresentar meu negócio' },
+    { id: 'presenca',    label: 'Quero uma landing page mais organizada e com mais estrutura' },
+    { id: 'express',     label: 'Quero presença profissional com SEO e reconhecimento no Google' },
+    { id: 'empresarial', label: 'Preciso de um site com várias páginas' },
   ],
 };
 
@@ -23,10 +24,13 @@ const Q2 = {
   ],
 };
 
+const Q2_SKIP = new Set(['inicial', 'empresarial']);
+
 /* ── Recommendation logic ──────────────────────────────── */
 function getPlanId(q1: string, q2: string): string {
   if (q1 === 'empresarial' || q2 === 'varias') return 'empresarial';
   if (q1 === 'express') return 'express';
+  if (q1 === 'inicial') return 'inicial';
   return 'presenca';
 }
 
@@ -74,8 +78,9 @@ export default function PlanFinder() {
   const [q1, setQ1] = useState<string | null>(null);
   const [q2, setQ2] = useState<string | null>(null);
 
-  const done = q1 !== null && q2 !== null;
-  const recommendedId = done ? getPlanId(q1, q2) : null;
+  const needsQ2 = q1 !== null && !Q2_SKIP.has(q1);
+  const done = q1 !== null && (!needsQ2 || q2 !== null);
+  const recommendedId = done ? getPlanId(q1 as string, q2 ?? '') : null;
   const recommended = recommendedId ? plans.find((p) => p.id === recommendedId) ?? null : null;
 
   const reset = () => { setQ1(null); setQ2(null); };
@@ -124,8 +129,8 @@ export default function PlanFinder() {
                 </div>
               </div>
 
-              {/* Question 2 — só aparece após Q1 */}
-              {q1 !== null && (
+              {/* Question 2 — só aparece se Q1 não definir o plano diretamente */}
+              {needsQ2 && (
                 <div role="group" aria-labelledby="q2-label" className="animate-fade-up" style={{ animationDelay: '0ms' }}>
                   <p id="q2-label" className="mb-4 font-display font-semibold text-ink">
                     <span className="mr-2 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-xs font-bold text-accent" aria-hidden>2</span>

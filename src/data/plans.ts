@@ -2,6 +2,29 @@ import type { Plan } from '@/types';
 
 export const plans: Plan[] = [
   {
+    id: 'inicial',
+    name: 'Presença Inicial',
+    forWho: 'Para quem precisa de uma página simples para apresentar o negócio e receber contatos pelo WhatsApp.',
+    price: 497,
+    priceLabel: 'R$ 497',
+    paymentNote: 'à vista ou entrada para iniciar',
+    deadline: 'Até 3 dias após envio das informações',
+    idealFor: 'Quem quer começar com o básico',
+    ctaLabel: 'Quero começar pelo básico',
+    maintenancePrice: 60,
+    features: [
+      { label: '1 página simples', included: true },
+      { label: 'Layout responsivo', included: true },
+      { label: 'Botão direto para WhatsApp', included: true },
+      { label: 'Informações principais do negócio', included: true },
+      { label: 'Domínio .com.br incluso por 1 ano*', included: true },
+      { label: 'Publicação no ar', included: true },
+      { label: '1 rodada de ajuste simples', included: true },
+      { label: 'SEO inicial e Google Search Console', included: false },
+      { label: 'Copy/textos profissionais', included: false },
+    ],
+  },
+  {
     id: 'presenca',
     name: 'Presença Rápida',
     forWho: 'Para quem precisa colocar o negócio no ar com uma página simples, bonita e profissional.',
