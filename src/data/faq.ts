@@ -75,4 +75,112 @@ export const nichos: Nicho[] = [
     ],
     recommendedPlan: 'empresarial',
   },
+  {
+    slug: 'barbeiros',
+    profissao: 'Barbeiros e barbearias',
+    h1: 'Site profissional para barbearia, pronto em até 3 dias',
+    intro:
+      'Clientes fiéis vêm pela qualidade, mas novos clientes chegam pelo Google. Um site com galeria, serviços e botão de agendamento direto pelo WhatsApp faz toda a diferença.',
+    dores: [
+      'Depender só do Instagram para atrair clientes novos',
+      'Não aparecer quando alguém pesquisa barbearia na sua cidade',
+      'Perder clientes para concorrentes com presença digital mais forte',
+    ],
+    beneficios: [
+      'Galeria de cortes que vende antes mesmo de o cliente entrar',
+      'Agendamento direto pelo WhatsApp com um toque',
+      'Aparecer nas buscas de quem procura barbearia perto de mim',
+    ],
+    recommendedPlan: 'presenca',
+  },
+  {
+    slug: 'manicures',
+    profissao: 'Manicures e salões de beleza',
+    h1: 'Site profissional para manicure e salão de beleza',
+    intro:
+      'Suas clientes procuram no Instagram, mas comparam no Google. Um site com portfólio, preços e contato direto transforma curiosidade em agendamento.',
+    dores: [
+      'Dificuldade de mostrar o portfólio de forma organizada',
+      'Clientes novos não te encontram fora do Instagram',
+      'Imagem amadora que não reflete a qualidade do seu trabalho',
+    ],
+    beneficios: [
+      'Portfólio de trabalhos que encanta antes do primeiro contato',
+      'Agendamento pelo WhatsApp sem complicação',
+      'Presença profissional que justifica seus preços',
+    ],
+    recommendedPlan: 'presenca',
+  },
+  {
+    slug: 'personal-trainers',
+    profissao: 'Personal trainers e profissionais de educação física',
+    h1: 'Site profissional para personal trainer',
+    intro:
+      'Alunos procuram personal trainer no Google antes de fechar. Um site com sua metodologia, resultados e contato direto converte visita em consulta.',
+    dores: [
+      'Não aparecer quando alguém pesquisa personal trainer na sua cidade',
+      'Dificuldade de transmitir sua metodologia e diferenciais online',
+      'Depender de indicação para conseguir novos alunos',
+    ],
+    beneficios: [
+      'Apresentação da sua metodologia e resultados com credibilidade',
+      'Captação de novos alunos direto pelo WhatsApp',
+      'Aparecer no Google para quem busca personal na sua região',
+    ],
+    recommendedPlan: 'express',
+  },
+  {
+    slug: 'psicologos',
+    profissao: 'Psicólogos e terapeutas',
+    h1: 'Site profissional para psicólogo, seguro e acolhedor',
+    intro:
+      'Pacientes pesquisam psicólogo com cuidado. Um site que transmite acolhimento, segurança e clareza sobre sua abordagem é o primeiro passo para o vínculo terapêutico.',
+    dores: [
+      'Pacientes não conseguem te encontrar fora de plataformas de terceiros',
+      'Dificuldade de comunicar sua abordagem antes da primeira sessão',
+      'Falta de um espaço próprio e profissional na internet',
+    ],
+    beneficios: [
+      'Apresentação da sua abordagem que já começa a construir confiança',
+      'Agendamento de sessão pelo WhatsApp com discrição',
+      'Independência de plataformas que cobram comissão por atendimento',
+    ],
+    recommendedPlan: 'express',
+  },
+  {
+    slug: 'nutricionistas',
+    profissao: 'Nutricionistas e consultórios de nutrição',
+    h1: 'Site profissional para nutricionista',
+    intro:
+      'Quem busca nutricionista quer ver credibilidade antes de marcar consulta. Um site claro, com sua especialidade e formas de atendimento, acelera a decisão.',
+    dores: [
+      'Pacientes comparam nutricionistas online antes de escolher',
+      'Dificuldade de mostrar suas especializações e diferenciais',
+      'Não aparecer nas buscas locais por nutricionista',
+    ],
+    beneficios: [
+      'Apresentação das especialidades que atrai o perfil certo de paciente',
+      'Contato e agendamento direto pelo WhatsApp',
+      'Posicionamento no Google para consultas presenciais e online',
+    ],
+    recommendedPlan: 'express',
+  },
+  {
+    slug: 'fotografos',
+    profissao: 'Fotógrafos e estúdios fotográficos',
+    h1: 'Site profissional para fotógrafo com portfólio que vende',
+    intro:
+      'Fotógrafo sem site perde para fotógrafo com site. Um portfólio profissional online transmite o seu estilo, seu nível e facilita o contato de quem já quer contratar.',
+    dores: [
+      'Instagram não é suficiente para mostrar o portfólio com qualidade',
+      'Dificuldade de aparecer para noivos, empresas ou famílias que buscam fotógrafo',
+      'Sem espaço para apresentar pacotes e preços de forma profissional',
+    ],
+    beneficios: [
+      'Portfólio que mostra seu estilo e nível antes do primeiro contato',
+      'Apresentação de pacotes e diferenciais sem depender de stories',
+      'Aparecer no Google para quem busca fotógrafo na sua cidade',
+    ],
+    recommendedPlan: 'presenca',
+  },
 ];

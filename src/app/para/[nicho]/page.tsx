@@ -201,8 +201,7 @@ export default function NichoPage({ params }: { params: { nicho: string } }) {
                 className="animate-fade-up mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
                 style={{ animationDelay: '200ms' }}
               >
-                <Button href={waUrl} variant="whats" size="lg">
-                  <WhatsIcon size={18} />
+                <Button href={waUrl} variant="whats" size="lg" leadingIcon={<WhatsIcon size={18} />}>
                   Quero meu site agora
                 </Button>
                 <Button href="#plano" variant="ghost" size="lg">
@@ -408,8 +407,7 @@ export default function NichoPage({ params }: { params: { nicho: string } }) {
                 {/* CTA */}
                 <div className="mt-10 border-t border-line pt-8">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <Button href={waPlanUrl} variant="whats" size="lg">
-                      <WhatsIcon size={18} />
+                    <Button href={waPlanUrl} variant="whats" size="lg" leadingIcon={<WhatsIcon size={18} />}>
                       Quero o {plan.name}
                     </Button>
                     <p className="text-xs text-muted-2">
@@ -489,8 +487,7 @@ export default function NichoPage({ params }: { params: { nicho: string } }) {
                 </p>
 
                 <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                  <Button href={waUrl} variant="whats" size="lg">
-                    <WhatsIcon size={18} />
+                  <Button href={waUrl} variant="whats" size="lg" leadingIcon={<WhatsIcon size={18} />}>
                     Quero meu site agora
                   </Button>
                   <Button href="/#planos" variant="ghost" size="lg">
