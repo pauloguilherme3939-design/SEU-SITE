@@ -11,6 +11,7 @@ export const portfolio: PortfolioItem[] = [
     demo: false,
     tags: ['Dashboard', 'Pix', 'SEO', 'Multi-páginas'],
     accent: 'green',
+    image: '/images/portfolio/recebazap.png',
   },
   {
     id: 'adeus-latidos',
@@ -22,6 +23,7 @@ export const portfolio: PortfolioItem[] = [
     demo: true,
     tags: ['Copy de vendas', 'Conversão', 'Checkout'],
     accent: 'amber',
+    image: '/images/portfolio/adeus-latidos.png',
   },
   {
     id: 'benzedeiras',
@@ -33,5 +35,6 @@ export const portfolio: PortfolioItem[] = [
     demo: true,
     tags: ['Design temático', 'Storytelling', 'Oferta'],
     accent: 'gold',
+    image: '/images/portfolio/benzedeiras.png',
   },
 ];

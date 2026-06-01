@@ -30,6 +30,7 @@ export interface PortfolioItem {
   demo: boolean;               // true = projeto demonstrativo (rotular!)
   tags: string[];
   accent: 'green' | 'amber' | 'gold';
+  image?: string;              // path relativo a /public, ex: /images/portfolio/recebazap.png
 }
 
 export interface FaqItem {

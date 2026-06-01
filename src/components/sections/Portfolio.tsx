@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { portfolio } from '@/data/portfolio';
 import type { PortfolioItem } from '@/types';
 import { Container, Section } from '@/components/ui';
@@ -34,7 +35,7 @@ const CARD: Record<PortfolioItem['accent'], {
 };
 
 /* ── Browser chrome mock ─────────────────────────────────── */
-function BrowserMock({ accent, name }: { accent: PortfolioItem['accent']; name: string }) {
+function BrowserMock({ accent, name, image }: { accent: PortfolioItem['accent']; name: string; image?: string }) {
   const theme = CARD[accent];
   return (
     <div className={`mb-5 overflow-hidden rounded-[var(--radius-sm)] border border-line bg-bg-soft`}>
@@ -45,18 +46,28 @@ function BrowserMock({ accent, name }: { accent: PortfolioItem['accent']; name: 
         <span className="h-2 w-2 rounded-full bg-accent/40" />
         <div className="ml-2 h-2 flex-1 rounded-full bg-card-hi" />
       </div>
-      {/* Preview area — troque por <Image> quando houver prints */}
-      <div className={`relative flex aspect-[16/9] items-center justify-center overflow-hidden bg-gradient-to-br ${theme.thumbBg}`}>
-        {/* Grid overlay */}
-        <div aria-hidden className="absolute inset-0 bg-grid-soft opacity-20" />
-        {/* Placeholder icon */}
-        <div className={`relative flex flex-col items-center gap-2 ${theme.iconColor} opacity-40`}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden>
-            <rect x="2" y="4" width="28" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" />
-            <path d="M10 28h12M16 24v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
-          <span className="text-xs font-medium tracking-wide">{name}</span>
-        </div>
+      {/* Preview area */}
+      <div className={`relative aspect-[16/9] overflow-hidden ${image ? '' : `flex items-center justify-center bg-gradient-to-br ${theme.thumbBg}`}`}>
+        {image ? (
+          <Image
+            src={image}
+            alt={`Print do projeto ${name}`}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <>
+            <div aria-hidden className="absolute inset-0 bg-grid-soft opacity-20" />
+            <div className={`relative flex flex-col items-center gap-2 ${theme.iconColor} opacity-40`}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden>
+                <rect x="2" y="4" width="28" height="20" rx="3" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M10 28h12M16 24v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+              <span className="text-xs font-medium tracking-wide">{name}</span>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
@@ -104,7 +115,7 @@ export default function Portfolio() {
                 style={{ animationDelay: `${80 + i * 80}ms` }}
               >
                 {/* Browser mock thumbnail */}
-                <BrowserMock accent={item.accent} name={item.name} />
+                <BrowserMock accent={item.accent} name={item.name} image={item.image} />
 
                 {/* Meta row */}
                 <div className="mb-3 flex items-center justify-between gap-2">
