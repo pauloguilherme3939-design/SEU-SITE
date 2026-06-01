@@ -158,19 +158,25 @@ export default function Pricing() {
           })}
         </div>
 
-        {/* Bottom note */}
-        <p className="animate-fade-in mt-8 text-center text-sm text-muted-2" style={{ animationDelay: '500ms' }}>
-          Todos os planos incluem hospedagem inicial. Dúvidas?{' '}
-          <a
-            href={buildWhatsAppUrl('Olá! Tenho dúvidas sobre os planos. Pode me ajudar?')}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:underline"
-          >
-            Fale no WhatsApp
-          </a>
-          .
-        </p>
+        {/* Bottom notes */}
+        <div className="animate-fade-in mt-8 space-y-2 text-center" style={{ animationDelay: '500ms' }}>
+          <p className="text-sm text-muted-2">
+            Todos os planos incluem hospedagem inicial. Dúvidas?{' '}
+            <a
+              href={buildWhatsAppUrl('Olá! Tenho dúvidas sobre os planos. Pode me ajudar?')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
+              Fale no WhatsApp
+            </a>
+            .
+          </p>
+          <p className="text-xs text-muted-2">
+            * Domínio .com.br incluso por 1 ano desde que seja um domínio comum disponível para registro.
+            Após o primeiro ano, a renovação fica por conta do cliente (cerca de R$ 40/ano).
+          </p>
+        </div>
 
       </Container>
     </Section>

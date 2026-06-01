@@ -77,10 +77,16 @@ export default function Saas() {
               <p className="mt-4 leading-relaxed text-muted">{saasOffer.note}</p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button href={waUrl} variant="secondary" size="md">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                    <path d="M8 1.5a6.5 6.5 0 100 13A6.5 6.5 0 008 1.5zM8 4v4l2.5 2.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
+                <Button
+                  href={waUrl}
+                  variant="secondary"
+                  size="md"
+                  leadingIcon={
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                      <path d="M8 1.5a6.5 6.5 0 100 13A6.5 6.5 0 008 1.5zM8 4v4l2.5 2.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  }
+                >
                   Pedir orçamento
                 </Button>
                 <Button href={waUrl} variant="ghost" size="md">

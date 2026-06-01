@@ -109,8 +109,7 @@ function SuccessPanel({ nome, planoId }: { nome: string; planoId: string }) {
         personalizada.
       </p>
       <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-        <Button href={buildWhatsAppUrl(waMsg)} variant="whats" size="lg">
-          <WAIcon />
+        <Button href={buildWhatsAppUrl(waMsg)} variant="whats" size="lg" leadingIcon={<WAIcon />}>
           Também falar no WhatsApp
         </Button>
         <Button href="/#planos" variant="ghost" size="lg">
