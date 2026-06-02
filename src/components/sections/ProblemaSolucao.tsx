@@ -85,12 +85,19 @@ export default function ProblemaSolucao() {
           </p>
         </div>
 
-        {/* Two-column comparison */}
-        <div className="relative grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-0">
+        {/* Two-column comparison — gradient border wrapper */}
+        <div
+          className="relative rounded-[var(--radius-lg)] p-px"
+          style={{ background: 'linear-gradient(to right, rgba(255,122,122,0.35) 0%, rgba(45,212,141,0.35) 100%)' }}
+        >
+        <div
+          className="relative grid grid-cols-1 overflow-hidden lg:grid-cols-2"
+          style={{ borderRadius: 'calc(var(--radius-lg) - 1px)' }}
+        >
 
           {/* ── Left: Pains ─────────────────────────────── */}
           <div
-            className="animate-slide-right rounded-[var(--radius-lg)] border border-danger/15 bg-[rgba(255,122,122,0.03)] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(255,122,122,0.08)] lg:rounded-r-none lg:border-r-0"
+            className="animate-slide-right border-b border-line/20 bg-[rgba(255,122,122,0.03)] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(255,122,122,0.08)] lg:border-b-0"
             style={{ animationDelay: '120ms' }}
           >
             <div className="mb-7 flex items-center gap-3">
@@ -127,7 +134,7 @@ export default function ProblemaSolucao() {
 
           {/* ── Right: Gains ─────────────────────────────── */}
           <div
-            className="animate-slide-left rounded-[var(--radius-lg)] border border-line-hi bg-accent/[0.03] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(45,212,141,0.09)] lg:rounded-l-none lg:border-l-0"
+            className="animate-slide-left bg-accent/[0.03] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(45,212,141,0.09)]"
             style={{ animationDelay: '120ms' }}
           >
             <div className="mb-7 flex items-center gap-3">
@@ -154,6 +161,7 @@ export default function ProblemaSolucao() {
             </ul>
           </div>
 
+        </div>
         </div>
 
         {/* Bottom proof strip */}
