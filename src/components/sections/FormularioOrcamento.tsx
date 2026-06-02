@@ -224,7 +224,7 @@ export default function FormularioOrcamento({
             Receba uma proposta personalizada
           </h2>
           <p className="mt-4 text-muted">
-            Preencha em 2 minutos. Resposta em até 1h, sem compromisso.
+            Preencha em 2 minutos. Resposta em até 1h no horário comercial, sem compromisso.
           </p>
         </div>
 
@@ -237,7 +237,7 @@ export default function FormularioOrcamento({
             </p>
             <ul className="space-y-5">
               {[
-                { icon: '⏱', title: 'Resposta em até 1 hora', sub: 'Análise rápida e proposta no mesmo dia.' },
+                { icon: '⏱', title: 'Resposta em até 1 hora', sub: 'No horário comercial. Fora desse horário, respondo no dia seguinte.' },
                 { icon: '🎯', title: 'Proposta personalizada', sub: 'Para o seu negócio, não um template genérico.' },
                 { icon: '💬', title: 'Sem pressão de venda', sub: 'Você decide se quer avançar — sem compromisso.' },
                 { icon: '🚀', title: 'Site no ar em até 3 dias', sub: 'Após aprovação da proposta e envio dos materiais.' },

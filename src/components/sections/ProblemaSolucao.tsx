@@ -76,12 +76,12 @@ export default function ProblemaSolucao() {
             Por que ter um site profissional
           </p>
           <h2 className="font-display font-bold text-ink text-balance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}>
-            Mais de 90% dos clientes pesquisam{' '}
+            Seus clientes pesquisam no Google{' '}
             <br className="hidden sm:block" />
-            no Google antes de contratar.
+            antes de decidir. Você aparece?
           </h2>
           <p className="mt-4 text-muted">
-            Se você não aparece, eles contratam a concorrência. É simples assim.
+            Se não aparece, a concorrência aparece no lugar. E o cliente vai para ela.
           </p>
         </div>
 

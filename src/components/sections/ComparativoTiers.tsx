@@ -163,8 +163,17 @@ export default function ComparativoTiers() {
         {/* ── Table wrapper ───────────────────────────────── */}
         {/* Negative margins let the scroll hit the viewport edge on mobile  */}
         {/* while keeping the table content at the correct inset.            */}
+        {/* Mobile scroll hint — visible only below lg */}
+        <p className="mb-3 flex items-center justify-center gap-1.5 text-xs text-muted-2 lg:hidden" aria-hidden>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Deslize para comparar os planos
+        </p>
+
+        {/* pt-[18px] creates room for the Platina floating badge (-top-[13px]) above the thead */}
         <div
-          className="animate-fade-up -mx-6 overflow-x-auto px-6 pb-4 sm:-mx-8 sm:px-8"
+          className="animate-fade-up -mx-6 overflow-x-auto px-6 pb-4 pt-[18px] sm:-mx-8 sm:px-8"
           style={{ animationDelay: '130ms', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
         >
           <table

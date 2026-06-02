@@ -44,12 +44,6 @@ function SearchCheckIcon() {
 }
 
 /* ── Data ────────────────────────────────────────────────────── */
-const TIER_POSITIONS = [
-  { seal: '🥈', tier: 'prata',    label: 'Prata',    pos: 'para começar'              },
-  { seal: '🥇', tier: 'ouro',     label: 'Ouro',     pos: 'mais presença'             },
-  { seal: '💠', tier: 'platina',  label: 'Platina',  pos: 'melhor custo-benefício'    },
-  { seal: '💎', tier: 'diamante', label: 'Diamante', pos: 'autoridade máxima'         },
-] as const;
 
 const GARANTIAS = [
   {
@@ -106,30 +100,6 @@ export default function Garantias() {
   return (
     <Section anchorId="garantias">
       <Container>
-
-        {/* ── Tier positioning strip ───────────────────── */}
-        {/* Serves as a "legend" for users scrolling past the tier cards */}
-        <div
-          className="animate-fade-up mb-12 flex flex-wrap items-center justify-center gap-2"
-          style={{ animationDelay: '60ms' }}
-          aria-label="Resumo dos níveis de plano"
-        >
-          {TIER_POSITIONS.map(item => (
-            <span
-              key={item.tier}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(255,255,255,0.08)] bg-card px-3.5 py-2 text-sm"
-            >
-              <span aria-hidden className="text-base leading-none">{item.seal}</span>
-              <span
-                className="font-semibold"
-                style={{ color: `var(--tier-${item.tier}-text)` }}
-              >
-                {item.label}
-              </span>
-              <span className="text-xs text-muted-2">— {item.pos}</span>
-            </span>
-          ))}
-        </div>
 
         {/* ── Section header ───────────────────────────── */}
         <div

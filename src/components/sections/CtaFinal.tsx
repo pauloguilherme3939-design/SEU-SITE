@@ -103,7 +103,7 @@ export default function CtaFinal() {
                   </svg>
                 }
               >
-                Quero meu site agora
+                Quero orçamento gratuito
               </Button>
               <Button href="/#planos" variant="ghost" size="lg">
                 Ver planos

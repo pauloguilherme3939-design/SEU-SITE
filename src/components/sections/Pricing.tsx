@@ -118,7 +118,7 @@ export default function Pricing() {
                 className={[
                   'animate-fade-up relative flex flex-col',
                   'rounded-[var(--radius)] transition-all duration-300',
-                  plan.highlight ? 'xl:scale-[1.035] xl:z-10' : '',
+                  plan.highlight ? 'sm:ring-1 sm:ring-[rgba(56,189,248,0.18)] xl:scale-[1.035] xl:z-10' : '',
                 ].join(' ')}
                 style={{
                   animationDelay: `${80 + i * 70}ms`,

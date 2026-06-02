@@ -36,6 +36,16 @@ export const faq: FaqItem[] = [
     answer:
       'Não há mensalidade obrigatória de plataforma. Você paga pelo desenvolvimento do site uma única vez. Manutenção, alterações futuras ou melhorias mensais podem ser contratadas separadamente, conforme a necessidade.',
   },
+  {
+    question: 'O site vai funcionar bem no celular?',
+    answer:
+      'Sim. Todos os sites são desenvolvidos com design responsivo — isso significa que se adaptam perfeitamente a qualquer tamanho de tela: celular, tablet e computador. A maioria dos visitantes acessa pelo celular, então isso é prioridade, não opcional.',
+  },
+  {
+    question: 'E se eu não tiver logo ou fotos profissionais?',
+    answer:
+      'Sem problema. Para a logo, posso trabalhar com o nome do negócio em tipografia limpa — funciona muito bem. Para fotos, posso usar imagens do banco de imagens gratuito que combinam com o seu segmento. Se tiver fotos do seu próprio trabalho, mesmo tiradas pelo celular, melhor ainda — preferimos o real ao genérico.',
+  },
 ];
 
 export const nichos: Nicho[] = [

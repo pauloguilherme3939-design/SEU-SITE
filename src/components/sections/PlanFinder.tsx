@@ -28,10 +28,10 @@ const CTA_GLOW: Record<string, string> = {
 const Q1 = {
   text: 'O que você mais precisa agora?',
   options: [
-    { id: 'prata',    label: 'Só marcar presença, sem gastar muito' },
+    { id: 'prata',    label: 'Começar com o básico e estar online logo' },
     { id: 'ouro',     label: 'Uma página caprichada e profissional' },
-    { id: 'platina',  label: 'Ser achado no Google e vender mais' },
-    { id: 'diamante', label: 'Autoridade com site completo' },
+    { id: 'platina',  label: 'Ser achado no Google e passar mais confiança' },
+    { id: 'diamante', label: 'Autoridade com site completo e multi-páginas' },
   ],
 };
 

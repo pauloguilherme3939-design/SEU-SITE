@@ -97,10 +97,10 @@ export default function Portfolio() {
             className="font-display font-bold text-ink"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', letterSpacing: '-0.025em', lineHeight: '1.15' }}
           >
-            Exemplos do meu trabalho
+            Capacidade técnica na prática
           </h2>
           <p className="mt-4 text-muted">
-            Projetos, páginas e sistemas que mostram minha capacidade de criar soluções digitais profissionais.
+            Projetos reais e amostras que mostram o nível de execução — de landing pages a sistemas completos.
           </p>
         </div>
 
