@@ -35,10 +35,17 @@ const CARD: Record<PortfolioItem['accent'], {
 };
 
 /* ── Browser chrome mock ─────────────────────────────────── */
-function BrowserMock({ accent, name, image }: { accent: PortfolioItem['accent']; name: string; image?: string }) {
+function BrowserMock({
+  accent, name, type, image,
+}: {
+  accent: PortfolioItem['accent'];
+  name: string;
+  type: string;
+  image?: string;
+}) {
   const theme = CARD[accent];
   return (
-    <div className={`mb-5 overflow-hidden rounded-[var(--radius-sm)] border border-line bg-bg-soft`}>
+    <div className="mb-5 overflow-hidden rounded-[var(--radius-sm)] border border-line bg-bg-soft">
       {/* Bar */}
       <div className="flex items-center gap-1.5 border-b border-line bg-card px-3 py-2.5">
         <span className="h-2 w-2 rounded-full bg-danger/40" />
@@ -47,7 +54,11 @@ function BrowserMock({ accent, name, image }: { accent: PortfolioItem['accent'];
         <div className="ml-2 h-2 flex-1 rounded-full bg-card-hi" />
       </div>
       {/* Preview area */}
-      <div className={`relative aspect-[16/9] overflow-hidden ${image ? '' : `flex items-center justify-center bg-gradient-to-br ${theme.thumbBg}`}`}>
+      <div
+        className={`relative aspect-[16/9] overflow-hidden ${
+          image ? '' : `flex items-center justify-center bg-gradient-to-br ${theme.thumbBg}`
+        }`}
+      >
         {image ? (
           <Image
             src={image}
@@ -68,6 +79,21 @@ function BrowserMock({ accent, name, image }: { accent: PortfolioItem['accent'];
             </div>
           </>
         )}
+
+        {/* Hover overlay — desktop only, pointer-events-none para não bloquear o link */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-bg/72 opacity-0 backdrop-blur-[3px] transition-opacity duration-300 lg:group-hover:opacity-100"
+        >
+          <p className="font-display text-sm font-bold text-ink">{name}</p>
+          <p className="text-[11px] text-muted-2">{type}</p>
+          <span className="mt-1 inline-flex items-center gap-1.5 rounded-full border border-line bg-bg/80 px-3 py-1.5 text-xs font-semibold text-ink">
+            Ver projeto
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden>
+              <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   );
@@ -115,7 +141,7 @@ export default function Portfolio() {
                 style={{ animationDelay: `${80 + i * 80}ms` }}
               >
                 {/* Browser mock thumbnail */}
-                <BrowserMock accent={item.accent} name={item.name} image={item.image} />
+                <BrowserMock accent={item.accent} name={item.name} type={item.type} image={item.image} />
 
                 {/* Meta row */}
                 <div className="mb-3 flex items-center justify-between gap-2">

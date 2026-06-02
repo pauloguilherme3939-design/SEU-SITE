@@ -21,6 +21,10 @@
   from { opacity: 0; transform: translateX(18px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+@keyframes scroll-hint {
+  0%, 100% { opacity: 0.35; transform: translateY(0) translateX(-50%); }
+  55%       { opacity: 0.75; transform: translateY(7px) translateX(-50%); }
+}
 
 @layer base {
   *,
@@ -248,4 +252,12 @@
   .animate-fade-in    { animation: fade-in    0.55s ease both; }
   .animate-slide-right { animation: slide-right 0.65s cubic-bezier(0.16,1,0.3,1) both; }
   .animate-slide-left  { animation: slide-left  0.65s cubic-bezier(0.16,1,0.3,1) both; }
+
+  /* Scroll indicator no hero */
+  .animate-scroll-hint {
+    animation: scroll-hint 2.4s ease-in-out infinite;
+    position: absolute;
+    bottom: 1.75rem;
+    left: 50%;
+  }
 }

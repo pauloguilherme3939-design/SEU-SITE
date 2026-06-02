@@ -193,6 +193,20 @@ export default function Hero() {
         </div>
 
       </Container>
+
+      {/* Scroll hint — seta discreta com animação suave */}
+      <div aria-hidden className="animate-scroll-hint pointer-events-none">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path
+            d="M4 7l6 6 6-6"
+            stroke="var(--muted-2)"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+
     </section>
   );
 }
