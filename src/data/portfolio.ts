@@ -14,6 +14,18 @@ export const portfolio: PortfolioItem[] = [
     image: '/images/portfolio/recebazap.png',
   },
   {
+    id: 'sanka-burguers',
+    name: 'Sanka Burgers',
+    description:
+      'Landing page para hamburgueria artesanal em Rio Claro, SP — com identidade visual marcante, cardápio, localização e botão direto para pedido via WhatsApp.',
+    url: 'https://sankaburguers.vercel.app/',
+    type: 'Landing page',
+    demo: false,
+    tags: ['Hambúrguer artesanal', 'WhatsApp', 'Local'],
+    accent: 'amber',
+    image: '/images/portfolio/sanka-burguers.png',
+  },
+  {
     id: 'adeus-latidos',
     name: 'Adeus Latido de Solidão',
     description:
