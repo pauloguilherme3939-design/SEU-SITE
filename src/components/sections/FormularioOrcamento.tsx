@@ -237,13 +237,48 @@ export default function FormularioOrcamento({
             </p>
             <ul className="space-y-5">
               {[
-                { icon: '⏱', title: 'Resposta em até 1 hora', sub: 'No horário comercial. Fora desse horário, respondo no dia seguinte.' },
-                { icon: '🎯', title: 'Proposta personalizada', sub: 'Para o seu negócio, não um template genérico.' },
-                { icon: '💬', title: 'Sem pressão de venda', sub: 'Você decide se quer avançar — sem compromisso.' },
-                { icon: '🚀', title: 'Site no ar em até 3 dias', sub: 'Após aprovação da proposta e envio dos materiais.' },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                      <circle cx="9" cy="9" r="7" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M9 5v4l2.5 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                  title: 'Resposta em até 1 hora',
+                  sub: 'No horário comercial. Fora desse horário, respondo no dia seguinte.',
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                      <path d="M9 2l1.8 3.6L15 6.4l-3 2.9.7 4.1L9 11.5l-3.7 1.9.7-4.1-3-2.9 4.2-.8L9 2z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                  title: 'Proposta personalizada',
+                  sub: 'Para o seu negócio, não um template genérico.',
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                      <path d="M15.5 9a6.5 6.5 0 01-9.18 5.93L2 16.5l1.57-4.32A6.5 6.5 0 1115.5 9z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                  title: 'Sem pressão de venda',
+                  sub: 'Você decide se quer avançar — sem compromisso.',
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+                      <path d="M9 2.5L10.5 7H15l-3.75 2.75 1.5 4.75L9 11.5l-3.75 3L6.75 9.75 3 7h4.5L9 2.5z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    </svg>
+                  ),
+                  title: 'Site no ar em até 3 dias',
+                  sub: 'Após aprovação da proposta e envio dos materiais.',
+                },
               ].map((item) => (
                 <li key={item.title} className="flex items-start gap-4">
-                  <span className="text-xl leading-none">{item.icon}</span>
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line bg-card text-accent">
+                    {item.icon}
+                  </span>
                   <div>
                     <p className="text-sm font-semibold text-ink">{item.title}</p>
                     <p className="mt-0.5 text-sm text-muted">{item.sub}</p>

@@ -108,7 +108,7 @@ export default function Saas() {
                   </p>
 
                   {/* Price label */}
-                  <div className="mb-8 rounded-[var(--radius-sm)] border border-accent/20 bg-accent/8 px-4 py-3 text-center">
+                  <div className="mb-8 rounded-[var(--radius-sm)] border border-accent/20 px-4 py-3 text-center" style={{ background: 'rgba(45, 212, 141, 0.08)' }}>
                     <p className="text-sm font-semibold text-accent">Orçamento sob consulta</p>
                     <p className="mt-0.5 text-xs text-muted-2">Cada projeto é avaliado individualmente</p>
                   </div>
