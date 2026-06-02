@@ -19,6 +19,15 @@ function XIcon() {
   );
 }
 
+/* ── Star icon for featured badge ──────────────────────── */
+function StarIcon() {
+  return (
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" aria-hidden>
+      <path d="M5 1l1.12 2.27L8.5 3.64l-1.75 1.7.41 2.41L5 6.52 2.84 7.75l.41-2.41L1.5 3.64l2.38-.37L5 1z" />
+    </svg>
+  );
+}
+
 export default function Pricing() {
   return (
     <Section anchorId="planos">
@@ -44,10 +53,10 @@ export default function Pricing() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:items-start">
           {plans.map((plan, i) => {
             const waMsgMap: Record<string, string> = {
-              inicial: 'Olá, Paulo! Tenho interesse no plano Presença Inicial de R$ 497. Quero entender se ele serve para meu negócio.',
-              presenca: 'Olá, Paulo! Tenho interesse no plano Presença Rápida de R$ 997. Quero entender se ele serve para meu negócio.',
-              express: 'Olá, Paulo! Tenho interesse no plano Profissional Express de R$ 1.497. Quero criar um site com domínio, WhatsApp e Google.',
-              empresarial: 'Olá, Paulo! Tenho interesse no plano Empresarial Completo de R$ 2.997. Quero um site mais completo para minha empresa.',
+              inicial:    'Olá, Paulo! Tenho interesse no plano Presença Inicial de R$ 497. Quero entender se ele serve para meu negócio.',
+              presenca:   'Olá, Paulo! Tenho interesse no plano Presença Rápida de R$ 997. Quero entender se ele serve para meu negócio.',
+              express:    'Olá, Paulo! Tenho interesse no plano Profissional Express de R$ 1.497. Quero criar um site com domínio, WhatsApp e Google.',
+              empresarial:'Olá, Paulo! Tenho interesse no plano Empresarial Completo de R$ 2.997. Quero um site mais completo para minha empresa.',
             };
             const waMsg = waMsgMap[plan.id] ?? `Olá, Paulo! Tenho interesse no plano ${plan.name}. Pode me ajudar?`;
             const waUrl = buildWhatsAppUrl(waMsg);
@@ -57,35 +66,45 @@ export default function Pricing() {
                 key={plan.id}
                 className={`animate-fade-up relative flex flex-col rounded-[var(--radius)] border transition-all ${
                   plan.featured
-                    ? 'border-accent/45 bg-card-hi shadow-[0_24px_80px_-30px_rgba(45,212,141,0.22)]'
-                    : 'border-line bg-card hover:border-line-hi'
+                    ? 'border-[#e8c87a]/28 bg-card-hi shadow-[0_28px_80px_-24px_rgba(45,212,141,0.18),0_0_0_1px_rgba(232,200,122,0.10)]'
+                    : 'border-line bg-card hover:border-line-hi hover:shadow-[0_12px_40px_-16px_rgba(0,0,0,0.5)]'
                 }`}
                 style={{ animationDelay: `${80 + i * 70}ms` }}
               >
-                {/* Featured accent line */}
+                {/* Featured top line — gold */}
                 {plan.featured && (
                   <div
                     aria-hidden
-                    className="absolute inset-x-0 top-0 h-px rounded-t-[var(--radius)]"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(45,212,141,0.7), transparent)' }}
+                    className="absolute inset-x-0 top-0 h-[1.5px] rounded-t-[var(--radius)]"
+                    style={{ background: 'linear-gradient(90deg, transparent, rgba(232,200,122,0.75), transparent)' }}
                   />
                 )}
 
-                {/* Badge */}
+                {/* Badge — gold for featured */}
                 {plan.badge && (
                   <div className="absolute -top-3.5 inset-x-0 flex justify-center">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-bg px-3 py-1 text-xs font-semibold text-accent">
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
+                    <span
+                      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold"
+                      style={{
+                        background: 'linear-gradient(135deg, #1c1a10, #2a2410)',
+                        border: '1px solid rgba(232,200,122,0.35)',
+                        color: '#e8c87a',
+                        boxShadow: '0 2px 12px -4px rgba(232,200,122,0.25)',
+                      }}
+                    >
+                      <StarIcon />
                       {plan.badge}
                     </span>
                   </div>
                 )}
 
-                <div className={`flex flex-col flex-1 p-6 ${plan.badge ? 'pt-7' : ''}`}>
+                <div className={`flex flex-col flex-1 p-6 ${plan.badge ? 'pt-8' : ''}`}>
 
                   {/* Plan name + description */}
-                  <div className="mb-6">
-                    <p className="font-display font-bold text-ink">{plan.name}</p>
+                  <div className="mb-5">
+                    <p className={`font-display font-bold ${plan.featured ? 'text-ink' : 'text-ink'}`}>
+                      {plan.name}
+                    </p>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted">{plan.forWho}</p>
                   </div>
 
@@ -98,19 +117,19 @@ export default function Pricing() {
                       {plan.priceLabel}
                     </span>
                   </div>
-                  <p className="mb-7 text-xs text-muted-2">{plan.paymentNote}</p>
+                  <p className="mb-6 text-xs text-muted-2">{plan.paymentNote}</p>
 
                   {/* Features */}
-                  <ul className="mb-8 flex-1 space-y-2.5">
+                  <ul className="mb-7 flex-1 space-y-2.5">
                     {plan.features.map((f) => (
                       <li key={f.label} className="flex items-start gap-3 text-sm">
                         <span
-                          className={`mt-[3px] flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full ${
+                          className={`mt-[3px] flex shrink-0 items-center justify-center rounded-full ${
                             f.included
                               ? 'bg-accent/15 text-accent'
                               : 'bg-card-hi text-muted-2'
                           }`}
-                          style={{ minWidth: '18px', minHeight: '18px' }}
+                          style={{ width: '18px', height: '18px', minWidth: '18px', minHeight: '18px' }}
                         >
                           {f.included ? <CheckIcon /> : <XIcon />}
                         </span>
@@ -128,10 +147,11 @@ export default function Pricing() {
                   </ul>
 
                   {/* Footer */}
-                  <div className="space-y-2">
+                  <div className="space-y-2.5">
+                    {/* All buttons green (primary) */}
                     <Button
                       href={waUrl}
-                      variant={plan.featured ? 'primary' : 'secondary'}
+                      variant="primary"
                       size="md"
                       fullWidth
                     >
