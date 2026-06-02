@@ -239,15 +239,22 @@ function generate() {
   stripe(0, 3, C.accent);
   stripe(H - 3, 3, C.accent);
 
-  // Glow
-  doc.circle(W / 2, 190, 280).fill([...hex(C.accent), 0.05]);
+  // Glow — opacity via save/restore para evitar interpretação CMYK do array de 4 valores
+  doc.save();
+  doc.opacity(0.06);
+  doc.circle(W / 2, 190, 280).fill(C.accent);
+  doc.restore();
 
-  // Ícone central
+  // Ícone central — checkmark desenhado manualmente (✓ pode não existir na fonte Sora)
   doc.roundedRect(W/2 - 40, 110, 80, 80, 20).fill(C.card);
   doc.roundedRect(W/2 - 39, 111, 78, 78, 19)
-    .strokeColor([...hex(C.accent), 0.4]).lineWidth(1).stroke();
-  doc.font(F.soraBold).fontSize(44).fillColor(C.accent)
-    .text('✓', W/2 - 24, 127, { width: 50, align: 'center', lineBreak: false });
+    .strokeColor(C.accent).lineWidth(1).fillOpacity(0).strokeOpacity(0.4).stroke();
+  // Checkmark path: dois segmentos (L curto + L longo)
+  const cx = W / 2;
+  doc.save();
+  doc.lineWidth(3.5).strokeColor(C.accent).lineCap('round').lineJoin('round');
+  doc.moveTo(cx - 13, 152).lineTo(cx - 2, 163).lineTo(cx + 14, 143).stroke();
+  doc.restore();
 
   // Eyebrow
   doc.font(F.outfitSemi).fontSize(9.5).fillColor(C.accent)
@@ -264,8 +271,10 @@ function generate() {
     .text('Tudo o que preciso de você para começar', 0, 326, { width: W, align: 'center' });
 
   // Linha divisória
+  doc.save();
   doc.moveTo(PAD + 60, 366).lineTo(W - PAD - 60, 366)
-    .strokeColor([...hex(C.accent), 0.3]).lineWidth(1).stroke();
+    .strokeColor(C.accent).strokeOpacity(0.3).lineWidth(1).stroke();
+  doc.restore();
 
   // Badges de tier
   const tiers = [
@@ -287,8 +296,10 @@ function generate() {
   // Nota de prazo — card
   const noteY = 430;
   doc.roundedRect(PAD, noteY, CW, 82, 12).fill(C.card);
+  doc.save();
   doc.moveTo(PAD, noteY).lineTo(PAD + CW, noteY)
-    .strokeColor([...hex(C.accent), 0.5]).lineWidth(1.5).stroke();
+    .strokeColor(C.accent).strokeOpacity(0.5).lineWidth(1.5).stroke();
+  doc.restore();
   doc.font(F.outfitSemi).fontSize(9.5).fillColor(C.accent)
     .text('Sobre o prazo de entrega', PAD + 16, noteY + 14);
   doc.font(F.outfitReg).fontSize(9.5).fillColor(C.muted)
@@ -382,8 +393,10 @@ function generate() {
 
     // Linha separadora
     if (y + 2 < BOTTOM) {
+      doc.save();
       doc.moveTo(PAD, y).lineTo(W - PAD, y)
-        .strokeColor([...hex(C.line), 0.6]).lineWidth(0.5).stroke();
+        .strokeColor(C.line).strokeOpacity(0.6).lineWidth(0.5).stroke();
+      doc.restore();
       y += 14;
     }
   }
