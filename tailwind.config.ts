@@ -21,6 +21,13 @@ const config: Config = {
         gold: 'var(--gold)',
         danger: 'var(--danger)',
         whats: 'var(--whats)',
+        // Tier label colors — use as text-tier-prata, text-tier-ouro, etc.
+        tier: {
+          prata:    'var(--tier-prata-text)',
+          ouro:     'var(--tier-ouro-text)',
+          platina:  'var(--tier-platina-text)',
+          diamante: 'var(--tier-diamante-text)',
+        },
       },
       fontFamily: {
         display: 'var(--font-display)',
@@ -32,7 +39,15 @@ const config: Config = {
         sm: 'var(--radius-sm)',
       },
       maxWidth: { content: 'var(--maxw)' },
-      boxShadow: { soft: 'var(--shadow)', glow: 'var(--shadow-glow)' },
+      boxShadow: {
+        soft: 'var(--shadow)',
+        glow: 'var(--shadow-glow)',
+        // Tier card shadows — shadow-tier-prata, shadow-tier-ouro, etc.
+        'tier-prata':    'var(--tier-prata-shadow)',
+        'tier-ouro':     'var(--tier-ouro-shadow)',
+        'tier-platina':  'var(--tier-platina-shadow)',
+        'tier-diamante': 'var(--tier-diamante-shadow)',
+      },
     },
   },
   plugins: [],

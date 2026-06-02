@@ -50,4 +50,111 @@
 
   /* Transições */
   --ease:          cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ─────────────────────────────────────────────────────────
+     TIER SYSTEM — Assinaturas metálicas por nível
+     Prata → Ouro → Platina → Diamante
+     --accent (esmeralda) permanece o acento principal da marca
+  ───────────────────────────────────────────────────────── */
+
+  /* ── Prata — Silver escovado, sóbrio, neutro ────────────── */
+  --tier-prata-bar:
+    linear-gradient(
+      90deg,
+      transparent                     0%,
+      rgba(100, 116, 139, 0.20)       10%,
+      rgba(148, 163, 184, 0.48)       30%,
+      rgba(226, 232, 240, 0.82)       50%,
+      rgba(148, 163, 184, 0.48)       70%,
+      rgba(100, 116, 139, 0.20)       90%,
+      transparent                     100%
+    );
+  --tier-prata-bar-h:         1px;
+  --tier-prata-seal:          linear-gradient(135deg, #14202e 0%, #1e2d3f 55%, #14202e 100%);
+  --tier-prata-seal-border:   rgba(148, 163, 184, 0.45);
+  --tier-prata-text:          #cbd5e1;
+  --tier-prata-glow:          rgba(148, 163, 184, 0.16);
+  --tier-prata-border:        rgba(148, 163, 184, 0.22);
+  --tier-prata-border-hover:  rgba(148, 163, 184, 0.44);
+  --tier-prata-shadow:        0 16px 48px -16px rgba(0, 0, 0, 0.50);
+  --tier-prata-bg:            var(--card);
+  --tier-prata-cta:           var(--accent);
+
+  /* ── Ouro — Gold quente, aspiracional ───────────────────── */
+  --tier-ouro-bar:
+    linear-gradient(
+      90deg,
+      transparent                     0%,
+      rgba(161,  98,   7, 0.22)        8%,
+      rgba(234, 179,   8, 0.58)       30%,
+      rgba(253, 230, 138, 0.92)       50%,
+      rgba(234, 179,   8, 0.58)       70%,
+      rgba(161,  98,   7, 0.22)       92%,
+      transparent                     100%
+    );
+  --tier-ouro-bar-h:          1.5px;
+  --tier-ouro-seal:           linear-gradient(135deg, #1c1500 0%, #2d2200 55%, #1a1300 100%);
+  --tier-ouro-seal-border:    rgba(234, 179, 8, 0.65);
+  --tier-ouro-text:           #fcd34d;
+  --tier-ouro-glow:           rgba(234, 179, 8, 0.20);
+  --tier-ouro-border:         rgba(234, 179, 8, 0.28);
+  --tier-ouro-border-hover:   rgba(234, 179, 8, 0.52);
+  --tier-ouro-shadow:
+    0 20px 56px -16px rgba(0, 0, 0, 0.52),
+    0 0   80px -32px rgba(234, 179, 8, 0.14);
+  --tier-ouro-bg:             var(--card);
+  --tier-ouro-cta:            var(--accent);
+
+  /* ── Platina — Cristal azul, premium, mais escolhido ─────── */
+  --tier-platina-bar:
+    linear-gradient(
+      90deg,
+      transparent                     0%,
+      rgba( 14, 165, 233, 0.25)        8%,
+      rgba( 56, 189, 248, 0.68)       30%,
+      rgba(224, 242, 254, 0.96)       50%,
+      rgba( 56, 189, 248, 0.68)       70%,
+      rgba( 14, 165, 233, 0.25)       92%,
+      transparent                     100%
+    );
+  --tier-platina-bar-h:         2px;
+  --tier-platina-seal:          linear-gradient(135deg, #001c30 0%, #002c48 55%, #001825 100%);
+  --tier-platina-seal-border:   rgba(56, 189, 248, 0.58);
+  --tier-platina-text:          #7dd3fc;
+  --tier-platina-glow:          rgba(14, 165, 233, 0.28);
+  --tier-platina-border:        rgba(56, 189, 248, 0.38);
+  --tier-platina-border-hover:  rgba(56, 189, 248, 0.65);
+  --tier-platina-shadow:
+    0 0   0   1px rgba( 56, 189, 248, 0.12),
+    0 24px 64px -16px rgba(0, 0, 0, 0.55),
+    0 0  110px -32px rgba( 14, 165, 233, 0.22);
+  --tier-platina-bg:            #0e1c28;
+  --tier-platina-cta:           #0ea5e9;
+
+  /* ── Diamante — Violeta iridescente, topo, máximo impacto ── */
+  --tier-diamante-bar:
+    linear-gradient(
+      90deg,
+      transparent                       0%,
+      rgba(124,  58, 237, 0.32)          8%,
+      rgba(139,  92, 246, 0.68)         25%,
+      rgba(224, 231, 255, 0.96)         45%,
+      rgba(196, 181, 253, 0.82)         50%,
+      rgba(167, 243, 208, 0.48)         65%,
+      rgba(124,  58, 237, 0.32)         85%,
+      transparent                       100%
+    );
+  --tier-diamante-bar-h:         2.5px;
+  --tier-diamante-seal:          linear-gradient(135deg, #130a28 0%, #1e1045 55%, #0d0820 100%);
+  --tier-diamante-seal-border:   rgba(139, 92, 246, 0.62);
+  --tier-diamante-text:          #c4b5fd;
+  --tier-diamante-glow:          rgba(124, 58, 237, 0.32);
+  --tier-diamante-border:        rgba(139, 92, 246, 0.42);
+  --tier-diamante-border-hover:  rgba(139, 92, 246, 0.72);
+  --tier-diamante-shadow:
+    0 0   0   1px rgba(139,  92, 246, 0.16),
+    0 28px 72px -16px rgba(0, 0, 0, 0.60),
+    0 0  140px -28px rgba(124,  58, 237, 0.28);
+  --tier-diamante-bg:            #120c22;
+  --tier-diamante-cta:           #7c3aed;
 }

@@ -5,6 +5,25 @@ export interface PlanFeature {
   included: boolean;
 }
 
+export type TierSlug = 'prata' | 'ouro' | 'platina' | 'diamante';
+
+export interface TierStyle {
+  slug: TierSlug;
+  label: string;
+  accentColor: string;
+  dotColor: string;
+  borderColor: string;
+  bgColor: string;
+  boxShadow?: string;
+  topLine?: { gradient: string; height: string };
+  innerGlow?: string;
+  hoverBorder?: string;
+  priceColor?: string;
+  badgeBg?: string;
+  badgeBorder?: string;
+  badgeTextColor?: string;
+}
+
 export interface Plan {
   id: string;
   name: string;
@@ -19,6 +38,11 @@ export interface Plan {
   idealFor: string;
   ctaLabel: string;
   maintenancePrice?: number;   // manutenção mensal opcional em R$
+  tier?: TierSlug;
+  tierLabel?: string;          // ex: "Nível Prata"
+  bonuses?: string[];          // bônus exclusivos do nível
+  highlight?: boolean;         // card em destaque no grid
+  tagline?: string;            // etiqueta superior, ex: "Recomendado"
 }
 
 export interface PortfolioItem {

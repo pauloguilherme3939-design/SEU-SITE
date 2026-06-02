@@ -12,6 +12,11 @@ export const plans: Plan[] = [
     idealFor: 'Quem quer começar com o básico',
     ctaLabel: 'Quero começar pelo básico',
     maintenancePrice: 60,
+    tier: 'prata',
+    tierLabel: 'Nível Prata',
+    bonuses: [
+      'Botão de WhatsApp com mensagem pronta',
+    ],
     features: [
       { label: '1 página simples', included: true },
       { label: 'Layout responsivo', included: true },
@@ -35,7 +40,14 @@ export const plans: Plan[] = [
     idealFor: 'Autônomos e MEIs começando',
     ctaLabel: 'Quero a Presença Rápida',
     maintenancePrice: 80,
+    tier: 'ouro',
+    tierLabel: 'Nível Ouro',
+    bonuses: [
+      'FAQ pronto que quebra objeções',
+      'Guia em PDF: Bombe seu WhatsApp',
+    ],
     features: [
+      { label: 'Tudo do Nível Prata, e mais:', included: true },
       { label: '1 landing page', included: true },
       { label: 'Design responsivo (perfeito no celular)', included: true },
       { label: 'Botão para WhatsApp', included: true },
@@ -59,7 +71,17 @@ export const plans: Plan[] = [
     idealFor: 'Negócios que querem crescer',
     ctaLabel: 'Quero o Profissional Express',
     maintenancePrice: 150,
+    tier: 'platina',
+    tierLabel: 'Nível Platina',
+    highlight: true,
+    tagline: 'Recomendado · melhor custo-benefício',
+    bonuses: [
+      'Prioridade na fila de entrega',
+      'Página de Obrigado que captura contato',
+      '30 dias de suporte a dúvidas',
+    ],
     features: [
+      { label: 'Tudo do Nível Ouro, e mais:', included: true },
       { label: 'Landing page completa', included: true },
       { label: 'Design profissional', included: true },
       { label: 'Copy/textos iniciais', included: true },
@@ -83,7 +105,16 @@ export const plans: Plan[] = [
     idealFor: 'Empresas estabelecidas',
     ctaLabel: 'Quero o Empresarial Completo',
     maintenancePrice: 150,
+    tier: 'diamante',
+    tierLabel: 'Nível Diamante',
+    tagline: 'Topo · presença máxima',
+    bonuses: [
+      'Tudo do Platina',
+      'Atendimento prioritário VIP',
+      '60 dias de suporte + 1 ajuste de cortesia no 1º mês',
+    ],
     features: [
+      { label: 'Tudo do Nível Platina, e mais:', included: true },
       { label: 'Até 5 páginas (Início, Sobre, Serviços, Contato + 1)', included: true },
       { label: 'Design institucional profissional', included: true },
       { label: 'Botão para WhatsApp', included: true },

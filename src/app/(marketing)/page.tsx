@@ -13,6 +13,8 @@ import { faq } from '@/data/faq';
 import Hero from '@/components/sections/Hero';
 import ProblemaSolucao from '@/components/sections/ProblemaSolucao';
 import Pricing from '@/components/sections/Pricing';
+import ComparativoTiers from '@/components/sections/ComparativoTiers';
+import Garantias from '@/components/sections/Garantias';
 import PlanFinder from '@/components/sections/PlanFinder';
 import Saas from '@/components/sections/Saas';
 import Portfolio from '@/components/sections/Portfolio';
@@ -62,6 +64,8 @@ export default function HomePage() {
       <Hero />
       <ProblemaSolucao />
       <Pricing />
+      <ComparativoTiers />
+      <Garantias />
       <PlanFinder />
       <Saas />
       <Portfolio />
