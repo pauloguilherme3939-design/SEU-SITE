@@ -50,16 +50,16 @@ const gains = [
 /* ── Icons ───────────────────────────────────────────────── */
 function IconX() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-      <path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden>
+      <path d="M2 2l7 7M9 2L2 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
     </svg>
   );
 }
 
 function IconCheck() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-      <path d="M2.5 7l3 3 6-6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden>
+      <path d="M2 5.5l2.5 2.5 4.5-4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -75,7 +75,10 @@ export default function ProblemaSolucao() {
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-accent">
             Por que ter um site profissional
           </p>
-          <h2 className="font-display font-bold text-ink text-balance" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}>
+          <h2
+            className="text-balance font-display font-bold text-ink"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}
+          >
             Seus clientes pesquisam no Google{' '}
             <br className="hidden sm:block" />
             antes de decidir. Você aparece?
@@ -85,34 +88,41 @@ export default function ProblemaSolucao() {
           </p>
         </div>
 
-        {/* Two-column comparison — gradient border wrapper */}
-        <div
-          className="relative rounded-[var(--radius-lg)] p-px"
-          style={{ background: 'linear-gradient(to right, rgba(255,122,122,0.35) 0%, rgba(45,212,141,0.35) 100%)' }}
-        >
-        <div
-          className="relative grid grid-cols-1 overflow-hidden lg:grid-cols-2"
-          style={{ borderRadius: 'calc(var(--radius-lg) - 1px)' }}
-        >
+        {/* Comparison grid — 3 cols on desktop (card | vs | card), 1 col on mobile */}
+        <div className="grid grid-cols-1 items-stretch gap-4 lg:grid-cols-[1fr_52px_1fr] lg:gap-0">
 
-          {/* ── Left: Pains ─────────────────────────────── */}
+          {/* ── Left: Pains ──────────────────────────────────── */}
           <div
-            className="animate-slide-right border-b border-line/20 bg-[rgba(255,122,122,0.03)] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(255,122,122,0.08)] lg:border-b-0"
+            className="animate-slide-right relative overflow-hidden rounded-[var(--radius-lg)] border border-danger/20 bg-bg p-7 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(239,68,68,0.12)] sm:p-10"
             style={{ animationDelay: '120ms' }}
           >
-            <div className="mb-7 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-danger/10 text-danger">
+            {/* Top accent line */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(239,68,68,0.45) 50%, transparent)' }}
+            />
+
+            {/* Card header */}
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-danger/20 bg-danger/10 text-danger">
                 <IconX />
               </div>
-              <h3 className="font-display text-base font-semibold text-ink">
-                Hoje, sem site profissional
-              </h3>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-danger/60">
+                  Situação atual
+                </p>
+                <h3 className="font-display text-base font-semibold leading-tight text-ink">
+                  Hoje, sem site profissional
+                </h3>
+              </div>
             </div>
 
+            {/* Items */}
             <ul className="space-y-5">
               {pains.map((item) => (
-                <li key={item.title} className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-danger/25 bg-danger/10 text-danger">
+                <li key={item.title} className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-danger/10 text-danger">
                     <IconX />
                   </div>
                   <div>
@@ -124,32 +134,66 @@ export default function ProblemaSolucao() {
             </ul>
           </div>
 
-          {/* ── VS connector ─────────────────────────────── */}
-          <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden -translate-x-1/2 flex-col items-center justify-center lg:flex">
-            <div className="h-full w-px bg-gradient-to-b from-transparent via-line to-transparent" />
-            <span className="absolute top-1/2 -translate-y-1/2 rounded-full border border-line bg-bg px-3 py-1.5 text-xs font-bold tracking-wider text-muted-2">
-              VS
-            </span>
-          </div>
+          {/* ── VS divider ───────────────────────────────────── */}
+          <div className="flex items-center lg:flex-col lg:justify-center">
 
-          {/* ── Right: Gains ─────────────────────────────── */}
-          <div
-            className="animate-slide-left bg-accent/[0.03] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(45,212,141,0.09)]"
-            style={{ animationDelay: '120ms' }}
-          >
-            <div className="mb-7 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/15 text-accent">
-                <IconCheck />
-              </div>
-              <h3 className="font-display text-base font-semibold text-ink">
-                Com seu site no ar
-              </h3>
+            {/* Mobile: horizontal rule */}
+            <div className="flex w-full items-center gap-3 lg:hidden">
+              <div
+                className="h-px flex-1"
+                style={{ background: 'linear-gradient(to right, transparent, var(--line))' }}
+              />
+              <span className="shrink-0 rounded-full border border-line bg-bg px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-2">
+                VS
+              </span>
+              <div
+                className="h-px flex-1"
+                style={{ background: 'linear-gradient(to left, transparent, var(--line))' }}
+              />
             </div>
 
+            {/* Desktop: vertical line + VS badge */}
+            <div className="relative hidden h-full flex-col items-center justify-center lg:flex">
+              <div className="absolute inset-y-0 w-px bg-gradient-to-b from-transparent via-line to-transparent" />
+              <span className="relative z-10 rounded-full border border-line bg-bg-soft px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-muted-2 shadow-sm">
+                VS
+              </span>
+            </div>
+
+          </div>
+
+          {/* ── Right: Gains ─────────────────────────────────── */}
+          <div
+            className="animate-slide-left relative overflow-hidden rounded-[var(--radius-lg)] border border-accent/25 bg-bg p-7 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(45,212,141,0.12)] sm:p-10"
+            style={{ animationDelay: '120ms' }}
+          >
+            {/* Top accent line */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(45,212,141,0.55) 50%, transparent)' }}
+            />
+
+            {/* Card header */}
+            <div className="mb-8 flex items-center gap-3">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/10 text-accent">
+                <IconCheck />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold uppercase tracking-widest text-accent/70">
+                  Com o site no ar
+                </p>
+                <h3 className="font-display text-base font-semibold leading-tight text-ink">
+                  Com seu site no ar
+                </h3>
+              </div>
+            </div>
+
+            {/* Items */}
             <ul className="space-y-5">
               {gains.map((item) => (
-                <li key={item.title} className="flex items-start gap-4">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-accent/25 bg-accent/10 text-accent">
+                <li key={item.title} className="flex items-start gap-3.5">
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <IconCheck />
                   </div>
                   <div>
@@ -162,12 +206,14 @@ export default function ProblemaSolucao() {
           </div>
 
         </div>
-        </div>
 
         {/* Bottom proof strip */}
-        <div className="animate-fade-in mt-10 overflow-hidden rounded-[var(--radius)] border border-line bg-card px-6 py-5 sm:px-8" style={{ animationDelay: '300ms' }}>
+        <div
+          className="animate-fade-in mt-10 overflow-hidden rounded-[var(--radius)] border border-line bg-card px-6 py-5 sm:px-8"
+          style={{ animationDelay: '300ms' }}
+        >
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
-            <p className="text-sm text-muted max-w-md">
+            <p className="max-w-md text-sm text-muted">
               <strong className="font-semibold text-ink">Seu site sai do zero e vai ao ar em até 3 dias.</strong>{' '}
               Você me passa as informações, eu cuido de tudo — domínio, publicação e configuração no Google.
             </p>
