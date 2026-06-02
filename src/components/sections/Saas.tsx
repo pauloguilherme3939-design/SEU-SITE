@@ -14,7 +14,7 @@ const GRAIN =
 
 export default function Saas() {
   const waUrl = buildWhatsAppUrl(
-    'Olá, Paulo! Tenho interesse em uma solução sob medida para meu negócio. Pode me passar mais informações e fazer um orçamento?',
+    'Olá, Paulo! Vi que você também desenvolve soluções sob medida e tenho uma ideia de sistema/SaaS para conversar.',
   );
 
   return (
@@ -65,13 +65,13 @@ export default function Saas() {
                 className="font-display font-bold text-ink text-balance"
                 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', letterSpacing: '-0.025em', lineHeight: '1.15' }}
               >
-                Também desenvolvo soluções sob medida
+                Você tem uma ideia de sistema ou SaaS?
               </h2>
 
               <p className="mt-5 leading-relaxed text-muted">
-                Além de sites e landing pages, também posso desenvolver{' '}
-                <strong className="font-semibold text-ink">páginas personalizadas, formulários, sistemas simples, áreas de cadastro, integrações e soluções digitais</strong>{' '}
-                específicas para o seu negócio.
+                Além de sites, também desenvolvo{' '}
+                <strong className="font-semibold text-ink">MicroSaaS, painéis, automações, sistemas de cadastro, áreas de membros, integrações com WhatsApp e soluções digitais sob medida</strong>{' '}
+                para transformar uma ideia em produto.
               </p>
 
               <p className="mt-4 leading-relaxed text-muted">{saasOffer.note}</p>
@@ -87,7 +87,7 @@ export default function Saas() {
                     </svg>
                   }
                 >
-                  Pedir orçamento
+                  Tenho uma ideia de sistema
                 </Button>
                 <Button href={waUrl} variant="ghost" size="md">
                   Tirar dúvidas

@@ -22,14 +22,17 @@ const CTA_GLOW: Record<string, string> = {
   platina:  'rgba(14,165,233,0.42)',
   diamante: 'rgba(124,58,237,0.48)',
 };
-// Subtle column tints — only for the two premium tiers
 const COL_BODY: Record<string, string> = {
-  prata: 'transparent', ouro: 'transparent',
-  platina: 'rgba(14,165,233,0.03)',  diamante: 'rgba(124,58,237,0.03)',
+  prata:    'rgba(148,163,184,0.025)',
+  ouro:     'rgba(234,179,8,0.025)',
+  platina:  'rgba(14,165,233,0.03)',
+  diamante: 'rgba(124,58,237,0.03)',
 };
 const COL_HEAD: Record<string, string> = {
-  prata: 'transparent', ouro: 'transparent',
-  platina: 'rgba(14,165,233,0.07)', diamante: 'rgba(124,58,237,0.07)',
+  prata:    'rgba(148,163,184,0.05)',
+  ouro:     'rgba(234,179,8,0.06)',
+  platina:  'rgba(14,165,233,0.07)',
+  diamante: 'rgba(124,58,237,0.07)',
 };
 
 /* ── Row definitions ─────────────────────────────────────────── */

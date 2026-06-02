@@ -143,17 +143,15 @@ export default function Pricing() {
                   }}
                 />
 
-                {/* ── Inner top glow (ouro → diamante) ── */}
-                {t !== 'prata' && (
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 rounded-t-[var(--radius)]"
-                    style={{
-                      background: `radial-gradient(ellipse 100% 55% at 50% 0%, var(--tier-${t}-glow) 0%, transparent 70%)`,
-                      height: 130,
-                    }}
-                  />
-                )}
+                {/* ── Inner top glow (all tiers) ── */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 rounded-t-[var(--radius)]"
+                  style={{
+                    background: `radial-gradient(ellipse 100% 55% at 50% 0%, var(--tier-${t}-glow) 0%, transparent 70%)`,
+                    height: 130,
+                  }}
+                />
 
                 {/* ── Floating badge — Platina (featured) ── */}
                 {plan.highlight && plan.tagline && (

@@ -92,7 +92,7 @@ export default function ComoFunciona() {
           {steps.map((step, i) => (
             <div
               key={step.num}
-              className="animate-fade-up group relative flex flex-col rounded-[var(--radius)] p-4 -m-4 transition-colors duration-200 hover:bg-card/40"
+              className="animate-fade-up group relative flex flex-col rounded-[var(--radius)] transition-colors duration-200 hover:bg-card/40"
               style={{ animationDelay: `${100 + i * 80}ms` }}
             >
               {/* Step badge */}
