@@ -90,7 +90,7 @@ export default function ProblemaSolucao() {
 
           {/* ── Left: Pains ─────────────────────────────── */}
           <div
-            className="animate-slide-right rounded-[var(--radius-lg)] border border-danger/15 bg-[rgba(255,122,122,0.03)] p-7 sm:p-10 lg:rounded-r-none lg:border-r-0"
+            className="animate-slide-right rounded-[var(--radius-lg)] border border-danger/15 bg-[rgba(255,122,122,0.03)] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(255,122,122,0.08)] lg:rounded-r-none lg:border-r-0"
             style={{ animationDelay: '120ms' }}
           >
             <div className="mb-7 flex items-center gap-3">
@@ -127,7 +127,7 @@ export default function ProblemaSolucao() {
 
           {/* ── Right: Gains ─────────────────────────────── */}
           <div
-            className="animate-slide-left rounded-[var(--radius-lg)] border border-line-hi bg-accent/[0.03] p-7 sm:p-10 lg:rounded-l-none lg:border-l-0"
+            className="animate-slide-left rounded-[var(--radius-lg)] border border-line-hi bg-accent/[0.03] p-7 sm:p-10 transition-shadow duration-300 hover:shadow-[0_16px_48px_-16px_rgba(45,212,141,0.09)] lg:rounded-l-none lg:border-l-0"
             style={{ animationDelay: '120ms' }}
           >
             <div className="mb-7 flex items-center gap-3">
@@ -165,7 +165,7 @@ export default function ProblemaSolucao() {
             </p>
             <a
               href="/#planos"
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line-hi bg-accent/10 px-5 py-2.5 text-sm font-semibold text-accent transition-colors hover:bg-accent/15"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line-hi bg-accent/10 px-5 py-2.5 text-sm font-semibold text-accent transition-colors hover:bg-accent/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             >
               Ver planos
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>

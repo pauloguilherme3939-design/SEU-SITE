@@ -111,7 +111,7 @@ export default function Portfolio() {
             return (
               <article
                 key={item.id}
-                className={`animate-fade-up group relative flex flex-col rounded-[var(--radius)] border bg-card p-5 transition-all hover:-translate-y-1 hover:bg-card-hi hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.28)] ${theme.border}`}
+                className={`animate-fade-up group relative flex flex-col rounded-[var(--radius)] border bg-card p-5 transition-all duration-200 hover:-translate-y-1 hover:bg-card-hi hover:shadow-[0_20px_48px_-10px_rgba(0,0,0,0.42)] ${theme.border}`}
                 style={{ animationDelay: `${80 + i * 80}ms` }}
               >
                 {/* Browser mock thumbnail */}

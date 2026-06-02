@@ -183,11 +183,11 @@ export default function Hero() {
           style={{ animationDelay: '380ms' }}
         >
           {trust.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2.5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-card text-accent ring-4 ring-accent/5">
+            <div key={item.label} className="group flex flex-col items-center gap-2.5">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-card text-accent ring-4 ring-accent/5 transition-all duration-200 group-hover:border-accent/30 group-hover:bg-card-hi group-hover:ring-accent/10">
                 {item.icon}
               </div>
-              <span className="text-sm font-medium text-muted">{item.label}</span>
+              <span className="text-sm font-medium text-muted transition-colors duration-200 group-hover:text-ink">{item.label}</span>
             </div>
           ))}
         </div>

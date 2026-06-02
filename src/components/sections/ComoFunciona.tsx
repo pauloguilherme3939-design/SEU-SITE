@@ -92,12 +92,12 @@ export default function ComoFunciona() {
           {steps.map((step, i) => (
             <div
               key={step.num}
-              className="animate-fade-up relative flex flex-col"
+              className="animate-fade-up group relative flex flex-col rounded-[var(--radius)] p-4 -m-4 transition-colors duration-200 hover:bg-card/40"
               style={{ animationDelay: `${100 + i * 80}ms` }}
             >
               {/* Step badge */}
               <div className="relative z-10 mb-6 flex items-center gap-4 lg:flex-col lg:items-start">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-line-hi bg-bg text-accent ring-4 ring-accent/8 lg:mb-2">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-line-hi bg-bg text-accent ring-4 ring-accent/8 transition-all duration-200 group-hover:border-accent/35 group-hover:ring-accent/15 lg:mb-2">
                   {step.icon}
                 </div>
                 {/* Mobile connector */}
@@ -110,13 +110,13 @@ export default function ComoFunciona() {
               </div>
 
               {/* Step number pill */}
-              <span className="mb-2 inline-flex w-fit items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1 text-xs font-bold text-muted-2">
+              <span className="mb-2 inline-flex w-fit items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1 text-xs font-bold text-muted">
                 {step.num}
                 <span className="text-muted-2">·</span>
                 {step.title}
               </span>
 
-              <h3 className="font-display font-semibold text-ink mb-2 leading-snug">
+              <h3 className="font-display font-semibold text-ink mb-2 leading-snug text-[1.05rem]">
                 {step.headline}
               </h3>
               <p className="text-sm leading-relaxed text-muted">

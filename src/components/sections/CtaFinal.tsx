@@ -105,11 +105,11 @@ export default function CtaFinal() {
             </div>
 
             {/* Trust pills */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2">
               {trust.map((item) => (
                 <span
                   key={item}
-                  className="inline-flex items-center gap-2 rounded-full border border-line bg-bg/40 px-4 py-1.5 text-xs font-medium text-muted"
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-bg/40 px-4 py-1.5 text-xs font-medium text-muted transition-colors duration-200 hover:border-accent/20 hover:text-ink"
                 >
                   <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden>
                     <path d="M1.5 5.5l2.5 2.5 5.5-5" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -120,7 +120,8 @@ export default function CtaFinal() {
             </div>
 
             {/* Signature */}
-            <p className="mt-10 text-xs text-muted-2">
+            <div aria-hidden className="mx-auto mt-10 mb-4 h-px w-12 bg-line" />
+            <p className="text-xs text-muted-2">
               {site.name} · {new Date().getFullYear()}
             </p>
 

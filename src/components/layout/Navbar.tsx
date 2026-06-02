@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-content items-center justify-between px-6 sm:px-8 h-16">
         <Link
           href="/"
-          className="font-display font-bold text-xl text-ink tracking-tight hover:text-accent transition-colors"
+          className="rounded-sm font-display font-bold text-xl text-ink tracking-tight transition-colors hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {site.name}
         </Link>
@@ -48,7 +48,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-sm font-medium text-muted hover:text-ink rounded-full hover:bg-card-hi transition-colors"
+              className="rounded-full px-3 py-2 text-sm font-medium text-muted transition-colors hover:bg-card-hi hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               {link.label}
             </a>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
         <button
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden flex items-center justify-center h-9 w-9 rounded-lg text-ink hover:bg-card-hi transition-colors"
+          className="md:hidden flex items-center justify-center h-9 w-9 rounded-lg text-ink transition-colors hover:bg-card-hi focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           aria-expanded={open}
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
         >
@@ -90,12 +90,12 @@ export default function Navbar() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-line px-6 py-5 flex flex-col gap-1">
+        <div className="md:hidden border-t border-line bg-bg/95 px-6 py-5 flex flex-col gap-1 backdrop-blur-md">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="py-2.5 px-3 text-sm font-medium text-muted hover:text-ink rounded-lg hover:bg-card-hi transition-colors"
+              className="rounded-lg px-3 py-2.5 text-sm font-medium text-muted transition-colors hover:bg-card-hi hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               onClick={() => setOpen(false)}
             >
               {link.label}
