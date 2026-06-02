@@ -79,9 +79,10 @@ export function jsonLdOrganization() {
 }
 
 /**
- * Schema Service — um por plano. Use em /precos ou em páginas de nicho.
+ * Schema Service — um por plano. Use em páginas de nicho.
  */
 export function jsonLdService(plan: Plan) {
+  const nextYear = new Date().getFullYear() + 1;
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -95,13 +96,49 @@ export function jsonLdService(plan: Plan) {
       ? {
           offers: {
             '@type': 'Offer',
+            '@id': `${site.url}/#offer-${plan.id}`,
+            name: plan.name,
             price: plan.price,
             priceCurrency: 'BRL',
             availability: 'https://schema.org/InStock',
+            priceValidUntil: `${nextYear}-12-31`,
             url: site.url,
+            seller: { '@id': `${site.url}/#organization` },
           },
         }
       : {}),
+  };
+}
+
+/**
+ * Schema Service com Offers agrupados — todos os planos num único Service.
+ * Melhor para a home: um Service com vários Offers em vez de 4 schemas separados.
+ */
+export function jsonLdServiceCatalog(plansData: Plan[]) {
+  const nextYear = new Date().getFullYear() + 1;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${site.url}/#service`,
+    name: 'Criação de sites profissionais para pequenos negócios',
+    description: site.description,
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: site.business.area,
+    serviceType: 'Web Design',
+    offers: plansData
+      .filter((p) => p.price !== null)
+      .map((p) => ({
+        '@type': 'Offer',
+        '@id': `${site.url}/#offer-${p.id}`,
+        name: p.name,
+        description: p.forWho,
+        price: p.price,
+        priceCurrency: 'BRL',
+        availability: 'https://schema.org/InStock',
+        priceValidUntil: `${nextYear}-12-31`,
+        url: site.url,
+        seller: { '@id': `${site.url}/#organization` },
+      })),
   };
 }
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import {
   buildMetadata,
   jsonLdOrganization,
-  jsonLdService,
+  jsonLdServiceCatalog,
   jsonLdFaqPage,
   jsonLdBreadcrumbs,
   serializeJsonLd,
@@ -49,7 +49,7 @@ const jsonLd = [
       'query-input': 'required name=search_term_string',
     },
   },
-  ...plans.map((p) => jsonLdService(p)),
+  jsonLdServiceCatalog(plans),
   jsonLdFaqPage(faq),
   jsonLdBreadcrumbs([{ name: 'Início', url: '/' }]),
 ];

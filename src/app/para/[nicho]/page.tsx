@@ -7,6 +7,7 @@ import { site } from '@/data/site';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import {
   buildMetadata,
+  jsonLdOrganization,
   jsonLdService,
   jsonLdBreadcrumbs,
   serializeJsonLd,
@@ -95,6 +96,7 @@ export default function NichoPage({ params }: { params: { nicho: string } }) {
   const waPlanUrl = buildWhatsAppUrl(waPlanMsg);
 
   const ld = serializeJsonLd([
+    jsonLdOrganization(),
     jsonLdService(plan),
     jsonLdBreadcrumbs([
       { name: 'Início', url: '/' },

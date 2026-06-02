@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Sora, Outfit } from 'next/font/google';
 import { site } from '@/data/site';
+import { jsonLdOrganization, serializeJsonLd } from '@/lib/seo';
 import MetaPixel from '@/components/analytics/MetaPixel';
 import GA4 from '@/components/analytics/GA4';
 import './globals.css';
@@ -87,6 +88,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${sora.variable} ${outfit.variable}`}>
       <body className="bg-bg text-ink font-body antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLdOrganization()) }}
+        />
         {children}
         <MetaPixel />
         <GA4 />

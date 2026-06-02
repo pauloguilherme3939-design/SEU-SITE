@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import { getAllBlogPosts } from '@/lib/mdx';
-import { buildMetadata } from '@/lib/seo';
+import { buildMetadata, jsonLdBreadcrumbs, serializeJsonLd } from '@/lib/seo';
 import { Container, Section } from '@/components/ui';
+
+const blogLd = serializeJsonLd(
+  jsonLdBreadcrumbs([
+    { name: 'Início', url: '/' },
+    { name: 'Blog', url: '/blog' },
+  ])
+);
 
 export const metadata = buildMetadata({
   title: 'Blog — Dicas de presença digital para pequenos negócios',
@@ -23,6 +30,7 @@ export default function BlogPage() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: blogLd }} />
       {/* Hero */}
       <Section className="bg-bg pt-28 pb-6">
         <Container size="md">
