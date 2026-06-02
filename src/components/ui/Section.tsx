@@ -28,6 +28,7 @@ export default function Section({
       {...rest}
       id={anchorId}
       className={`${hero ? 'pt-28 sm:pt-32 pb-16 sm:pb-24' : SPACING[spacing]} ${className}`.trim()}
+      style={anchorId ? { scrollMarginTop: '80px', ...rest.style } : rest.style}
     >
       {children}
     </section>

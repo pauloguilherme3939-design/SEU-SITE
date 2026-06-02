@@ -52,7 +52,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted-2 sm:flex-row sm:items-center sm:justify-between">
           <span>
-            © {year} {site.name}. Todos os direitos reservados.
+            © {year} {site.name}. Todos os direitos reservados.{' '}
+            <a
+              href="/politica-de-privacidade"
+              className="underline-offset-2 transition-colors hover:text-muted hover:underline"
+            >
+              Política de Privacidade
+            </a>
           </span>
 
           {site.social.instagram && (
