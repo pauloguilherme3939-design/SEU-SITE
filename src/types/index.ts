@@ -65,8 +65,10 @@ export interface FaqItem {
 export interface Testimonial {
   quote: string;
   name: string;
-  role: string;
-  real: boolean;               // SOMENTE true vai para produção
+  role: string;        // ex: "Barbeiro · São Paulo, SP"
+  real: boolean;       // SOMENTE true vai para produção
+  plan?: string;       // id do plano (ex: 'express')
+  avatar?: string;     // caminho em /public (ex: '/depoimentos/ana.jpg')
 }
 
 export interface Nicho {

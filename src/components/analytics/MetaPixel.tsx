@@ -3,6 +3,7 @@
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { site } from '@/data/site';
+import { trackContact } from '@/lib/analytics';
 
 /**
  * Meta Pixel — carrega só se NEXT_PUBLIC_META_PIXEL_ID estiver definido.
@@ -18,7 +19,7 @@ export default function MetaPixel() {
     function onWaClick(e: MouseEvent) {
       const anchor = (e.target as HTMLElement).closest('a');
       if (anchor?.href?.includes('wa.me')) {
-        (window as Window & { fbq?: (...a: unknown[]) => void }).fbq?.('track', 'Contact');
+        trackContact();
       }
     }
     document.addEventListener('click', onWaClick);

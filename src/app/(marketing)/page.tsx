@@ -19,6 +19,7 @@ import PlanFinder from '@/components/sections/PlanFinder';
 import Saas from '@/components/sections/Saas';
 import Portfolio from '@/components/sections/Portfolio';
 import ComoFunciona from '@/components/sections/ComoFunciona';
+import Depoimentos from '@/components/sections/Depoimentos';
 import Faq from '@/components/sections/Faq';
 import FormularioOrcamento from '@/components/sections/FormularioOrcamento';
 import CtaFinal from '@/components/sections/CtaFinal';
@@ -70,6 +71,7 @@ export default function HomePage() {
       <Saas />
       <Portfolio />
       <ComoFunciona />
+      <Depoimentos />
       <Faq />
       <FormularioOrcamento />
       <CtaFinal />

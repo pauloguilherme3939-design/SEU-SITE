@@ -1,6 +1,9 @@
+'use client';
+
 import type { ReactNode } from 'react';
 import { plans } from '@/data/plans';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { trackPlanSelect } from '@/lib/analytics';
 import { Container, Section } from '@/components/ui';
 
 /* ── Tier display config ─────────────────────────────────────── */
@@ -354,6 +357,12 @@ export default function ComparativoTiers() {
                         href={waUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackPlanSelect({
+                          planId:   plan.id,
+                          planName: plan.name,
+                          tier:     t,
+                          price:    plan.price,
+                        })}
                         className={[
                           'inline-flex w-full items-center justify-center',
                           'rounded-full px-3 py-2.5 text-[12px]',

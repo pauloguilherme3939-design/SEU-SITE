@@ -85,6 +85,12 @@ export default function CtaFinal() {
               eu entrego tudo configurado e funcionando.
             </p>
 
+            {/* Escassez real */}
+            <p className="mx-auto mt-4 max-w-sm text-sm text-muted-2">
+              Atendo um número limitado de projetos por semana —
+              se tiver interesse, entre em contato para verificar disponibilidade.
+            </p>
+
             {/* CTA */}
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <Button

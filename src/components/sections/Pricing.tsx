@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { plans } from '@/data/plans';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { trackPlanSelect } from '@/lib/analytics';
 import { Container, Section } from '@/components/ui';
 
 /* ── Icons ───────────────────────────────────────────────────── */
@@ -38,9 +39,10 @@ const CTA_COLOR: Record<string, { bg: string; text: string; glow: string }> = {
 };
 
 /* ── Tier-styled CTA ─────────────────────────────────────────── */
-function TierCTA({ href, tier, children }: {
+function TierCTA({ href, tier, onClick, children }: {
   href: string;
   tier: string;
+  onClick?: () => void;
   children: ReactNode;
 }) {
   const c = CTA_COLOR[tier] ?? CTA_COLOR.prata;
@@ -49,6 +51,7 @@ function TierCTA({ href, tier, children }: {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={onClick}
       className={[
         'inline-flex items-center justify-center gap-2',
         'w-full h-11 px-5 text-[15px]',
@@ -336,7 +339,16 @@ export default function Pricing() {
 
                   {/* CTA + footer */}
                   <div className="space-y-2.5">
-                    <TierCTA href={waUrl} tier={t}>
+                    <TierCTA
+                      href={waUrl}
+                      tier={t}
+                      onClick={() => trackPlanSelect({
+                        planId: plan.id,
+                        planName: plan.name,
+                        tier: t,
+                        price: plan.price,
+                      })}
+                    >
                       {plan.ctaLabel}
                     </TierCTA>
 
