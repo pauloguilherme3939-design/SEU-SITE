@@ -57,7 +57,7 @@ const steps = [
 ];
 
 export default function ComoFunciona() {
-  const waUrl = buildWhatsAppUrl('Olá, Paulo! Vi sua página Site no Ar Express e quero um orçamento para criar um site profissional para meu negócio.');
+  const waUrl = buildWhatsAppUrl();
 
   return (
     <Section anchorId="como-funciona" className="bg-bg-soft">
@@ -138,7 +138,7 @@ export default function ComoFunciona() {
               </svg>
             }
           >
-            Falar com Paulo no WhatsApp
+            Falar no WhatsApp
           </Button>
           <p className="text-xs text-muted-2">Resposta em até 1h · Sem compromisso</p>
         </div>

@@ -14,7 +14,7 @@ const GRAIN =
 
 export default function Saas() {
   const waUrl = buildWhatsAppUrl(
-    'Olá, Paulo! Tenho uma ideia de sistema, SaaS ou MicroSaaS e quero conversar sobre a possibilidade de desenvolver.',
+    'Olá! Tenho uma ideia de sistema, SaaS ou MicroSaaS e quero conversar sobre a possibilidade de desenvolver.',
   );
 
   return (

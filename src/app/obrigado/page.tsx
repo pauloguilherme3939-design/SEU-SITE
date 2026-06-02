@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function ObrigadoPage() {
   const waUrl = buildWhatsAppUrl(
-    'Olá, Paulo! Acabei de preencher o formulário no seu site. Aguardo o retorno!',
+    'Olá! Acabei de preencher o formulário no seu site. Aguardo o retorno!',
   );
 
   return (

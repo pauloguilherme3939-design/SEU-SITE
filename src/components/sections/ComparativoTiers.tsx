@@ -354,7 +354,7 @@ export default function ComparativoTiers() {
                 {plans.map(plan => {
                   const t     = plan.tier ?? 'prata';
                   const waUrl = buildWhatsAppUrl(
-                    `Olá, Paulo! Tenho interesse no plano ${plan.name} (${plan.tierLabel ?? ''}) de ${plan.priceLabel}. Pode me ajudar?`,
+                    `Olá! Tenho interesse no plano ${plan.name} (${plan.tierLabel ?? ''}) de ${plan.priceLabel}. Pode me ajudar?`,
                   );
                   return (
                     <td

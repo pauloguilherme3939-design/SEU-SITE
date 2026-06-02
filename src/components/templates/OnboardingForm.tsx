@@ -245,7 +245,7 @@ function WAIcon() {
 function SuccessPanel({ nome }: { nome: string }) {
   const firstName = nome.trim().split(' ')[0];
   const waMsg =
-    'Olá, Paulo! Acabei de preencher o formulário de onboarding com todas as informações do meu negócio. Pode confirmar o recebimento?';
+    'Olá! Acabei de preencher o formulário de onboarding com todas as informações do meu negócio. Pode confirmar o recebimento?';
   return (
     <div className="animate-fade-up py-16 text-center">
       <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-accent">

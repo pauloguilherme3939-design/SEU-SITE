@@ -13,9 +13,7 @@ const trust = [
 ];
 
 export default function CtaFinal() {
-  const waUrl = buildWhatsAppUrl(
-    'Olá, Paulo! Vi sua página Site no Ar Express e quero um orçamento para criar um site profissional para meu negócio.',
-  );
+  const waUrl = buildWhatsAppUrl();
 
   return (
     <Section className="bg-bg-soft">
