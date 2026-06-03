@@ -37,7 +37,7 @@ export async function submitLead(lead: Lead): Promise<void> {
           Authorization: `Bearer ${resendKey}`,
         },
         body: JSON.stringify({
-          from: 'SeuSite Leads <onboarding@resend.dev>',
+          from: 'Site no Ar Express <onboarding@resend.dev>',
           to: [toEmail],
           subject: `Novo orçamento: ${lead.nome}${lead.plano ? ` — ${lead.plano}` : ''}`,
           text: formatLeadText(lead),
