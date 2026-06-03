@@ -393,11 +393,22 @@ export default function FormularioOrcamento({
                   hint="Opcional — mas quanto mais detalhes, melhor a proposta."
                 />
 
-                {/* Server error */}
+                {/* Server error + fallback WhatsApp */}
                 {status === 'error' && serverError && (
-                  <p className="rounded-lg border border-danger/20 bg-danger/5 px-4 py-3 text-sm text-danger">
-                    {serverError}
-                  </p>
+                  <div className="rounded-lg border border-danger/20 bg-danger/5 px-4 py-4 space-y-3">
+                    <p className="text-sm text-danger">{serverError}</p>
+                    <a
+                      href={buildWhatsAppUrl(
+                        `Olá! Tentei enviar meu orçamento pelo site mas houve um erro técnico. Me chamo ${form.nome}, meu WhatsApp é ${form.whatsapp}${form.plano ? `, tenho interesse no ${plans.find(p => p.id === form.plano)?.name ?? form.plano}` : ''}${form.segmento ? `, meu negócio é: ${form.segmento}` : ''}. Pode me ajudar?`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-whats px-4 py-2 text-sm font-semibold text-white shadow-sm hover:brightness-110 transition-all"
+                    >
+                      <WAIcon />
+                      Enviar direto pelo WhatsApp
+                    </a>
+                  </div>
                 )}
 
                 {/* Submit */}

@@ -538,14 +538,25 @@ export default function OnboardingForm({ tier }: { tier: TierSlug }) {
               </section>
             ))}
 
-            {/* ── Server error ─────────────────────────────────── */}
+            {/* ── Server error + fallback WhatsApp ─────────────── */}
             {status === 'error' && serverError && (
-              <p
+              <div
                 role="alert"
-                className="rounded-lg border border-danger/20 bg-danger/5 px-4 py-3 text-sm text-danger"
+                className="rounded-lg border border-danger/20 bg-danger/5 px-4 py-4 space-y-3"
               >
-                {serverError}
-              </p>
+                <p className="text-sm text-danger">{serverError}</p>
+                <a
+                  href={buildWhatsAppUrl(
+                    `Olá! Tentei enviar o formulário de onboarding pelo site mas houve um erro técnico. Me chamo ${nome.trim().split(' ')[0]}, meu WhatsApp é ${whatsapp}, plano: ${meta.planName}. Pode confirmar o recebimento?`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-whats px-4 py-2 text-sm font-semibold text-white shadow-sm hover:brightness-110 transition-all"
+                >
+                  <WAIcon />
+                  Confirmar pelo WhatsApp
+                </a>
+              </div>
             )}
 
             {/* ── Submit ──────────────────────────────────────── */}

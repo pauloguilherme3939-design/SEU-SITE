@@ -50,9 +50,18 @@ export async function submitLead(lead: Lead): Promise<void> {
     );
   }
 
-  /* Fallback: log em dev se não há destinos configurados ----------- */
+  /* Fallback: avisa nos logs se não há destinos configurados ------- */
   if (!webhookUrl && (!resendKey || !toEmail)) {
-    console.log('[lead] DEV — nenhum destino configurado. Payload:', JSON.stringify(lead, null, 2));
+    if (process.env.NODE_ENV === 'production') {
+      console.warn(
+        '[lead] ATENÇÃO: nenhum destino de lead configurado! ' +
+        'Defina LEAD_WEBHOOK_URL ou (RESEND_API_KEY + NOTIFICATION_EMAIL) ' +
+        'nas env vars da Vercel para não perder leads.',
+        { nome: lead.nome, whatsapp: lead.whatsapp, plano: lead.plano },
+      );
+    } else {
+      console.log('[lead] DEV — nenhum destino configurado. Payload:', JSON.stringify(lead, null, 2));
+    }
   }
 
   await Promise.allSettled(tasks);

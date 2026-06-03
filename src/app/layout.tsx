@@ -75,7 +75,9 @@ export const metadata: Metadata = {
     languages: { 'pt-BR': canonicalUrl },
   },
   formatDetection: { email: false, address: false, telephone: false },
-  // verification: { google: 'SEU_CODIGO_GOOGLE_SEARCH_CONSOLE' },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export const viewport: Viewport = {
