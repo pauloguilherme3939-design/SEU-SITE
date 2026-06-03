@@ -1,8 +1,10 @@
 import type { Testimonial } from '@/types';
 
 // ATENÇÃO: adicione APENAS depoimentos reais de clientes seus.
-// Nunca invente nomes ou avaliações. Array vazio é melhor que prova social falsa.
-// Quando tiver depoimentos reais, preencha aqui com real: true.
+// NUNCA invente nomes, fotos, empresas ou avaliações — mesmo que pareçam genéricas.
+// Prova social falsa é desonesta e pode gerar processos por propaganda enganosa.
+// Array vazio é infinitamente melhor que depoimento inventado.
+// Quando tiver depoimentos reais (com autorização do cliente), preencha com real: true.
 
 export const testimonials: Testimonial[] = [
   // {

@@ -66,7 +66,7 @@ export const politicaConfig: PoliticaConfig = {
   nomeNegocio:       'Site no Ar Express',
   nomeResponsavel:   'Paulo Guilherme',
   cnpjOuCpf:         undefined, // preencha se quiser exibir
-  emailContato:      'contato@sitenoarexpress.com.br', // substitua pelo e-mail real
+  emailContato:      'contato@sitenoarexpress.com.br', // TODO: substitua pelo seu e-mail real antes do deploy
   whatsappContato:   '5516993138450',
   siteUrl:           'https://sitenoarexpress.com.br',
   finalidadeColeta:  [

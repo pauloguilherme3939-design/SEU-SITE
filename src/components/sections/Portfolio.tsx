@@ -126,7 +126,7 @@ export default function Portfolio() {
             Capacidade técnica na prática
           </h2>
           <p className="mt-4 text-muted">
-            Projetos reais e amostras que mostram o nível de execução — de landing pages a sistemas completos.
+            Projetos reais que mostram o nível de execução — de landing pages a sistemas completos.
           </p>
         </div>
 
@@ -193,12 +193,6 @@ export default function Portfolio() {
             );
           })}
         </div>
-
-        {/* Note about demos */}
-        <p className="animate-fade-in mt-8 text-center text-xs text-muted-2" style={{ animationDelay: '400ms' }}>
-          Projetos marcados como <strong className="font-medium text-muted">demonstrativos</strong> são
-          amostras de design e não representam negócios reais.
-        </p>
 
       </Container>
     </Section>
