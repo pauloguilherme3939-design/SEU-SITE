@@ -23,16 +23,20 @@ const EMBLEMS: Record<string, string> = {
 };
 
 const CTA_BG: Record<string, string> = {
-  prata: 'var(--accent)', ouro: 'var(--accent)',
-  platina: '#0ea5e9',     diamante: '#7c3aed',
+  prata:    '#4e6270',
+  ouro:     '#c98a0e',
+  platina:  '#0ea5e9',
+  diamante: '#7c3aed',
 };
 const CTA_FG: Record<string, string> = {
-  prata: 'var(--bg)', ouro: 'var(--bg)',
-  platina: '#fff',    diamante: '#fff',
+  prata:    '#f0f5f9',
+  ouro:     '#160f00',
+  platina:  '#fff',
+  diamante: '#fff',
 };
 const CTA_GLOW: Record<string, string> = {
-  prata:    'rgba(45,212,141,0.32)',
-  ouro:     'rgba(45,212,141,0.32)',
+  prata:    'rgba(148,163,184,0.38)',
+  ouro:     'rgba(234,179,8,0.50)',
   platina:  'rgba(14,165,233,0.42)',
   diamante: 'rgba(124,58,237,0.48)',
 };

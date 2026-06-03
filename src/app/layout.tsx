@@ -20,8 +20,13 @@ const outfit = Outfit({
   display: 'swap',
 });
 
+// Vercel sets VERCEL_URL automatically; NEXT_PUBLIC_SITE_URL takes precedence (production domain)
+const canonicalUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://sites-captacao.vercel.app');
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(canonicalUrl),
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s | ${site.name}`,
@@ -46,13 +51,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: site.url,
+    url: canonicalUrl,
     siteName: site.name,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
     images: [
       {
-        url: `${site.url}/api/og`,
+        url: '/api/og',
         width: 1200,
         height: 630,
         alt: `${site.name} — ${site.tagline}`,
@@ -63,11 +68,11 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
-    images: [`${site.url}/api/og`],
+    images: ['/api/og'],
   },
   alternates: {
-    canonical: site.url,
-    languages: { 'pt-BR': site.url },
+    canonical: canonicalUrl,
+    languages: { 'pt-BR': canonicalUrl },
   },
   formatDetection: { email: false, address: false, telephone: false },
   // verification: { google: 'SEU_CODIGO_GOOGLE_SEARCH_CONSOLE' },

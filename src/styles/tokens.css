@@ -57,7 +57,7 @@
      --accent (esmeralda) permanece o acento principal da marca
   ───────────────────────────────────────────────────────── */
 
-  /* ── Prata — Silver escovado, sóbrio, neutro ────────────── */
+  /* ── Prata — Silver escovado, sóbrio, aço frio ─────────── */
   --tier-prata-bar:
     linear-gradient(
       90deg,
@@ -73,12 +73,12 @@
   --tier-prata-seal:          linear-gradient(135deg, #14202e 0%, #1e2d3f 55%, #14202e 100%);
   --tier-prata-seal-border:   rgba(148, 163, 184, 0.45);
   --tier-prata-text:          #cbd5e1;
-  --tier-prata-glow:          rgba(148, 163, 184, 0.16);
+  --tier-prata-glow:          rgba(148, 163, 184, 0.22);
   --tier-prata-border:        rgba(148, 163, 184, 0.22);
-  --tier-prata-border-hover:  rgba(148, 163, 184, 0.44);
-  --tier-prata-shadow:        0 16px 48px -16px rgba(0, 0, 0, 0.50);
-  --tier-prata-bg:            #141c1b;
-  --tier-prata-cta:           var(--accent);
+  --tier-prata-border-hover:  rgba(148, 163, 184, 0.48);
+  --tier-prata-shadow:        0 16px 48px -16px rgba(0, 0, 0, 0.55);
+  --tier-prata-bg:            #111921;
+  --tier-prata-cta:           #4e6270;
 
   /* ── Ouro — Gold quente, aspiracional ───────────────────── */
   --tier-ouro-bar:
@@ -103,7 +103,7 @@
     0 20px 56px -16px rgba(0, 0, 0, 0.52),
     0 0   80px -32px rgba(234, 179, 8, 0.14);
   --tier-ouro-bg:             #1b1600;
-  --tier-ouro-cta:            var(--accent);
+  --tier-ouro-cta:            #c98a0e;
 
   /* ── Platina — Cristal azul, premium, mais escolhido ─────── */
   --tier-platina-bar:

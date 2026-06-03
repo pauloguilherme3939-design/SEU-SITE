@@ -30,10 +30,10 @@ const TIER_NUMBER: Record<string, number> = {
 };
 
 const CTA_COLOR: Record<string, { bg: string; text: string; glow: string }> = {
-  prata:    { bg: 'var(--accent)', text: 'var(--bg)', glow: 'rgba(45,212,141,0.40)'  },
-  ouro:     { bg: 'var(--accent)', text: 'var(--bg)', glow: 'rgba(45,212,141,0.40)'  },
-  platina:  { bg: '#0ea5e9',       text: '#fff',      glow: 'rgba(14,165,233,0.50)'  },
-  diamante: { bg: '#7c3aed',       text: '#fff',      glow: 'rgba(124,58,237,0.55)'  },
+  prata:    { bg: '#4e6270', text: '#f0f5f9', glow: 'rgba(148,163,184,0.42)' },
+  ouro:     { bg: '#c98a0e', text: '#160f00', glow: 'rgba(234,179,8,0.52)'   },
+  platina:  { bg: '#0ea5e9', text: '#fff',    glow: 'rgba(14,165,233,0.50)'  },
+  diamante: { bg: '#7c3aed', text: '#fff',    glow: 'rgba(124,58,237,0.55)'  },
 };
 
 /* ── Pre-computed SVG emblems (crystal-heraldic system) ──────── */
