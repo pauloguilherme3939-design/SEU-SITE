@@ -7,8 +7,19 @@ import { trackPlanSelect } from '@/lib/analytics';
 import { Container, Section } from '@/components/ui';
 
 /* ── Tier display config ─────────────────────────────────────── */
-const SEAL: Record<string, string> = {
-  prata: '🥈', ouro: '🥇', platina: '💠', diamante: '💎',
+const TIER_NUMBER: Record<string, number> = {
+  prata: 1, ouro: 2, platina: 3, diamante: 4,
+};
+
+/* ── Pre-computed SVG emblems (crystal-heraldic) ─────────────── */
+const EMBLEMS: Record<string, string> = {
+  prata: `<svg viewBox="0 0 200 158" role="img" aria-label="Emblema Prata"><defs><linearGradient id="wc-prata" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#76828f"/><stop offset=".5" stop-color="#c3cdd7"/><stop offset="1" stop-color="#f7fafc"/></linearGradient></defs><g transform="translate(100,67) scale(-1,1)" fill="url(#wc-prata)" stroke="#76828f" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -10 L74 -13 L42 -2 L0 -2 Z"/><path d="M0 -2 L60 5 L36 11 L0 9 Z"/></g><g transform="translate(100,67)" fill="url(#wc-prata)" stroke="#76828f" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -10 L74 -13 L42 -2 L0 -2 Z"/><path d="M0 -2 L60 5 L36 11 L0 9 Z"/></g><g fill="url(#wc-prata)" stroke="#f7fafc" stroke-width=".5" stroke-linejoin="round"><path d="M100 32 L103 18 L100 12 L97 18 Z M92 35 L89 25 L87 23 L91 34 Z M108 35 L111 25 L113 23 L109 34 Z"/></g><path d="M100 70 L100.0 38.0 L116.6 50.0 Z" fill="#eaf0f5"/><path d="M100 70 L116.6 50.0 L124.4 66.0 Z" fill="#f7fafc"/><path d="M100 70 L124.4 66.0 L118.6 88.6 Z" fill="#c3cdd7"/><path d="M100 70 L118.6 88.6 L100.0 110.6 Z" fill="#c3cdd7"/><path d="M100 70 L100.0 110.6 L81.4 88.6 Z" fill="#8b97a3"/><path d="M100 70 L81.4 88.6 L75.6 66.0 Z" fill="#76828f"/><path d="M100 70 L75.6 66.0 L83.4 50.0 Z" fill="#8b97a3"/><path d="M100 70 L83.4 50.0 L100.0 38.0 Z" fill="#c3cdd7"/><path d="M100.0 59.1 L105.6 63.2 L108.3 68.6 L106.3 76.3 L100.0 83.8 L93.7 76.3 L91.7 68.6 L94.4 63.2 Z" fill="#eaf0f5" opacity=".5" stroke="#f7fafc" stroke-width=".5"/><g stroke="#f7fafc" stroke-width=".5" opacity=".4" fill="none"><path d="M100 70 L100.0 38.0 M100 70 L116.6 50.0 M100 70 L124.4 66.0 M100 70 L118.6 88.6 M100 70 L100.0 110.6 M100 70 L81.4 88.6 M100 70 L75.6 66.0 M100 70 L83.4 50.0"/></g><path d="M100.0 38.0 L116.6 50.0 L124.4 66.0 L118.6 88.6 L100.0 110.6 L81.4 88.6 L75.6 66.0 L83.4 50.0 Z" fill="none" stroke="#f7fafc" stroke-width="1.32" stroke-linejoin="round"/><path d="M103.0 47.0 L114.6 51.0 L104.0 62.0 Z" fill="#fff" opacity=".3"/><path d="M96.0 51.0 L94.0 70.0" stroke="#fff" stroke-width="1.1" opacity=".4" stroke-linecap="round"/></svg>`,
+
+  ouro: `<svg viewBox="0 0 200 158" role="img" aria-label="Emblema Ouro"><defs><linearGradient id="wc-ouro" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9a6c1f"/><stop offset=".5" stop-color="#ecc05a"/><stop offset="1" stop-color="#ffe6a0"/></linearGradient></defs><g transform="translate(100,67) scale(-1,1)" fill="url(#wc-ouro)" stroke="#9a6c1f" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -12 L84 -16 L46 -3 L0 -3 Z"/><path d="M0 -3 L70 3 L40 9 L0 6 Z"/><path d="M0 6 L54 13 L30 18 L0 15 Z"/></g><g transform="translate(100,67)" fill="url(#wc-ouro)" stroke="#9a6c1f" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -12 L84 -16 L46 -3 L0 -3 Z"/><path d="M0 -3 L70 3 L40 9 L0 6 Z"/><path d="M0 6 L54 13 L30 18 L0 15 Z"/></g><g fill="url(#wc-ouro)" stroke="#ffe6a0" stroke-width=".5" stroke-linejoin="round"><path d="M100 31 L104 14 L100 7 L96 14 Z M90 34 L86 22 L84 19 L90 33 Z M110 34 L114 22 L116 19 L110 33 Z"/></g><path d="M100 70 L100.0 35.0 L118.2 46.0 Z" fill="#ffd873"/><path d="M100 70 L118.2 46.0 L126.8 66.0 Z" fill="#ffe6a0"/><path d="M100 70 L126.8 66.0 L120.2 90.2 Z" fill="#ecc05a"/><path d="M100 70 L120.2 90.2 L100.0 112.2 Z" fill="#ecc05a"/><path d="M100 70 L100.0 112.2 L79.8 90.2 Z" fill="#b07f2c"/><path d="M100 70 L79.8 90.2 L73.2 66.0 Z" fill="#9a6c1f"/><path d="M100 70 L73.2 66.0 L81.8 46.0 Z" fill="#b07f2c"/><path d="M100 70 L81.8 46.0 L100.0 35.0 Z" fill="#ecc05a"/><path d="M100.0 58.1 L106.2 61.8 L109.1 68.6 L106.9 76.9 L100.0 84.3 L93.1 76.9 L90.9 68.6 L93.8 61.8 Z" fill="#ffd873" opacity=".5" stroke="#ffe6a0" stroke-width=".5"/><g stroke="#ffe6a0" stroke-width=".5" opacity=".4" fill="none"><path d="M100 70 L100.0 35.0 M100 70 L118.2 46.0 M100 70 L126.8 66.0 M100 70 L120.2 90.2 M100 70 L100.0 112.2 M100 70 L79.8 90.2 M100 70 L73.2 66.0 M100 70 L81.8 46.0"/></g><path d="M100.0 35.0 L118.2 46.0 L126.8 66.0 L120.2 90.2 L100.0 112.2 L79.8 90.2 L73.2 66.0 L81.8 46.0 Z" fill="none" stroke="#ffe6a0" stroke-width="1.44" stroke-linejoin="round"/><path d="M103.0 44.0 L116.2 47.0 L104.0 62.0 Z" fill="#fff" opacity=".3"/><path d="M96.0 48.0 L94.0 70.0" stroke="#fff" stroke-width="1.1" opacity=".4" stroke-linecap="round"/></svg>`,
+
+  platina: `<svg viewBox="0 0 200 158" role="img" aria-label="Emblema Platina"><defs><linearGradient id="wc-platina" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a7fb8"/><stop offset=".5" stop-color="#54c9e4"/><stop offset="1" stop-color="#cdf6ff"/></linearGradient></defs><g transform="translate(100,67) scale(-1,1)" fill="url(#wc-platina)" stroke="#2a7fb8" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -12 L92 -23 L50 -4 L0 -4 Z"/><path d="M0 -4 L76 -6 L44 6 L0 5 Z"/><path d="M0 5 L58 11 L34 17 L0 14 Z"/></g><g transform="translate(100,67)" fill="url(#wc-platina)" stroke="#2a7fb8" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -12 L92 -23 L50 -4 L0 -4 Z"/><path d="M0 -4 L76 -6 L44 6 L0 5 Z"/><path d="M0 5 L58 11 L34 17 L0 14 Z"/></g><g fill="url(#wc-platina)" stroke="#cdf6ff" stroke-width=".5" stroke-linejoin="round"><path d="M100 31 L103 12 L100 5 L97 12 Z M89 34 L85 20 L82 17 L90 33 Z M111 34 L115 20 L118 17 L110 33 Z"/></g><path d="M100 70 L100.0 32.0 L119.8 42.0 Z" fill="#8fe2f3"/><path d="M100 70 L119.8 42.0 L129.2 66.0 Z" fill="#cdf6ff"/><path d="M100 70 L129.2 66.0 L121.8 91.8 Z" fill="#54c9e4"/><path d="M100 70 L121.8 91.8 L100.0 113.8 Z" fill="#54c9e4"/><path d="M100 70 L100.0 113.8 L78.2 91.8 Z" fill="#2f93c8"/><path d="M100 70 L78.2 91.8 L70.8 66.0 Z" fill="#2a7fb8"/><path d="M100 70 L70.8 66.0 L80.2 42.0 Z" fill="#2f93c8"/><path d="M100 70 L80.2 42.0 L100.0 32.0 Z" fill="#54c9e4"/><path d="M100.0 57.1 L106.7 60.5 L109.9 68.6 L107.4 77.4 L100.0 84.9 L92.6 77.4 L90.1 68.6 L93.3 60.5 Z" fill="#8fe2f3" opacity=".5" stroke="#cdf6ff" stroke-width=".5"/><path d="M100.0 45.7 L112.7 52.1 L118.7 67.4 L114.0 84.0 L100.0 98.0 L86.0 84.0 L81.3 67.4 L87.3 52.1 Z" fill="none" stroke="#cdf6ff" stroke-width=".5" opacity=".3"/><g stroke="#cdf6ff" stroke-width=".5" opacity=".4" fill="none"><path d="M100 70 L100.0 32.0 M100 70 L119.8 42.0 M100 70 L129.2 66.0 M100 70 L121.8 91.8 M100 70 L100.0 113.8 M100 70 L78.2 91.8 M100 70 L70.8 66.0 M100 70 L80.2 42.0"/></g><path d="M100.0 32.0 L119.8 42.0 L129.2 66.0 L121.8 91.8 L100.0 113.8 L78.2 91.8 L70.8 66.0 L80.2 42.0 Z" fill="none" stroke="#cdf6ff" stroke-width="1.56" stroke-linejoin="round"/><path d="M103.0 41.0 L117.8 43.0 L104.0 62.0 Z" fill="#fff" opacity=".3"/><path d="M96.0 45.0 L94.0 70.0" stroke="#fff" stroke-width="1.1" opacity=".4" stroke-linecap="round"/></svg>`,
+
+  diamante: `<svg viewBox="0 0 200 158" role="img" aria-label="Emblema Diamante"><defs><linearGradient id="wc-diamante" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a4ce0"/><stop offset=".5" stop-color="#ab84f0"/><stop offset="1" stop-color="#e9ddff"/></linearGradient></defs><g transform="translate(100,67) scale(-1,1)" fill="url(#wc-diamante)" stroke="#5a4ce0" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -14 L98 -27 L52 -5 L0 -5 Z"/><path d="M0 -5 L84 -13 L48 4 L0 3 Z"/><path d="M0 3 L68 3 L40 12 L0 11 Z"/><path d="M0 11 L52 17 L30 23 L0 20 Z"/></g><g transform="translate(100,67)" fill="url(#wc-diamante)" stroke="#5a4ce0" stroke-width=".5" stroke-linejoin="round" opacity=".96"><path d="M0 -14 L98 -27 L52 -5 L0 -5 Z"/><path d="M0 -5 L84 -13 L48 4 L0 3 Z"/><path d="M0 3 L68 3 L40 12 L0 11 Z"/><path d="M0 11 L52 17 L30 23 L0 20 Z"/></g><g fill="url(#wc-diamante)" stroke="#e9ddff" stroke-width=".5" stroke-linejoin="round"><path d="M100 30 L104 9 L100 2 L96 9 Z M88 34 L83 18 L80 15 L90 32 Z M112 34 L117 18 L120 15 L110 32 Z M79 41 L75 31 L73 29 L80 39 Z M121 41 L125 31 L127 29 L120 39 Z"/></g><path d="M100 70 L100.0 29.0 L121.4 38.0 Z" fill="#c8aef7"/><path d="M100 70 L121.4 38.0 L131.6 66.0 Z" fill="#e9ddff"/><path d="M100 70 L131.6 66.0 L123.4 93.4 Z" fill="#ab84f0"/><path d="M100 70 L123.4 93.4 L100.0 115.4 Z" fill="#ab84f0"/><path d="M100 70 L100.0 115.4 L76.6 93.4 Z" fill="#7a5cf0"/><path d="M100 70 L76.6 93.4 L68.4 66.0 Z" fill="#5a4ce0"/><path d="M100 70 L68.4 66.0 L78.6 38.0 Z" fill="#7a5cf0"/><path d="M100 70 L78.6 38.0 L100.0 29.0 Z" fill="#ab84f0"/><path d="M100.0 56.1 L107.3 59.1 L110.7 68.6 L108.0 78.0 L100.0 85.4 L92.0 78.0 L89.3 68.6 L92.7 59.1 Z" fill="#c8aef7" opacity=".5" stroke="#e9ddff" stroke-width=".5"/><path d="M100.0 43.8 L113.7 49.5 L120.2 67.4 L115.0 85.0 L100.0 99.1 L85.0 85.0 L79.8 67.4 L86.3 49.5 Z" fill="none" stroke="#e9ddff" stroke-width=".5" opacity=".3"/><g stroke="#e9ddff" stroke-width=".5" opacity=".4" fill="none"><path d="M100 70 L100.0 29.0 M100 70 L121.4 38.0 M100 70 L131.6 66.0 M100 70 L123.4 93.4 M100 70 L100.0 115.4 M100 70 L76.6 93.4 M100 70 L68.4 66.0 M100 70 L78.6 38.0"/></g><path d="M100.0 29.0 L121.4 38.0 L131.6 66.0 L123.4 93.4 L100.0 115.4 L76.6 93.4 L68.4 66.0 L78.6 38.0 Z" fill="none" stroke="#e9ddff" stroke-width="1.68" stroke-linejoin="round"/><path d="M103.0 38.0 L119.4 39.0 L104.0 62.0 Z" fill="#fff" opacity=".3"/><path d="M96.0 42.0 L94.0 70.0" stroke="#fff" stroke-width="1.1" opacity=".4" stroke-linecap="round"/><path d="M105.0 78.0 L102.0 101.4" stroke="#fff" stroke-width=".8" opacity=".3" stroke-linecap="round"/></svg>`,
 };
 
 const CTA_BG: Record<string, string> = {
@@ -203,7 +214,7 @@ export default function ComparativoTiers() {
                     <th
                       key={plan.id}
                       scope="col"
-                      className="relative px-3 pb-4 pt-7 text-center"
+                      className="relative px-2 pb-4 pt-7 text-center"
                       style={{ background: COL_HEAD[t] }}
                     >
                       {/* Tier metallic bar */}
@@ -213,6 +224,16 @@ export default function ComparativoTiers() {
                         style={{
                           background: `var(--tier-${t}-bar)`,
                           height:     `var(--tier-${t}-bar-h)`,
+                        }}
+                      />
+
+                      {/* Inner top glow */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-x-0 top-0"
+                        style={{
+                          background: `radial-gradient(ellipse 100% 60% at 50% 0%, var(--tier-${t}-glow) 0%, transparent 70%)`,
+                          height: 80,
                         }}
                       />
 
@@ -237,18 +258,33 @@ export default function ComparativoTiers() {
                         </div>
                       )}
 
-                      {/* Seal + tier label + plan name */}
-                      <div className="flex flex-col items-center gap-0.5">
-                        <span className="select-none text-xl leading-none" aria-hidden>
-                          {SEAL[t]}
+                      {/* Emblem + TIER badge + tier label + plan name */}
+                      <div className="relative flex flex-col items-center gap-0.5">
+                        {/* Crystal-heraldic emblem */}
+                        <div
+                          style={{ width: 52, height: 41 }}
+                          dangerouslySetInnerHTML={{ __html: EMBLEMS[t] ?? '' }}
+                          aria-hidden
+                        />
+                        {/* TIER X badge */}
+                        <span
+                          className="text-[8px] font-black uppercase tracking-[0.14em] px-1.5 py-0.5 rounded"
+                          style={{
+                            background:    `var(--tier-${t}-seal)`,
+                            border:        `1px solid var(--tier-${t}-seal-border)`,
+                            color:         `var(--tier-${t}-text)`,
+                            letterSpacing: '0.14em',
+                          }}
+                        >
+                          TIER {TIER_NUMBER[t]}
                         </span>
                         <span
-                          className="mt-1 text-[9px] font-bold uppercase tracking-[0.10em]"
+                          className="mt-0.5 text-[9px] font-bold uppercase tracking-[0.10em]"
                           style={{ color: `var(--tier-${t}-text)` }}
                         >
                           {plan.tierLabel}
                         </span>
-                        <span className="text-[12px] font-semibold leading-tight text-ink">
+                        <span className="text-[11px] font-semibold leading-tight text-ink">
                           {plan.name}
                         </span>
                       </div>
