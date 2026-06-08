@@ -23,7 +23,7 @@ const outfit = Outfit({
 // Vercel sets VERCEL_URL automatically; NEXT_PUBLIC_SITE_URL takes precedence (production domain)
 const canonicalUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://sites-captacao.vercel.app');
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://sitenoarexpress.com.br');
 
 export const metadata: Metadata = {
   metadataBase: new URL(canonicalUrl),
