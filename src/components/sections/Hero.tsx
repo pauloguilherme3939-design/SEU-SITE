@@ -52,7 +52,7 @@ const trust = [
     ),
   },
   {
-    label: 'Copy escrita com IA',
+    label: 'Textos personalizados',
     icon: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
         <path d="M9 2l1.5 4.5H15l-3.75 2.7 1.43 4.3L9 11.1l-3.68 2.4 1.43-4.3L3 6.5h4.5z"
@@ -151,7 +151,7 @@ export default function Hero() {
           style={{ animationDelay: '220ms' }}
         >
           Crio o site do seu negócio com{' '}
-          <strong className="font-semibold text-ink">copy escrita com IA para o seu nicho</strong>,
+          <strong className="font-semibold text-ink">textos e copy personalizados para o seu nicho</strong>,
           domínio .com.br incluso, botão direto para WhatsApp e configuração no Google — tudo por um preço de autônomo.
         </p>
 

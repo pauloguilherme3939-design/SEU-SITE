@@ -127,7 +127,7 @@ const SECTIONS: SectionDef[] = [
         placeholder: 'Ex: "eletricista em Campinas", "manicure Moema"',
         note: 'Qualquer ideia ajuda — não precisa ser exato.',
       },
-      { text: 'Você já tem perfil no Google Meu Negócio?', required: false, placeholder: 'Sim / Não / Não sei' },
+      { text: 'Você já tem Perfil da Empresa no Google?', required: false, placeholder: 'Sim / Não / Não sei' },
     ],
   },
   {

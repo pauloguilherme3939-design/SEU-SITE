@@ -32,7 +32,7 @@ const steps = [
     num: '03',
     title: 'Materiais',
     headline: 'Você envia o básico — eu faço o resto',
-    desc: 'Nome do negócio, logo ou preferência visual, fotos, serviços e contato. Sem material de foto? Não tem problema — uso imagens profissionais gratuitas. A copy eu escrevo com IA.',
+    desc: 'Nome do negócio, logo ou preferência visual, fotos, serviços e contato. Sem material de foto? Não tem problema — uso imagens profissionais gratuitas. A copy eu escrevo sob medida para o seu negócio.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
         <rect x="3" y="3" width="16" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />

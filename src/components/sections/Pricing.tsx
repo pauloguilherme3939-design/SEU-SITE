@@ -514,7 +514,7 @@ export default function Pricing() {
           <p className="mt-4 text-lg text-muted">
             Pagamento único · sem mensalidade · o site é seu para sempre.{' '}
             <strong className="font-semibold text-ink">
-              A partir do Nível Ouro: copy escrita com IA para o seu público.
+              A partir do Nível Ouro: textos e copy personalizados para o seu público.
             </strong>
           </p>
           {/* Trust bar */}

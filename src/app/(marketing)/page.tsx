@@ -64,13 +64,13 @@ export default function HomePage() {
       />
       <Hero />
       <ProblemaSolucao />
+      <Portfolio />
+      <ComoFunciona />
       <Pricing />
       <ComparativoTiers />
       <Garantias />
       <PlanFinder />
       <Saas />
-      <Portfolio />
-      <ComoFunciona />
       <Depoimentos />
       <Faq />
       <FormularioOrcamento />
