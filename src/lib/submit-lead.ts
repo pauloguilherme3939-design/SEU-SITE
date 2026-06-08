@@ -37,7 +37,7 @@ export async function submitLead(lead: Lead): Promise<void> {
           Authorization: `Bearer ${resendKey}`,
         },
         body: JSON.stringify({
-          from: 'Site no Ar Express <onboarding@resend.dev>',
+          from: process.env.RESEND_FROM_EMAIL ?? 'Site no Ar Express <onboarding@resend.dev>',
           to: [toEmail],
           subject: `Novo orçamento: ${lead.nome}${lead.plano ? ` — ${lead.plano}` : ''}`,
           text: formatLeadText(lead),
@@ -54,13 +54,14 @@ export async function submitLead(lead: Lead): Promise<void> {
   if (!webhookUrl && (!resendKey || !toEmail)) {
     if (process.env.NODE_ENV === 'production') {
       console.warn(
-        '[lead] ATENÇÃO: nenhum destino de lead configurado! ' +
-        'Defina LEAD_WEBHOOK_URL ou (RESEND_API_KEY + NOTIFICATION_EMAIL) ' +
-        'nas env vars da Vercel para não perder leads.',
-        { nome: lead.nome, whatsapp: lead.whatsapp, plano: lead.plano },
+        '[lead] ATENÇÃO: nenhum destino configurado. ' +
+        'Defina LEAD_WEBHOOK_URL ou RESEND_API_KEY+NOTIFICATION_EMAIL na Vercel.',
       );
     } else {
-      console.log('[lead] DEV — nenhum destino configurado. Payload:', JSON.stringify(lead, null, 2));
+      console.log('[lead] DEV — sem destino configurado. Lead recebido:', {
+        plano:    lead.plano,
+        segmento: lead.segmento,
+      });
     }
   }
 

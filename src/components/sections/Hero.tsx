@@ -52,7 +52,7 @@ const trust = [
     ),
   },
   {
-    label: 'Copy com IA inclusa',
+    label: 'Copy escrita com IA',
     icon: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
         <path d="M9 2l1.5 4.5H15l-3.75 2.7 1.43 4.3L9 11.1l-3.68 2.4 1.43-4.3L3 6.5h4.5z"

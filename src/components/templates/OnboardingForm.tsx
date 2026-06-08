@@ -242,10 +242,11 @@ function WAIcon() {
 }
 
 /* ── Success state ──────────────────────────────────────────── */
-function SuccessPanel({ nome }: { nome: string }) {
+function SuccessPanel({ nome, planName }: { nome: string; planName: string }) {
   const firstName = nome.trim().split(' ')[0];
   const waMsg =
-    'Olá! Acabei de preencher o formulário de onboarding com todas as informações do meu negócio. Pode confirmar o recebimento?';
+    `Olá! Sou ${firstName} e acabei de preencher o formulário com os materiais do site` +
+    `${planName ? ` (plano ${planName})` : ''}. Pode confirmar o recebimento?`;
   return (
     <div className="animate-fade-up py-16 text-center">
       <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 text-accent">
@@ -381,7 +382,7 @@ export default function OnboardingForm({ tier }: { tier: TierSlug }) {
   return (
     <div className="mx-auto max-w-2xl px-5 sm:px-6">
       {status === 'success' ? (
-        <SuccessPanel nome={nome} />
+        <SuccessPanel nome={nome} planName={meta.planName} />
       ) : (
         <>
           {/* ── Header ─────────────────────────────────────────── */}

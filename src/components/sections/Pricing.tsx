@@ -30,10 +30,10 @@ const TIER_NUMBER: Record<string, number> = {
 };
 
 const CTA_COLOR: Record<string, { bg: string; text: string; glow: string }> = {
-  prata:    { bg: '#4e6270', text: '#f0f5f9', glow: 'rgba(148,163,184,0.42)' },
-  ouro:     { bg: '#c98a0e', text: '#160f00', glow: 'rgba(234,179,8,0.52)'   },
-  platina:  { bg: '#0ea5e9', text: '#fff',    glow: 'rgba(14,165,233,0.50)'  },
-  diamante: { bg: '#7c3aed', text: '#fff',    glow: 'rgba(124,58,237,0.55)'  },
+  prata:    { bg: 'linear-gradient(135deg, #3e5060 0%, #58707e 50%, #486070 100%)',              text: '#dde6f0', glow: 'rgba(148,163,184,0.52)' },
+  ouro:     { bg: 'linear-gradient(135deg, #a07010 0%, #c98a0e 35%, #e8a812 65%, #c47c08 100%)', text: '#120a00', glow: 'rgba(234,179,8,0.68)'   },
+  platina:  { bg: 'linear-gradient(135deg, #0777b0 0%, #0ea5e9 45%, #38bdf8 78%, #0898d8 100%)', text: '#fff',    glow: 'rgba(14,165,233,0.60)'  },
+  diamante: { bg: 'linear-gradient(135deg, #5222a8 0%, #7c3aed 45%, #9333ea 78%, #6328c0 100%)', text: '#fff',    glow: 'rgba(124,58,237,0.68)'  },
 };
 
 /* ── Pre-computed SVG emblems (crystal-heraldic system) ──────── */
@@ -76,7 +76,7 @@ function TierCTA({ href, tier, onClick, children }: {
         'inline-flex items-center justify-center gap-2',
         'w-full h-11 px-5 text-[15px]',
         'font-display font-semibold rounded-full',
-        'transition-all duration-200 active:scale-[0.98]',
+        'transition-all duration-200 active:scale-[0.98] hover:brightness-110',
         'focus-visible:outline-none focus-visible:ring-2',
         'focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
       ].join(' ')}
@@ -288,6 +288,7 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
               fontSize:      'clamp(1.75rem, 3vw, 2.25rem)',
               letterSpacing: '-0.03em',
               color:         `var(--tier-${t}-text)`,
+              textShadow:    `0 0 22px var(--tier-${t}-glow)`,
             }}
           >
             {plan.priceLabel}
@@ -329,9 +330,15 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
                 <span
                   className={[
                     'mt-[3px] flex shrink-0 items-center justify-center rounded-full',
-                    f.included ? 'bg-accent/15 text-accent' : 'bg-card-hi text-muted-2',
+                    f.included ? '' : 'bg-card-hi text-muted-2',
                   ].join(' ')}
-                  style={{ width: 17, height: 17, minWidth: 17 }}
+                  style={{
+                    width: 17, height: 17, minWidth: 17,
+                    ...(f.included ? {
+                      background: `var(--tier-${t}-glow)`,
+                      color:      `var(--tier-${t}-text)`,
+                    } : {}),
+                  }}
                   aria-hidden
                 >
                   {f.included ? <CheckIcon /> : <XIcon />}
@@ -355,8 +362,11 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
           <div
             className="mb-6 rounded-[var(--radius-sm)] p-3"
             style={{
-              background: 'rgba(0,0,0,0.22)',
-              border:     `1px solid var(--tier-${t}-border)`,
+              background:   `linear-gradient(135deg, var(--tier-${t}-glow), rgba(0,0,0,0.20) 55%)`,
+              borderTop:    `1px solid var(--tier-${t}-border)`,
+              borderRight:  `1px solid var(--tier-${t}-border)`,
+              borderBottom: `1px solid var(--tier-${t}-border)`,
+              borderLeft:   `2px solid var(--tier-${t}-text)`,
             }}
           >
             <p
@@ -374,7 +384,7 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
                 <li key={b} className="flex items-start gap-2 text-xs text-muted">
                   <span
                     className="mt-[2px] shrink-0 text-[9px]"
-                    style={{ color: `var(--tier-${t}-text)`, opacity: 0.75 }}
+                    style={{ color: `var(--tier-${t}-text)`, opacity: 0.9 }}
                     aria-hidden
                   >
                     ✦
@@ -436,7 +446,7 @@ export default function Pricing() {
           width: 52px;
           height: 52px;
           pointer-events: none;
-          opacity: 0.5;
+          opacity: 0.62;
         }
         .tier-frame .oc.tl { top: -1px; left: -1px; }
         .tier-frame .oc.tr { top: -1px; right: -1px; transform: scaleX(-1); }
@@ -449,7 +459,7 @@ export default function Pricing() {
           top: 50%;
           transform: translateY(-50%);
           pointer-events: none;
-          opacity: 0.55;
+          opacity: 0.65;
         }
         .tier-frame .em.eml { left: -2px; }
         .tier-frame .em.emr { right: -2px; }
@@ -460,7 +470,7 @@ export default function Pricing() {
           transform: translateX(-50%);
           width: 72px;
           pointer-events: none;
-          opacity: 0.6;
+          opacity: 0.72;
         }
         .tier-frame .crest-bot {
           position: absolute;
@@ -469,13 +479,13 @@ export default function Pricing() {
           transform: translateX(-50%);
           width: 96px;
           pointer-events: none;
-          opacity: 0.55;
+          opacity: 0.65;
         }
         article:hover .tier-frame .oc,
         article:hover .tier-frame .em,
         article:hover .tier-frame .crest-top,
         article:hover .tier-frame .crest-bot {
-          opacity: 0.85;
+          opacity: 1;
           transition: opacity 0.3s ease;
         }
       `}</style>
@@ -504,7 +514,7 @@ export default function Pricing() {
           <p className="mt-4 text-lg text-muted">
             Pagamento único · sem mensalidade · o site é seu para sempre.{' '}
             <strong className="font-semibold text-ink">
-              Cada plano inclui copy escrita com IA para o seu nicho.
+              A partir do Nível Ouro: copy escrita com IA para o seu público.
             </strong>
           </p>
           {/* Trust bar */}

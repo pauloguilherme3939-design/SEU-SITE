@@ -23,34 +23,34 @@ const EMBLEMS: Record<string, string> = {
 };
 
 const CTA_BG: Record<string, string> = {
-  prata:    '#4e6270',
-  ouro:     '#c98a0e',
-  platina:  '#0ea5e9',
-  diamante: '#7c3aed',
+  prata:    'linear-gradient(135deg, #3e5060 0%, #58707e 50%, #486070 100%)',
+  ouro:     'linear-gradient(135deg, #a07010 0%, #c98a0e 35%, #e8a812 65%, #c47c08 100%)',
+  platina:  'linear-gradient(135deg, #0777b0 0%, #0ea5e9 45%, #38bdf8 78%, #0898d8 100%)',
+  diamante: 'linear-gradient(135deg, #5222a8 0%, #7c3aed 45%, #9333ea 78%, #6328c0 100%)',
 };
 const CTA_FG: Record<string, string> = {
-  prata:    '#f0f5f9',
-  ouro:     '#160f00',
+  prata:    '#dde6f0',
+  ouro:     '#120a00',
   platina:  '#fff',
   diamante: '#fff',
 };
 const CTA_GLOW: Record<string, string> = {
-  prata:    'rgba(148,163,184,0.38)',
-  ouro:     'rgba(234,179,8,0.50)',
-  platina:  'rgba(14,165,233,0.42)',
-  diamante: 'rgba(124,58,237,0.48)',
+  prata:    'rgba(148,163,184,0.50)',
+  ouro:     'rgba(234,179,8,0.65)',
+  platina:  'rgba(14,165,233,0.56)',
+  diamante: 'rgba(124,58,237,0.60)',
 };
 const COL_BODY: Record<string, string> = {
-  prata:    'rgba(148,163,184,0.025)',
-  ouro:     'rgba(234,179,8,0.025)',
-  platina:  'rgba(14,165,233,0.03)',
-  diamante: 'rgba(124,58,237,0.03)',
+  prata:    'rgba(148,163,184,0.05)',
+  ouro:     'rgba(234,179,8,0.055)',
+  platina:  'rgba(14,165,233,0.06)',
+  diamante: 'rgba(124,58,237,0.06)',
 };
 const COL_HEAD: Record<string, string> = {
-  prata:    'rgba(148,163,184,0.05)',
-  ouro:     'rgba(234,179,8,0.06)',
-  platina:  'rgba(14,165,233,0.07)',
-  diamante: 'rgba(124,58,237,0.07)',
+  prata:    'rgba(148,163,184,0.10)',
+  ouro:     'rgba(234,179,8,0.12)',
+  platina:  'rgba(14,165,233,0.14)',
+  diamante: 'rgba(124,58,237,0.14)',
 };
 
 /* ── Row definitions ─────────────────────────────────────────── */
@@ -107,11 +107,16 @@ const ROWS: Row[] = [
 ];
 
 /* ── Cell renderers ──────────────────────────────────────────── */
-function CheckCell() {
+function CheckCell({ tier }: { tier?: string }) {
   return (
     <span
-      className="mx-auto inline-flex items-center justify-center rounded-full bg-accent/15 text-accent"
-      style={{ width: 22, height: 22 }}
+      className="mx-auto inline-flex items-center justify-center rounded-full"
+      style={{
+        width:      22,
+        height:     22,
+        background: tier ? `var(--tier-${tier}-glow)` : 'rgba(45, 212, 141, 0.15)',
+        color:      tier ? `var(--tier-${tier}-text)` : 'var(--accent)',
+      }}
       aria-label="Incluso"
     >
       <svg width="11" height="11" viewBox="0 0 13 13" fill="none" aria-hidden>
@@ -132,7 +137,7 @@ function DataCell({
 }: {
   value: CellVal; tier: string; highlight: boolean;
 }): ReactNode {
-  if (value === 'yes') return <CheckCell />;
+  if (value === 'yes') return <CheckCell tier={tier} />;
   if (value === 'no')  return (
     <span className="select-none text-muted-2/40" aria-label="Não incluso">—</span>
   );
@@ -373,8 +378,9 @@ export default function ComparativoTiers() {
                       <span
                         className="block font-display font-extrabold leading-none"
                         style={{
-                          fontSize: 'clamp(1.2rem, 1.8vw, 1.5rem)',
-                          color:    `var(--tier-${t}-text)`,
+                          fontSize:   'clamp(1.2rem, 1.8vw, 1.5rem)',
+                          color:      `var(--tier-${t}-text)`,
+                          textShadow: `0 0 18px var(--tier-${t}-glow)`,
                         }}
                       >
                         {plan.priceLabel}
@@ -416,7 +422,7 @@ export default function ComparativoTiers() {
                           'inline-flex w-full items-center justify-center',
                           'rounded-full px-3 py-2.5 text-[12px]',
                           'font-display font-semibold',
-                          'transition-all duration-200 active:scale-[0.97]',
+                          'transition-all duration-200 active:scale-[0.97] hover:brightness-110',
                           'focus-visible:outline-none focus-visible:ring-2',
                           'focus-visible:ring-accent focus-visible:ring-offset-1',
                           'focus-visible:ring-offset-bg',

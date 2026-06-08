@@ -69,15 +69,17 @@
       rgba(100, 116, 139, 0.20)       90%,
       transparent                     100%
     );
-  --tier-prata-bar-h:         1px;
+  --tier-prata-bar-h:         1.5px;
   --tier-prata-seal:          linear-gradient(135deg, #14202e 0%, #1e2d3f 55%, #14202e 100%);
   --tier-prata-seal-border:   rgba(148, 163, 184, 0.45);
   --tier-prata-text:          #cbd5e1;
-  --tier-prata-glow:          rgba(148, 163, 184, 0.22);
-  --tier-prata-border:        rgba(148, 163, 184, 0.22);
-  --tier-prata-border-hover:  rgba(148, 163, 184, 0.48);
-  --tier-prata-shadow:        0 16px 48px -16px rgba(0, 0, 0, 0.55);
-  --tier-prata-bg:            #111921;
+  --tier-prata-glow:          rgba(148, 163, 184, 0.28);
+  --tier-prata-border:        rgba(148, 163, 184, 0.28);
+  --tier-prata-border-hover:  rgba(148, 163, 184, 0.55);
+  --tier-prata-shadow:
+    0 16px 48px -16px rgba(0, 0, 0, 0.55),
+    0 0   50px -20px rgba(148, 163, 184, 0.10);
+  --tier-prata-bg:            #131517;
   --tier-prata-cta:           #4e6270;
 
   /* ── Ouro — Gold quente, aspiracional ───────────────────── */
@@ -92,17 +94,17 @@
       rgba(161,  98,   7, 0.22)       92%,
       transparent                     100%
     );
-  --tier-ouro-bar-h:          1.5px;
+  --tier-ouro-bar-h:          2px;
   --tier-ouro-seal:           linear-gradient(135deg, #1c1500 0%, #2d2200 55%, #1a1300 100%);
   --tier-ouro-seal-border:    rgba(234, 179, 8, 0.65);
   --tier-ouro-text:           #fcd34d;
-  --tier-ouro-glow:           rgba(234, 179, 8, 0.25);
-  --tier-ouro-border:         rgba(234, 179, 8, 0.28);
-  --tier-ouro-border-hover:   rgba(234, 179, 8, 0.52);
+  --tier-ouro-glow:           rgba(234, 179, 8, 0.38);
+  --tier-ouro-border:         rgba(234, 179, 8, 0.42);
+  --tier-ouro-border-hover:   rgba(234, 179, 8, 0.68);
   --tier-ouro-shadow:
     0 20px 56px -16px rgba(0, 0, 0, 0.52),
-    0 0   80px -32px rgba(234, 179, 8, 0.14);
-  --tier-ouro-bg:             #1b1600;
+    0 0   80px -28px rgba(234, 179, 8, 0.24);
+  --tier-ouro-bg:             #1c1500;
   --tier-ouro-cta:            #c98a0e;
 
   /* ── Platina — Cristal azul, premium, mais escolhido ─────── */
@@ -121,7 +123,7 @@
   --tier-platina-seal:          linear-gradient(135deg, #001c30 0%, #002c48 55%, #001825 100%);
   --tier-platina-seal-border:   rgba(56, 189, 248, 0.58);
   --tier-platina-text:          #7dd3fc;
-  --tier-platina-glow:          rgba(14, 165, 233, 0.28);
+  --tier-platina-glow:          rgba(14, 165, 233, 0.32);
   --tier-platina-border:        rgba(56, 189, 248, 0.38);
   --tier-platina-border-hover:  rgba(56, 189, 248, 0.65);
   --tier-platina-shadow:
