@@ -155,7 +155,7 @@ export default function Hero() {
 
         {/* CTAs */}
         <div
-          className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:justify-center"
+          className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
           style={{ animationDelay: '300ms' }}
         >
           <Button
@@ -170,7 +170,10 @@ export default function Hero() {
           >
             Quero orçamento grátis
           </Button>
-          <Button href="/#portfolio" variant="secondary" size="lg">
+          <Button href="/#planos" variant="secondary" size="lg">
+            Ver planos
+          </Button>
+          <Button href="/#portfolio" variant="ghost" size="lg">
             Ver portfólio
           </Button>
         </div>
