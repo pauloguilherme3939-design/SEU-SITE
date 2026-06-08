@@ -11,6 +11,7 @@ export const portfolio: PortfolioItem[] = [
     demo: false,
     tags: ['Landing page', 'Planos', 'Portfólio', 'Blog SEO', 'WhatsApp', 'Meta Pixel', 'Design responsivo'],
     accent: 'green',
+    image: '/images/portfolio/site-no-ar-express.png',
   },
   {
     id: 'falacerta',
@@ -23,6 +24,7 @@ export const portfolio: PortfolioItem[] = [
     inDev: true,
     tags: ['Interface app', 'Texto e print', 'Negócio e tom', 'Respostas prontas', 'Histórico local', 'PWA', 'Visual dark premium'],
     accent: 'violet',
+    image: '/images/portfolio/falacerta.png',
   },
   {
     id: 'recebazap',
