@@ -86,9 +86,9 @@ export default function CtaFinal() {
             </p>
 
             {/* Escassez real */}
-            <p className="mx-auto mt-4 max-w-sm text-sm text-muted-2">
-              Atendo um número limitado de projetos por semana —
-              se tiver interesse, entre em contato para verificar disponibilidade.
+            <p className="mx-auto mt-4 max-w-md text-sm text-muted-2">
+              Aceito no máximo <strong className="font-semibold text-ink">3 projetos por semana</strong> para
+              garantir qualidade e atender cada cliente pessoalmente. Confirme se ainda tem vaga aberta.
             </p>
 
             {/* CTA */}
