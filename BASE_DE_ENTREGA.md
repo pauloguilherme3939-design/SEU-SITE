@@ -161,7 +161,7 @@ São itens que NÃO devem ser vendidos como "bônus" — são o piso da entrega.
 **+ Tudo do Platina, mais:**
 
 ### Estrutura multi-página
-- [x] **Até 5 páginas** principais (Home, Sobre, Serviços, Contato + 1 livre)
+- [x] **Até 8 páginas** principais (Home, Sobre, Serviços, Portfólio, Blog, Contato + 2 livres)
 - [x] **Estrutura escalável para até 20 páginas adicionais** (cresce com seu negócio)
 - [x] Menu superior com hierarquia
 - [x] Breadcrumbs (navegação reversa)

@@ -116,7 +116,7 @@ export const plans: Plan[] = [
   {
     id: 'empresarial',
     name: 'Empresarial Completo',
-    forWho: 'Para negócios com operação mais robusta que precisam de várias páginas, Google Analytics, formulário de contato integrado e suporte contínuo após a entrega.',
+    forWho: 'Para negócios com operação robusta que precisam de até 8 páginas, Google Analytics, formulário integrado e suporte contínuo após a entrega.',
     price: 2997,
     priceLabel: 'R$ 2.997',
     paymentNote: '50% de entrada · 50% na entrega',
@@ -137,7 +137,7 @@ export const plans: Plan[] = [
     ],
     features: [
       { label: 'Tudo do Nível Platina, e mais:', included: true },
-      { label: 'Até 5 páginas (Home, Sobre, Serviços, Contato e +1 livre)', included: true },
+      { label: 'Até 8 páginas (Home, Sobre, Serviços, Portfólio, Blog, Contato e +2 livres)', included: true },
       { label: 'Estrutura escalável para até 20 páginas adicionais (cresce com você)', included: true },
       { label: 'Menu superior com hierarquia + breadcrumbs', included: true },
       { label: 'SEO individualizado por página (cada página única para o Google)', included: true },

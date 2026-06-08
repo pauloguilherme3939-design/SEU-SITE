@@ -18,7 +18,7 @@ Landing page completa, visual marcante, copy personalizada, portfólio e FAQ.
 Tudo do Ouro + SEO, Google Search Console, indexação manual e 30 dias de suporte.
 
 💎 *Empresarial Completo* — R$ 2.997
-Até 5 páginas, Google Analytics, Meta Pixel, formulário de contato e 60 dias de suporte.
+Até 8 páginas, Google Analytics, Meta Pixel, formulário de contato e 60 dias de suporte.
 
 Todos incluem: domínio .com.br por 1 ano, pagamento único (sem mensalidade) e entrega em até 3 dias.
 
@@ -46,7 +46,7 @@ O prazo começa a contar depois de:
 ✅ Materiais enviados (nome do negócio, serviços, fotos ou preferências, contato)
 
 ⏱ *Prata / Ouro / Platina:* entrega em até 3 dias úteis
-⏱ *Diamante (5 páginas):* entrega em 5 a 10 dias úteis
+⏱ *Diamante (até 8 páginas):* entrega em 5 a 10 dias úteis
 
 Quanto mais completo o material que você me enviar, mais rápida e caprichada a entrega! 🚀
 

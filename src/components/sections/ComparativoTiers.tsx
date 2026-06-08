@@ -79,7 +79,7 @@ const ROWS: Row[] = [
 
   // ── Quantidade
   { label: 'Páginas incluídas',       highlight: true,
-    cells: ['1 simples', '1 landing page', '1 completa', 'até 5 págs'] },
+    cells: ['1 simples', '1 landing page', '1 completa', 'até 8 págs'] },
   { label: 'Rodadas de ajuste',
     cells: ['1 rodada', '1 rodada', '2 rodadas', '2 rodadas'] },
 

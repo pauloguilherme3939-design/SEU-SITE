@@ -110,7 +110,7 @@ const RESULTS: Record<ResultKey, {
   empresarial: {
     title:       'Empresarial Completo',
     price:       'R$ 2.997',
-    description: 'Ideal para empresas que querem um site mais robusto, com até 5 páginas, estrutura institucional e SEO inicial por página.',
+    description: 'Ideal para empresas que querem um site mais robusto, com até 8 páginas, estrutura institucional e SEO inicial por página.',
     ctaLabel:    'Quero o Empresarial Completo',
     waMessage:   'Olá! Fiz o quiz no Site no Ar Express e o plano recomendado foi Empresarial Completo (R$ 2.997). Preciso de um site com várias páginas e estrutura completa. Como funciona?',
     accentColor: '#c4b5fd',

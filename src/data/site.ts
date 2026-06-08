@@ -4,7 +4,9 @@ export const site = {
   description:
     'Criação de sites profissionais para pequenos negócios com domínio incluso por 1 ano, botão para WhatsApp, SEO inicial e publicação no ar em até 3 dias.',
 
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sitenoarexpress.com.br',
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sitenoarexpress.com.br')
+    .replace(/\/+$/, '')                       // remove trailing slash
+    .replace(/^https?:\/\/www\./, 'https://'), // força non-www (canonical único)
 
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '5516993138450',
 
