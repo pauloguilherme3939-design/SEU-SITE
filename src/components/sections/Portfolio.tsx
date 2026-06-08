@@ -40,6 +40,15 @@ const CARD: Record<PortfolioItem['accent'], {
     linkColor: 'text-gold hover:text-yellow-300',
     tagDot:    'bg-gold',
   },
+  violet: {
+    border:    'border-violet-500/25 hover:border-violet-500/50',
+    grad:      'from-violet-500/20 via-violet-600/10 to-transparent',
+    line:      'bg-violet-500/40',
+    dot:       'bg-violet-500',
+    block:     'bg-violet-500/15',
+    linkColor: 'text-violet-400 hover:text-violet-300',
+    tagDot:    'bg-violet-500',
+  },
 };
 
 /* ── Wireframe placeholder ─────────────────────────────────── */
@@ -214,7 +223,12 @@ export default function Portfolio() {
                 {/* Meta row */}
                 <div className="mb-3 flex items-center justify-between gap-2">
                   <span className="text-xs font-medium text-muted-2">{item.type}</span>
-                  {item.demo && (
+                  {item.inDev && (
+                    <span className="rounded-full border border-violet-500/30 bg-violet-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-violet-400">
+                      Em desenvolvimento
+                    </span>
+                  )}
+                  {item.demo && !item.inDev && (
                     <span className="rounded-full border border-line bg-card-hi px-2.5 py-0.5 text-[11px] font-semibold text-muted-2">
                       Projeto demonstrativo
                     </span>
@@ -251,7 +265,7 @@ export default function Portfolio() {
                   rel="noopener noreferrer"
                   className={`inline-flex items-center gap-1.5 text-sm font-semibold transition-colors ${theme.linkColor} after:absolute after:inset-0 after:z-10 after:rounded-[var(--radius)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg`}
                 >
-                  {item.demo ? 'Ver projeto demonstrativo' : 'Ver projeto no ar'}
+                  {item.inDev ? 'Ver versão atual' : item.demo ? 'Ver projeto demonstrativo' : 'Ver projeto no ar'}
                   <ArrowRight />
                 </a>
 

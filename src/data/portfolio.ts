@@ -2,6 +2,29 @@ import type { PortfolioItem } from '@/types';
 
 export const portfolio: PortfolioItem[] = [
   {
+    id: 'site-no-ar-express',
+    name: 'Site no Ar Express',
+    description:
+      'Landing page criada para vender serviços de criação de sites profissionais, com planos, portfólio, formulário, WhatsApp, SEO inicial, blog, páginas por nicho e estrutura de conversão.',
+    url: 'https://sitenoarexpress.com.br',
+    type: 'Projeto próprio',
+    demo: false,
+    tags: ['Landing page', 'Planos', 'Portfólio', 'Blog SEO', 'WhatsApp', 'Meta Pixel', 'Design responsivo'],
+    accent: 'green',
+  },
+  {
+    id: 'falacerta',
+    name: 'FalaCerta',
+    description:
+      'Aplicativo em formato de launcher moderno para gerar respostas comerciais rápidas e humanas a partir de mensagens ou prints de conversa. Para pequenos negócios responderem leads com mais clareza, velocidade e confiança.',
+    url: 'https://falacerta.vercel.app',
+    type: 'Projeto próprio',
+    demo: false,
+    inDev: true,
+    tags: ['Interface app', 'Texto e print', 'Negócio e tom', 'Respostas prontas', 'Histórico local', 'PWA', 'Visual dark premium'],
+    accent: 'violet',
+  },
+  {
     id: 'recebazap',
     name: 'RecebeZap',
     description:

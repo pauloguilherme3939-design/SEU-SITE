@@ -52,8 +52,9 @@ export interface PortfolioItem {
   url: string;
   type: string;                // ex: "Sistema / SaaS"
   demo: boolean;               // true = projeto demonstrativo (rotular!)
+  inDev?: boolean;             // true = projeto em desenvolvimento (rotular!)
   tags: string[];
-  accent: 'green' | 'amber' | 'gold';
+  accent: 'green' | 'amber' | 'gold' | 'violet';
   image?: string;              // path relativo a /public, ex: /images/portfolio/recebazap.png
 }
 
