@@ -241,7 +241,7 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
         <div className="mb-5 flex items-center gap-3">
           {/* Crystal-heraldic emblem */}
           <div
-            className="shrink-0"
+            className="tier-emblem-wrap relative shrink-0"
             style={{ width: 58, height: 46 }}
             dangerouslySetInnerHTML={{ __html: EMBLEMS[t] ?? '' }}
             aria-hidden
@@ -283,15 +283,18 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
           {plan.forWho}
         </p>
 
-        {/* Price */}
+        {/* Price — gradient text bright→deep usando os tokens refinados */}
         <div className="mb-1 flex items-baseline gap-1">
           <span
             className="font-display font-extrabold leading-none"
             style={{
-              fontSize:      'clamp(1.75rem, 3vw, 2.25rem)',
-              letterSpacing: '-0.03em',
-              color:         `var(--tier-${t}-text)`,
-              textShadow:    `0 0 22px var(--tier-${t}-glow)`,
+              fontSize:        'clamp(1.75rem, 3vw, 2.25rem)',
+              letterSpacing:   '-0.03em',
+              backgroundImage: `linear-gradient(180deg, var(--tier-${t}-bright) 0%, var(--tier-${t}-mid) 60%, var(--tier-${t}-deep) 100%)`,
+              WebkitBackgroundClip: 'text',
+              backgroundClip:  'text',
+              color:           'transparent',
+              filter:          `drop-shadow(0 2px 14px var(--tier-${t}-glow))`,
             }}
           >
             {plan.priceLabel}
@@ -524,6 +527,111 @@ export default function Pricing() {
         @keyframes autosheen {
           0%, 100% { left: -60%; }
           50%      { left: 130%; }
+        }
+
+        /* Metallic gradient border via CSS mask — usa --tier-{name}-rgb */
+        article.tier-prata::before,
+        article.tier-ouro::before,
+        article.tier-platina::before,
+        article.tier-diamante::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1.4px;
+          background-size: 230% 230%;
+          background-position: 0% 50%;
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+                  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+          transition: background-position 1.1s ease, opacity 0.4s ease;
+          opacity: 0.55;
+          z-index: 2;
+          pointer-events: none;
+        }
+        article.tier-prata::before {
+          background: linear-gradient(140deg,
+            rgba(var(--tier-prata-rgb), 0.95) 0%,
+            rgba(var(--tier-prata-rgb), 0.18) 22%,
+            rgba(255,255,255,0.55) 40%,
+            rgba(var(--tier-prata-rgb), 0.18) 58%,
+            rgba(var(--tier-prata-rgb), 0.85) 100%);
+        }
+        article.tier-ouro::before {
+          background: linear-gradient(140deg,
+            rgba(var(--tier-ouro-rgb), 0.95) 0%,
+            rgba(var(--tier-ouro-rgb), 0.18) 22%,
+            rgba(255,255,255,0.55) 40%,
+            rgba(var(--tier-ouro-rgb), 0.18) 58%,
+            rgba(var(--tier-ouro-rgb), 0.85) 100%);
+        }
+        article.tier-platina::before {
+          background: linear-gradient(140deg,
+            rgba(var(--tier-platina-rgb), 0.95) 0%,
+            rgba(var(--tier-platina-rgb), 0.18) 22%,
+            rgba(255,255,255,0.55) 40%,
+            rgba(var(--tier-platina-rgb), 0.18) 58%,
+            rgba(var(--tier-platina-rgb), 0.85) 100%);
+        }
+        article.tier-diamante::before {
+          background: linear-gradient(140deg,
+            rgba(var(--tier-diamante-rgb), 0.95) 0%,
+            rgba(var(--tier-diamante-rgb), 0.18) 22%,
+            rgba(255,255,255,0.55) 40%,
+            rgba(var(--tier-diamante-rgb), 0.18) 58%,
+            rgba(var(--tier-diamante-rgb), 0.85) 100%);
+        }
+        /* Borda anima no hover (sheen sweep) e ganha opacidade total */
+        article.tier-prata:hover::before,
+        article.tier-ouro:hover::before,
+        article.tier-platina:hover::before,
+        article.tier-diamante:hover::before {
+          background-position: 100% 50%;
+          opacity: 1;
+        }
+        /* Featured ganha autosheen contínuo na borda */
+        article[data-featured="true"]::before {
+          opacity: 0.85 !important;
+          animation: border-autosheen 7s ease-in-out infinite;
+        }
+        article[data-featured="true"]:hover::before {
+          animation: none;
+          background-position: 100% 50%;
+        }
+        @keyframes border-autosheen {
+          0%, 100% { background-position: 0% 50%; }
+          50%      { background-position: 100% 50%; }
+        }
+
+        /* Ring spin sutil ao redor do emblema no tier featured */
+        article[data-featured="true"] .tier-emblem-wrap::after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 160%;
+          height: 160%;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          z-index: 0;
+          pointer-events: none;
+          opacity: 0.42;
+          background: conic-gradient(
+            from 0deg,
+            transparent 0deg,
+            rgba(var(--tier-platina-rgb), 0.55) 40deg,
+            transparent 92deg,
+            transparent 180deg,
+            rgba(var(--tier-platina-rgb), 0.38) 222deg,
+            transparent 280deg
+          );
+          -webkit-mask: radial-gradient(closest-side, transparent 54%, #000 57%, #000 70%, transparent 73%);
+                  mask: radial-gradient(closest-side, transparent 54%, #000 57%, #000 70%, transparent 73%);
+          animation: ring-spin 12s linear infinite;
+        }
+        @keyframes ring-spin {
+          to { transform: translate(-50%, -50%) rotate(360deg); }
         }
       `}</style>
 
