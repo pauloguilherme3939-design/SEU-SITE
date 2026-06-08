@@ -484,7 +484,7 @@ export default function Pricing() {
 
         {/* ── Header ───────────────────────────────────── */}
         <div
-          className="animate-fade-up mx-auto mb-16 max-w-xl text-center"
+          className="animate-fade-up mx-auto mb-16 max-w-2xl text-center"
           style={{ animationDelay: '60ms' }}
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-accent">
@@ -493,16 +493,36 @@ export default function Pricing() {
           <h2
             className="font-display font-bold text-ink"
             style={{
-              fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
+              fontSize: 'clamp(1.8rem, 4vw, 2.75rem)',
               letterSpacing: '-0.025em',
-              lineHeight: '1.15',
+              lineHeight: '1.12',
             }}
           >
-            Escolha o plano certo para o seu negócio
+            Sites que parecem de grande empresa.{' '}
+            <span style={{ color: 'var(--accent)' }}>Preço de autônomo.</span>
           </h2>
-          <p className="mt-4 text-muted">
-            Pagamento único, sem mensalidade. O site é seu para sempre.
+          <p className="mt-4 text-lg text-muted">
+            Pagamento único · sem mensalidade · o site é seu para sempre.{' '}
+            <strong className="font-semibold text-ink">
+              Cada plano inclui copy escrita com IA para o seu nicho.
+            </strong>
           </p>
+          {/* Trust bar */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {[
+              'Domínio .com.br incluso',
+              'No ar em até 3 dias',
+              'Google Search Console',
+              'Sem fidelidade',
+            ].map((item) => (
+              <span key={item} className="inline-flex items-center gap-1.5 text-xs text-muted-2">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
+                  <path d="M2 6l2.5 2.5 5.5-5.5" stroke="var(--accent)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* ── Cards grid ───────────────────────────────── */}

@@ -117,10 +117,10 @@ export default function Garantias() {
               lineHeight:    '1.15',
             }}
           >
-            Compra clara, entrega honesta
+            Sem letra miúda. Sem surpresa. Sem enrolação.
           </h2>
           <p className="mt-4 text-muted">
-            Sem surpresas no bolso. Sem promessa que não dá pra cumprir.
+            Você sabe exatamente o que vai receber antes de pagar. E recebe exatamente isso.
           </p>
         </div>
 

@@ -5,8 +5,8 @@ const steps = [
   {
     num: '01',
     title: 'Primeiro contato',
-    headline: 'Você me chama no WhatsApp',
-    desc: 'Entendo seu negócio, vejo o que você precisa e indico o melhor pacote. É uma conversa simples, sem formulário complicado e sem compromisso.',
+    headline: 'Me chama no WhatsApp — sem compromisso',
+    desc: 'Você me conta o negócio, eu entendo o que precisa e indico o plano certo. Conversa simples, sem formulário e sem pressão. Em 5 minutos você já sabe quanto vai custar.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
         <path d="M19 11a8 8 0 01-11.3 7.25L3 19.5l1.25-4.7A8 8 0 1119 11z"
@@ -19,8 +19,8 @@ const steps = [
   {
     num: '02',
     title: 'Confirmação',
-    headline: 'Você confirma com a entrada',
-    desc: 'A entrada reserva sua vaga e libera o início do projeto. Sem entrada, não inicio — assim garanto prioridade e comprometimento dos dois lados.',
+    headline: 'Entrada paga, vaga garantida',
+    desc: 'A entrada reserva sua posição na fila e dá início ao projeto. Sem entrada, não começo — isso garante que você tem prioridade e que os dois lados estão comprometidos.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
         <path d="M4 14l4-4 3 3 4-5 3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -31,8 +31,8 @@ const steps = [
   {
     num: '03',
     title: 'Materiais',
-    headline: 'Você envia as informações',
-    desc: 'Nome do negócio, logo, fotos, serviços, contatos e tudo que precisa aparecer no site. Quanto mais completo o material, mais personalizado e rápido o resultado.',
+    headline: 'Você envia o básico — eu faço o resto',
+    desc: 'Nome do negócio, logo ou preferência visual, fotos, serviços e contato. Sem material de foto? Não tem problema — uso imagens profissionais gratuitas. A copy eu escrevo com IA.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
         <rect x="3" y="3" width="16" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
@@ -44,8 +44,8 @@ const steps = [
   {
     num: '04',
     title: 'Entrega',
-    headline: 'Seu site vai para o ar',
-    desc: 'Eu desenvolvo, configuro domínio, botão de WhatsApp, SEO inicial e entrego tudo publicado. Você recebe o site pronto e funcionando — sem precisar entender de tecnologia.',
+    headline: 'Site no ar — você só aprova',
+    desc: 'Desenvolvo, configuro o domínio, o botão do WhatsApp, SEO inicial e publico tudo. Você recebe o link do site pronto, aprovado e ao vivo — sem precisar entender nada de tecnologia.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
         <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5" />
@@ -72,10 +72,10 @@ export default function ComoFunciona() {
             className="font-display font-bold text-ink"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', letterSpacing: '-0.025em', lineHeight: '1.15' }}
           >
-            Do zero ao ar em 4 etapas
+            Do zero ao ar em 4 etapas simples
           </h2>
           <p className="mt-4 text-muted">
-            Simples, transparente e sem você precisar entender de tecnologia.
+            Você não precisa entender de tecnologia. Só precisa me contar como é o seu negócio.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export default function ComoFunciona() {
           >
             Falar no WhatsApp
           </Button>
-          <p className="text-xs text-muted-2">Resposta em até 1h · Sem compromisso</p>
+          <p className="text-xs text-muted-2">Resposta em até 1h · Sem compromisso · Vagas limitadas por mês</p>
         </div>
 
       </Container>

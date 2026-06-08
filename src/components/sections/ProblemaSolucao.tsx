@@ -4,46 +4,46 @@ import { Container, Section } from '@/components/ui';
 const pains = [
   {
     title: 'Invisível no Google',
-    desc: 'Quando alguém pesquisa seu serviço na cidade, você não aparece — a concorrência sim.',
+    desc: 'Quando alguém pesquisa "eletricista em [cidade]", você não aparece — e o cliente vai para quem aparece.',
   },
   {
     title: 'Instagram não é endereço',
-    desc: 'Perfil no Instagram passa imagem, mas não credibilidade profissional de verdade.',
+    desc: 'Perfil no Insta gera seguidor, não cliente. Sem site, você não tem onde converter o interesse em contato.',
   },
   {
-    title: 'Clientes que escorregam',
-    desc: 'Sem um lugar para mostrar seu trabalho e serviços, o interesse some antes de virar contato.',
+    title: 'Clientes que somem no meio do caminho',
+    desc: 'Sem uma página que mostre o que você faz e prove o seu valor, o interesse esfria antes de virar mensagem.',
   },
   {
-    title: 'Difícil de ser indicado',
-    desc: 'Seu cliente quer te indicar, mas não tem um link fácil para enviar. A indicação se perde.',
+    title: 'Indicação que não chega',
+    desc: 'Seu cliente quer te indicar mas não tem link. Manda o número, o amigo procrastina, a venda some.',
   },
   {
-    title: 'Parece menor do que é',
-    desc: 'Sem site, a percepção de valor cai — e seus preços ficam mais difíceis de justificar.',
+    title: 'Preço difícil de cobrar',
+    desc: 'Quem não tem site parece menor do que é. Sem presença profissional, é mais difícil justificar o preço justo.',
   },
 ];
 
 const gains = [
   {
-    title: 'Passa mais confiança',
-    desc: 'Um site profissional transmite credibilidade para quem ainda não conhece seu negócio.',
+    title: 'Primeira impressão que fecha venda',
+    desc: 'Um site bem feito transmite confiança em segundos — antes de o cliente abrir a boca, já está convencido.',
   },
   {
-    title: 'Facilita o contato pelo WhatsApp',
-    desc: 'Botão direto no site leva o visitante para a conversa no WhatsApp em um toque.',
+    title: 'Visita no site → conversa no WhatsApp',
+    desc: 'Botão estratégico com mensagem pronta leva o visitante direto para o WhatsApp com um toque. Zero fricção.',
   },
   {
-    title: 'Presença inicial no Google',
-    desc: 'Seu site sai com estrutura básica de SEO e configurado no Google Search Console para indexação.',
+    title: 'Google começa a te encontrar',
+    desc: 'SEO inicial + Google Search Console configurado. O Google indexa seu site e seu nome começa a aparecer nas buscas.',
   },
   {
-    title: 'Organiza seus serviços com clareza',
-    desc: 'Uma página bem feita apresenta o que você faz, para quem e como contratar — sem confusão.',
+    title: 'Página que vende por você 24h',
+    desc: 'Apresenta serviços, preços, portfólio e depoimentos enquanto você atende clientes. Funciona dormindo.',
   },
   {
-    title: 'Cartão de visitas digital 24h',
-    desc: 'Funciona enquanto você dorme. Qualquer pessoa pode acessar, ver seu trabalho e entrar em contato.',
+    title: 'Link que vale mais do que número',
+    desc: 'Um link bonito e profissional para compartilhar onde quiser. Indicações viram clientes com muito mais facilidade.',
   },
 ];
 
@@ -79,12 +79,12 @@ export default function ProblemaSolucao() {
             className="text-balance font-display font-bold text-ink"
             style={{ fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', lineHeight: '1.15', letterSpacing: '-0.025em' }}
           >
-            Seus clientes pesquisam no Google{' '}
+            Seus clientes estão no Google{' '}
             <br className="hidden sm:block" />
-            antes de decidir. Você aparece?
+            agora. Você aparece?
           </h2>
           <p className="mt-4 text-muted">
-            Se não aparece, a concorrência aparece no lugar. E o cliente vai para ela.
+            Quem não aparece no Google simplesmente não existe para esse cliente. A concorrência aparece. E leva a venda.
           </p>
         </div>
 
@@ -214,8 +214,8 @@ export default function ProblemaSolucao() {
         >
           <div className="flex flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
             <p className="max-w-md text-sm text-muted">
-              <strong className="font-semibold text-ink">Seu site sai do zero e vai ao ar em até 3 dias.</strong>{' '}
-              Você me passa as informações, eu cuido de tudo — domínio, publicação e configuração no Google.
+              <strong className="font-semibold text-ink">Você me passa as informações, eu faço o resto.</strong>{' '}
+              Domínio registrado no seu nome, site publicado e Google configurado — tudo em até 3 dias úteis.
             </p>
             <a
               href="/#planos"

@@ -14,7 +14,7 @@ const trust = [
     ),
   },
   {
-    label: 'Botão para WhatsApp',
+    label: 'Direto pro WhatsApp',
     icon: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
         <path d="M15.5 9a6.5 6.5 0 01-9.18 5.93L2 16.5l1.57-4.32A6.5 6.5 0 1115.5 9z"
@@ -23,7 +23,7 @@ const trust = [
     ),
   },
   {
-    label: 'SEO inicial incluso',
+    label: 'Visível no Google',
     icon: (
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
         <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.5" />
@@ -38,6 +38,25 @@ const trust = [
         <rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" strokeWidth="1.5" />
         <path d="M6 1v3M12 1v3M2 7h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         <path d="M6 11l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Sem mensalidade',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+        <rect x="2" y="4" width="14" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M2 8h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="6" cy="12" r="1" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Copy com IA inclusa',
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+        <path d="M9 2l1.5 4.5H15l-3.75 2.7 1.43 4.3L9 11.1l-3.68 2.4 1.43-4.3L3 6.5h4.5z"
+          stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -89,7 +108,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-55" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Atendendo novos clientes este mês
+            Vagas abertas para este mês
           </span>
         </div>
 
@@ -103,10 +122,11 @@ export default function Hero() {
             animationDelay: '140ms',
           }}
         >
-          Seu site profissional{' '}
+          Site que parece de{' '}
           <br className="hidden sm:block" />
+          grande empresa.{' '}
           <span className="relative inline-block">
-            <span className="relative z-10 text-accent">no ar em até 3 dias</span>
+            <span className="relative z-10 text-accent">No ar em 3 dias.</span>
             <svg
               aria-hidden
               className="absolute -bottom-1 left-0 w-full overflow-visible"
@@ -127,12 +147,12 @@ export default function Hero() {
 
         {/* Subtitle */}
         <p
-          className="animate-fade-up mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted text-balance sm:text-xl"
+          className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted text-balance sm:text-xl"
           style={{ animationDelay: '220ms' }}
         >
           Crio o site do seu negócio com{' '}
-          <strong className="font-semibold text-ink">domínio incluso por 1 ano</strong>,
-          botão direto para WhatsApp e configuração inicial para o Google reconhecer sua empresa.
+          <strong className="font-semibold text-ink">copy escrita com IA para o seu nicho</strong>,
+          domínio .com.br incluso, botão direto para WhatsApp e configuração no Google — tudo por um preço de autônomo.
         </p>
 
         {/* CTAs */}
@@ -153,7 +173,7 @@ export default function Hero() {
             Quero orçamento grátis
           </Button>
           <Button href="/#planos" variant="secondary" size="lg">
-            Ver planos
+            Ver planos e preços
           </Button>
         </div>
 
@@ -162,7 +182,7 @@ export default function Hero() {
           className="animate-fade-in mt-4 text-xs text-muted-2"
           style={{ animationDelay: '400ms' }}
         >
-          Pagamento único · Sem mensalidade · Domínio incluso por 1 ano · O site é seu
+          Pagamento único · Sem mensalidade · O site é seu para sempre · Entrega garantida em até 3 dias
         </p>
 
         {/* Divider */}
@@ -172,14 +192,14 @@ export default function Hero() {
         >
           <div className="h-px flex-1 bg-line" />
           <span className="text-xs font-medium uppercase tracking-widest text-muted-2">
-            O que está incluso
+            Tudo que vem incluso
           </span>
           <div className="h-px flex-1 bg-line" />
         </div>
 
         {/* Trust strip */}
         <div
-          className="animate-fade-in mt-8 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-4"
+          className="animate-fade-in mt-8 grid grid-cols-3 gap-x-6 gap-y-5 sm:grid-cols-6"
           style={{ animationDelay: '380ms' }}
         >
           {trust.map((item) => (
@@ -187,7 +207,7 @@ export default function Hero() {
               <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-card text-accent ring-4 ring-accent/5 transition-all duration-200 group-hover:border-accent/30 group-hover:bg-card-hi group-hover:ring-accent/10">
                 {item.icon}
               </div>
-              <span className="text-sm font-medium text-muted transition-colors duration-200 group-hover:text-ink">{item.label}</span>
+              <span className="text-center text-xs font-medium text-muted transition-colors duration-200 group-hover:text-ink">{item.label}</span>
             </div>
           ))}
         </div>
