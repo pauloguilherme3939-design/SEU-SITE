@@ -283,14 +283,14 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
           {plan.forWho}
         </p>
 
-        {/* Price — gradient text bright→deep usando os tokens refinados */}
+        {/* Price — gradient text bright→mid (legivel em fundo escuro) */}
         <div className="mb-1 flex items-baseline gap-1">
           <span
             className="font-display font-extrabold leading-none"
             style={{
               fontSize:        'clamp(1.75rem, 3vw, 2.25rem)',
               letterSpacing:   '-0.03em',
-              backgroundImage: `linear-gradient(180deg, var(--tier-${t}-bright) 0%, var(--tier-${t}-mid) 60%, var(--tier-${t}-deep) 100%)`,
+              backgroundImage: `linear-gradient(180deg, var(--tier-${t}-bright) 0%, var(--tier-${t}-mid) 100%)`,
               WebkitBackgroundClip: 'text',
               backgroundClip:  'text',
               color:           'transparent',
@@ -529,6 +529,20 @@ export default function Pricing() {
           50%      { left: 130%; }
         }
 
+        /* Variável --c-rgb por tier (cascata para animações compartilhadas) */
+        article.tier-prata    { --c-rgb: var(--tier-prata-rgb); }
+        article.tier-ouro     { --c-rgb: var(--tier-ouro-rgb); }
+        article.tier-platina  { --c-rgb: var(--tier-platina-rgb); }
+        article.tier-diamante { --c-rgb: var(--tier-diamante-rgb); }
+
+        /* Remove border solid inline quando borda metalica esta ativa */
+        article.tier-prata,
+        article.tier-ouro,
+        article.tier-platina,
+        article.tier-diamante {
+          border-color: transparent !important;
+        }
+
         /* Metallic gradient border via CSS mask — usa --tier-{name}-rgb */
         article.tier-prata::before,
         article.tier-ouro::before,
@@ -605,6 +619,13 @@ export default function Pricing() {
         }
 
         /* Ring spin sutil ao redor do emblema no tier featured */
+        article[data-featured="true"] .tier-emblem-wrap {
+          position: relative;
+        }
+        article[data-featured="true"] .tier-emblem-wrap > svg {
+          position: relative;
+          z-index: 1;
+        }
         article[data-featured="true"] .tier-emblem-wrap::after {
           content: "";
           position: absolute;
@@ -620,10 +641,10 @@ export default function Pricing() {
           background: conic-gradient(
             from 0deg,
             transparent 0deg,
-            rgba(var(--tier-platina-rgb), 0.55) 40deg,
+            rgba(var(--c-rgb), 0.55) 40deg,
             transparent 92deg,
             transparent 180deg,
-            rgba(var(--tier-platina-rgb), 0.38) 222deg,
+            rgba(var(--c-rgb), 0.38) 222deg,
             transparent 280deg
           );
           -webkit-mask: radial-gradient(closest-side, transparent 54%, #000 57%, #000 70%, transparent 73%);
