@@ -55,7 +55,34 @@
      TIER SYSTEM — Assinaturas metálicas por nível
      Prata → Ouro → Platina → Diamante
      --accent (esmeralda) permanece o acento principal da marca
+
+     Paleta de referência (Claude Designer · 3 tons + glow RGB):
+     Prata    bright #f2f7fb  mid #b9c4cf  deep #7c8896  rgb 200,214,226
+     Ouro     bright #ffe9a6  mid #ecc05a  deep #b07f2c  rgb 233,189,86
+     Platina  bright #bdf1fb  mid #54c9e4  deep #2a82bd  rgb 84,201,228
+     Diamante bright #e3d2ff  mid #ab84f0  deep #6a73ef  rgb 171,132,240
   ───────────────────────────────────────────────────────── */
+
+  /* ── Tokens da identidade refinada (Claude Designer) ──── */
+  --tier-prata-bright:    #f2f7fb;
+  --tier-prata-mid:       #b9c4cf;
+  --tier-prata-deep:      #7c8896;
+  --tier-prata-rgb:       200, 214, 226;
+
+  --tier-ouro-bright:     #ffe9a6;
+  --tier-ouro-mid:        #ecc05a;
+  --tier-ouro-deep:       #b07f2c;
+  --tier-ouro-rgb:        233, 189, 86;
+
+  --tier-platina-bright:  #bdf1fb;
+  --tier-platina-mid:     #54c9e4;
+  --tier-platina-deep:    #2a82bd;
+  --tier-platina-rgb:     84, 201, 228;
+
+  --tier-diamante-bright: #e3d2ff;
+  --tier-diamante-mid:    #ab84f0;
+  --tier-diamante-deep:   #6a73ef;
+  --tier-diamante-rgb:    171, 132, 240;
 
   /* ── Prata — Silver escovado, sóbrio, aço frio ─────────── */
   --tier-prata-bar:
