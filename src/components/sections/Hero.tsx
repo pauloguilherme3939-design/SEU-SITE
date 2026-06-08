@@ -170,10 +170,10 @@ export default function Hero() {
           >
             Quero orçamento grátis
           </Button>
-          <Button href="/#planos" variant="secondary" size="lg">
+          <Button href="/#planos" variant="primary" size="lg">
             Ver planos
           </Button>
-          <Button href="/#portfolio" variant="ghost" size="lg">
+          <Button href="/#portfolio" variant="secondary" size="lg">
             Ver portfólio
           </Button>
         </div>
