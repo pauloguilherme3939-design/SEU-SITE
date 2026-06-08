@@ -73,6 +73,7 @@ function TierCTA({ href, tier, onClick, children }: {
       rel="noopener noreferrer"
       onClick={onClick}
       className={[
+        'tier-cta-link',
         'inline-flex items-center justify-center gap-2',
         'w-full h-11 px-5 text-[15px]',
         'font-display font-semibold rounded-full',
@@ -123,9 +124,11 @@ function TierCard({ plan, i }: { plan: typeof plans[number]; i: number }) {
   return (
     <article
       aria-label={`Plano ${plan.name} — ${plan.tierLabel}`}
+      data-featured={plan.featured ? 'true' : 'false'}
       className={[
         'animate-fade-up relative flex flex-col',
         'rounded-[var(--radius)] transition-all duration-300',
+        `tier-${t}`,
         plan.highlight ? 'sm:ring-1 sm:ring-[rgba(56,189,248,0.18)] xl:scale-[1.035] xl:z-10' : '',
       ].join(' ')}
       style={{
@@ -487,6 +490,40 @@ export default function Pricing() {
         article:hover .tier-frame .crest-bot {
           opacity: 1;
           transition: opacity 0.3s ease;
+        }
+
+        /* CTA sheen sweep — adapted from Claude Designer tier-card system */
+        article .tier-cta-link {
+          position: relative;
+          overflow: hidden;
+        }
+        article .tier-cta-link::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -60%;
+          width: 40%;
+          height: 100%;
+          background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+          transform: skewX(-18deg);
+          transition: left 0.7s ease;
+          pointer-events: none;
+        }
+        article:hover .tier-cta-link::after {
+          left: 130%;
+        }
+
+        /* Autosheen on featured tier (Platina) */
+        article[data-featured="true"] .tier-cta-link::after {
+          animation: autosheen 5s ease-in-out infinite;
+        }
+        article[data-featured="true"]:hover .tier-cta-link::after {
+          animation: none;
+          left: 130%;
+        }
+        @keyframes autosheen {
+          0%, 100% { left: -60%; }
+          50%      { left: 130%; }
         }
       `}</style>
 
