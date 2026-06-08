@@ -4,7 +4,7 @@ export const plans: Plan[] = [
   {
     id: 'inicial',
     name: 'Presença Inicial',
-    forWho: 'Para quem precisa estar online e receber contatos pelo WhatsApp — simples, direto ao ponto.',
+    forWho: 'Para quem ainda não tem site e precisa de um endereço online para mandar quando o cliente perguntar. Simples, rápido e no ar em 3 dias.',
     price: 497,
     priceLabel: 'R$ 497',
     paymentNote: 'à vista ou entrada para iniciar',
@@ -16,8 +16,9 @@ export const plans: Plan[] = [
     tierLabel: 'Nível Prata',
     bonuses: [
       'Botão WhatsApp com mensagem personalizada para o seu nicho',
-      'Configuração SSL (site seguro com cadeado)',
+      'Favicon personalizado com a logo ou iniciais do negócio',
       'Texto da bio do Instagram otimizado para novos seguidores',
+      'Checklist: 10 ações para divulgar o site e atrair os primeiros clientes',
     ],
     features: [
       { label: '1 página com todas as seções essenciais', included: true },
@@ -26,6 +27,7 @@ export const plans: Plan[] = [
       { label: 'Domínio .com.br incluso por 1 ano*', included: true },
       { label: 'Hospedagem configurada + site publicado', included: true },
       { label: 'Meta title e description (Google reconhece)', included: true },
+      { label: 'Open Graph configurado (link bonito ao compartilhar no WhatsApp)', included: true },
       { label: 'Google Search Console configurado', included: true },
       { label: '1 rodada de ajuste após entrega', included: true },
       { label: 'Textos personalizados para o seu nicho', included: false },
@@ -35,7 +37,7 @@ export const plans: Plan[] = [
   {
     id: 'presenca',
     name: 'Presença Rápida',
-    forWho: 'Para autônomos e MEIs que querem se destacar com um visual marcante e copy que convence.',
+    forWho: 'Para autônomos que querem um site bonito e profissional — com copy personalizada, portfólio, depoimentos e um visual que passa confiança antes mesmo do primeiro contato.',
     price: 997,
     priceLabel: 'R$ 997',
     paymentNote: 'à vista ou entrada para iniciar',
@@ -47,6 +49,7 @@ export const plans: Plan[] = [
     tierLabel: 'Nível Ouro',
     bonuses: [
       'FAQ com 10+ perguntas que quebram objeções de compra',
+      'Google Maps incorporado com o endereço do negócio',
       'Guia PDF: Bombe seu WhatsApp (estratégias prontas)',
       'Modelos de resposta automática para WhatsApp Business',
     ],
@@ -58,13 +61,14 @@ export const plans: Plan[] = [
       { label: 'Seção de depoimentos (pronta para você preencher)', included: true },
       { label: 'Galeria de portfólio / fotos do trabalho', included: true },
       { label: 'FAQ que responde as dúvidas antes de entrarem em contato', included: true },
-      { label: 'SEO e Google Search Console', included: false },
+      { label: 'Google Maps incorporado com a localização do negócio', included: true },
+      { label: 'SEO técnico e Google Search Console', included: false },
     ],
   },
   {
     id: 'express',
     name: 'Profissional Express',
-    forWho: 'Para quem quer ser encontrado no Google com um site que transmite confiança e converte visitas em clientes.',
+    forWho: 'Para quem quer ser encontrado no Google, passar imagem de empresa séria e converter visita em contato — sem pagar preço de agência.',
     price: 1497,
     priceLabel: 'R$ 1.497',
     paymentNote: '50% de entrada · 50% na entrega',
@@ -82,7 +86,7 @@ export const plans: Plan[] = [
       'Prioridade absoluta na fila — você entra na frente',
       'Página de Obrigado que captura e-mail após contato',
       'Descrição do Perfil da Empresa no Google',
-      '30 dias de suporte direto a dúvidas',
+      'Script de lançamento: mensagem pronta para divulgar o site no WhatsApp e Instagram',
     ],
     features: [
       { label: 'Tudo do Nível Ouro, e mais:', included: true },
@@ -98,7 +102,7 @@ export const plans: Plan[] = [
   {
     id: 'empresarial',
     name: 'Empresarial Completo',
-    forWho: 'Para negócios que precisam de múltiplas páginas, estrutura completa e presença institucional forte.',
+    forWho: 'Para negócios com operação mais robusta que precisam de várias páginas, Google Analytics, formulário de contato integrado e suporte contínuo após a entrega.',
     price: 2997,
     priceLabel: 'R$ 2.997',
     paymentNote: '50% de entrada · 50% na entrega',
@@ -111,7 +115,7 @@ export const plans: Plan[] = [
     tagline: 'Topo · presença máxima',
     bonuses: [
       'Tudo do Platina incluído',
-      'Google Analytics configurado e vinculado ao site',
+      'Setup do Meta Pixel para campanhas no Instagram e Facebook Ads',
       'Política de Privacidade e Termos de Uso incluídos',
       'Atendimento prioritário VIP com resposta em até 2h',
       '60 dias de suporte + 1 ajuste de cortesia no 1º mês',

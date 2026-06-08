@@ -13,7 +13,9 @@ const trust = [
 ];
 
 export default function CtaFinal() {
-  const waUrl = buildWhatsAppUrl();
+  const waUrl = buildWhatsAppUrl(
+    'Olá! Quero começar agora. Preciso de um site profissional para o meu negócio e vi que ainda tem vagas. Pode me passar os detalhes?',
+  );
 
   return (
     <Section className="bg-bg-soft">

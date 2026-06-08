@@ -9,7 +9,7 @@ export const site = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP ?? '5516993138450',
 
   whatsappDefaultMessage:
-    'Olá! Vi o Site no Ar Express e quero um orçamento para criar um site profissional para meu negócio.',
+    'Olá! Vi o Site no Ar Express e quero um orçamento para o site do meu negócio. Ainda tem vagas disponíveis?',
 
   metaPixelId: process.env.NEXT_PUBLIC_META_PIXEL_ID ?? '',
   ga4Id: process.env.NEXT_PUBLIC_GA4_ID ?? '',

@@ -2,7 +2,9 @@ import { site } from '@/data/site';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function WhatsAppFab() {
-  const url = buildWhatsAppUrl(site.whatsappDefaultMessage);
+  const url = buildWhatsAppUrl(
+    'Olá! Estou no site do Site no Ar Express e quero criar o site do meu negócio. Como funciona e quanto custa?',
+  );
 
   return (
     <a

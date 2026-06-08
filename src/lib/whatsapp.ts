@@ -16,7 +16,7 @@ export function buildWhatsAppUrl(message?: string): string {
  */
 export function whatsAppForPlan(planName: string): string {
   return buildWhatsAppUrl(
-    `Olá! Tenho interesse no plano "${planName}" e gostaria de tirar dúvidas.`,
+    `Olá! Tenho interesse no plano ${planName} do Site no Ar Express. Quero entender os detalhes e verificar se ainda tem vaga disponível.`,
   );
 }
 
@@ -25,6 +25,6 @@ export function whatsAppForPlan(planName: string): string {
  */
 export function whatsAppForNicho(profissao: string): string {
   return buildWhatsAppUrl(
-    `Olá! Sou ${profissao.toLowerCase()} e quero um site para o meu negócio.`,
+    `Olá! Sou ${profissao.toLowerCase()} e vim pela página do Site no Ar Express. Quero criar um site profissional para o meu negócio. Como funciona?`,
   );
 }
