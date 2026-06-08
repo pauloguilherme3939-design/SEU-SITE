@@ -508,8 +508,8 @@ export default function Pricing() {
               lineHeight: '1.12',
             }}
           >
-            Sites que parecem de grande empresa.{' '}
-            <span style={{ color: 'var(--accent)' }}>Preço de autônomo.</span>
+            Não pague preço de agência.{' '}
+            <span style={{ color: 'var(--accent)' }}>Receba qualidade de agência.</span>
           </h2>
           <p className="mt-4 text-lg text-muted">
             Pagamento único · sem mensalidade · o site é seu para sempre.{' '}

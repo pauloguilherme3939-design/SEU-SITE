@@ -108,7 +108,7 @@ export default function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-55" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            Vagas abertas para este mês
+            Aceitando novos projetos para esta semana
           </span>
         </div>
 
@@ -150,9 +150,10 @@ export default function Hero() {
           className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted text-balance sm:text-xl"
           style={{ animationDelay: '220ms' }}
         >
-          Crio o site do seu negócio com{' '}
-          <strong className="font-semibold text-ink">textos e copy personalizados para o seu nicho</strong>,
-          domínio .com.br incluso, botão direto para WhatsApp e configuração no Google — tudo por um preço de autônomo.
+          Crio o site do seu negócio a partir de{' '}
+          <strong className="font-semibold text-ink">R$ 497</strong>, com{' '}
+          <strong className="font-semibold text-ink">textos personalizados para o seu nicho</strong>,
+          domínio .com.br incluso, botão direto para WhatsApp e site configurado para o Google — tudo por um preço de autônomo, sem mensalidade.
         </p>
 
         {/* CTAs */}
@@ -182,7 +183,7 @@ export default function Hero() {
           className="animate-fade-in mt-4 text-xs text-muted-2"
           style={{ animationDelay: '400ms' }}
         >
-          Pagamento único · Sem mensalidade · O site é seu para sempre · Entrega garantida em até 3 dias
+          Não gostou do layout? Refaço sem custo. Não rolou? Devolvo a entrada.
         </p>
 
         {/* Divider */}

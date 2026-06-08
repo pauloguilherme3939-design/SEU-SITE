@@ -46,6 +46,31 @@ export const faq: FaqItem[] = [
     answer:
       'Sem problema. Para a logo, posso trabalhar com o nome do negócio em tipografia limpa — funciona muito bem. Para fotos, posso usar imagens do banco de imagens gratuito que combinam com o seu segmento. Se tiver fotos do seu próprio trabalho, mesmo tiradas pelo celular, melhor ainda — preferimos o real ao genérico.',
   },
+  {
+    question: 'Por que mais barato que uma agência?',
+    answer:
+      'Porque sou um profissional só, sem escritório, sem comissão de vendedor, sem custo de estrutura. O preço da agência paga 5 pessoas e o aluguel — o meu paga só o meu trabalho. O resultado entregue é o mesmo (ou melhor, porque você fala direto comigo). Cobro pelo que vale, não pelo que a estrutura custa.',
+  },
+  {
+    question: 'E se eu não gostar do resultado?',
+    answer:
+      'Antes de começar, alinhamos a referência visual juntos — paleta, estilo e exemplos do que você gosta. Mesmo assim, se o primeiro layout não bater com a sua expectativa, refaço a direção sem custo adicional. Se ainda assim não rolar, devolvo a entrada. Não tem letra miúda: ou você fica satisfeito, ou não pago.',
+  },
+  {
+    question: 'Posso atualizar o site sozinho depois?',
+    answer:
+      'Atualizações pequenas (trocar texto, foto, número) eu faço de graça no primeiro mês. Depois disso, ou você contrata a manutenção mensal (a partir de R$ 60/mês), ou paga por ajuste avulso. Não entrego um painel de edição porque isso costuma quebrar o site quando o cliente mexe — prefiro fazer eu mesmo, rápido e sem erro.',
+  },
+  {
+    question: 'O site fica rápido? Carrega no 4G?',
+    answer:
+      'Sim. Trabalho com Next.js (mesma stack do Nubank, TikTok, Hashicorp) e hospedagem na Vercel, com CDN global e otimização automática de imagens. Resultado: site carrega em menos de 2 segundos no 4G médio brasileiro. Nada de WordPress travado com 50 plugins.',
+  },
+  {
+    question: 'Vocês usam WordPress?',
+    answer:
+      'Não. Uso tecnologias modernas (Next.js + React) que entregam sites mais rápidos, mais seguros e melhor ranqueados no Google. WordPress tem o problema de precisar de manutenção constante de plugins, ser alvo de ataques e ficar pesado com o tempo. Meus sites não.',
+  },
 ];
 
 export const nichos: Nicho[] = [

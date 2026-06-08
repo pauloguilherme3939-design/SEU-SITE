@@ -42,6 +42,18 @@ function SearchCheckIcon() {
     </svg>
   );
 }
+function RefundIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
+      <path d="M3 10a7 7 0 1112.36 4.5"
+        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M15 11l1 4-4 1"
+        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M10 6.5v4l2.5 1.5"
+        stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 /* ── Data ────────────────────────────────────────────────────── */
 
@@ -93,6 +105,20 @@ const GARANTIAS = [
       </>
     ),
   },
+  {
+    Icon:  RefundIcon,
+    title: 'Não gostou? Refaço ou devolvo.',
+    body:  (
+      <>
+        Se o primeiro layout não bater com sua expectativa, refaço a direção visual
+        sem custo adicional. Se ainda assim não rolar,{' '}
+        <strong className="font-semibold text-ink">
+          devolvo 100% da entrada
+        </strong>
+        . Sem rolê, sem multa, sem discussão.
+      </>
+    ),
+  },
 ] as const;
 
 /* ── Component ───────────────────────────────────────────────── */
@@ -125,7 +151,7 @@ export default function Garantias() {
         </div>
 
         {/* ── Guarantee cards ──────────────────────────── */}
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {GARANTIAS.map(({ Icon, title, body }, i) => (
             <div
               key={title}
