@@ -492,7 +492,7 @@ export default function Pricing() {
           transition: opacity 0.3s ease;
         }
 
-        /* CTA sheen sweep — adapted from Claude Designer tier-card system */
+        /* CTA sheen sweep — linha luminosa que desliza no hover */
         article .tier-cta-link {
           position: relative;
           overflow: hidden;

@@ -49,8 +49,69 @@ export default function Footer() {
           </nav>
         </div>
 
+        {/* Trust signals — tech stack, pagamentos, segurança */}
+        <div className="mt-10 grid grid-cols-2 gap-3 border-t border-line pt-8 sm:grid-cols-4 sm:gap-4">
+          {/* Stack técnica */}
+          <div className="flex items-start gap-2.5">
+            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line bg-card text-accent">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M2 2h12v12H2z" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M5 11l3-3 3 3M5 8l3-3 3 3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ink">Next.js + Vercel</p>
+              <p className="mt-0.5 text-[11px] text-muted-2">Stack das maiores empresas do mundo</p>
+            </div>
+          </div>
+
+          {/* Segurança SSL */}
+          <div className="flex items-start gap-2.5">
+            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line bg-card text-accent">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M5 7V5a3 3 0 016 0v2" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                <circle cx="8" cy="10.5" r="0.9" fill="currentColor" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ink">SSL · HTTPS</p>
+              <p className="mt-0.5 text-[11px] text-muted-2">Site seguro com cadeado verde</p>
+            </div>
+          </div>
+
+          {/* Pagamentos */}
+          <div className="flex items-start gap-2.5">
+            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line bg-card text-accent">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="2" y="4" width="12" height="9" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M2 7h12" stroke="currentColor" strokeWidth="1.3" />
+                <circle cx="5" cy="10.5" r="0.7" fill="currentColor" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ink">Pix · Cartão</p>
+              <p className="mt-0.5 text-[11px] text-muted-2">À vista ou parcelado, à sua escolha</p>
+            </div>
+          </div>
+
+          {/* LGPD */}
+          <div className="flex items-start gap-2.5">
+            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line bg-card text-accent">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M8 2l5 2v4c0 3-2.2 5.6-5 6.5C5.2 13.6 3 11 3 8V4l5-2z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+                <path d="M5.5 8l2 2 3-4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-semibold text-ink">LGPD</p>
+              <p className="mt-0.5 text-[11px] text-muted-2">Em conformidade com a Lei de Proteção de Dados</p>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-xs text-muted-2 sm:flex-row sm:items-center sm:justify-between">
           <span>
             © {year} {site.name}. Todos os direitos reservados.{' '}
             <a

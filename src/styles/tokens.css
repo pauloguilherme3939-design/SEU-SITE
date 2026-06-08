@@ -56,14 +56,14 @@
      Prata → Ouro → Platina → Diamante
      --accent (esmeralda) permanece o acento principal da marca
 
-     Paleta de referência (Claude Designer · 3 tons + glow RGB):
+     Paleta de identidade (3 tons + glow RGB por tier):
      Prata    bright #f2f7fb  mid #b9c4cf  deep #7c8896  rgb 200,214,226
      Ouro     bright #ffe9a6  mid #ecc05a  deep #b07f2c  rgb 233,189,86
      Platina  bright #bdf1fb  mid #54c9e4  deep #2a82bd  rgb 84,201,228
      Diamante bright #e3d2ff  mid #ab84f0  deep #6a73ef  rgb 171,132,240
   ───────────────────────────────────────────────────────── */
 
-  /* ── Tokens da identidade refinada (Claude Designer) ──── */
+  /* ── Tokens da identidade refinada (bright / mid / deep + rgb) ──── */
   --tier-prata-bright:    #f2f7fb;
   --tier-prata-mid:       #b9c4cf;
   --tier-prata-deep:      #7c8896;
