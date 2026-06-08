@@ -122,11 +122,11 @@ export default function Hero() {
             animationDelay: '140ms',
           }}
         >
-          Site que parece de{' '}
+          Site profissional do seu negócio.{' '}
           <br className="hidden sm:block" />
-          grande empresa.{' '}
+          R$ 497.{' '}
           <span className="relative inline-block">
-            <span className="relative z-10 text-accent">No ar em 3 dias.</span>
+            <span className="relative z-10 text-accent">Pronto em 3 dias.</span>
             <svg
               aria-hidden
               className="absolute -bottom-1 left-0 w-full overflow-visible"
@@ -150,10 +150,7 @@ export default function Hero() {
           className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted text-balance sm:text-xl"
           style={{ animationDelay: '220ms' }}
         >
-          Crio o site do seu negócio a partir de{' '}
-          <strong className="font-semibold text-ink">R$ 497</strong>, com{' '}
-          <strong className="font-semibold text-ink">textos personalizados para o seu nicho</strong>,
-          domínio .com.br incluso, botão direto para WhatsApp e site configurado para o Google — tudo por um preço de autônomo, sem mensalidade.
+          Domínio <strong className="font-semibold text-ink">.com.br no seu nome</strong>, botão direto pro WhatsApp e site preparado pra <strong className="font-semibold text-ink">aparecer no Google</strong> quando seus clientes te procuram. Pagamento único — sem mensalidade, sem fidelidade.
         </p>
 
         {/* CTAs */}
