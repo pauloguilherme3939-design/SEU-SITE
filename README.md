@@ -1,4 +1,4 @@
-# Site de Captação — Serviço de Criação de Sites
+# Site de Captação — Serviço de Criação de Sites v1.1
 
 Projeto Next.js (App Router) + TypeScript + Tailwind para captar clientes do seu
 serviço de criação de sites/landing pages/SaaS.
