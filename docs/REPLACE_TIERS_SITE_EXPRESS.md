@@ -401,6 +401,116 @@ Home `/` saiu de 18.5 kB (Rev 1) para **18.7 kB** (Rev 2) — +200 bytes apenas,
 
 ---
 
+## Rev 3 — 2026-06-14 — Porte fiel do handoff visual
+
+### Por que rev 3
+
+Rev 1 e Rev 2 ainda **interpretavam** o handoff em vez de portá-lo fielmente. O usuário sinalizou que o visual estava simplificado: bordas comuns, emblemas genéricos (hexágono / estrela em círculo), faltava moldura ornamental (cantos ornamentais, cristas top/bottom, laterais EM). Esta revisão **transcreve literalmente** o algoritmo do Cloud Design.
+
+### Fonte real extraída
+
+O arquivo `Tiers Premium (download).html` tem 4 blocos `<script>`:
+
+| Script | Tamanho | Conteúdo |
+|--------|---------|----------|
+| 1 | 6385 chars | Bundler loader |
+| 2 | 172616 chars | **Bundle gzip+base64** com a chave `bafe3e76-ba8c-42aa-b061-9048efe6ffb9` |
+| 3 | 6 chars | Filler |
+| 4 | 45058 chars | HTML inicial escapado (sem os SVGs reais — só a estrutura e o CSS) |
+
+O **algoritmo dos emblemas e ornamentos está no Script 2** — comprimido em base64 + gzip. Foi decodificado para o arquivo intermediário `_tiers_bundle.js` (~16k chars) que revelou:
+
+- `crystalCore(cfg, lvl)` — gera o **núcleo facetado** do emblema (8 facetas + table + ring + edges + outline + glints), com parâmetros que escalam por `lvl` (1=Prata → 4=Diamante → 5=Sob Medida).
+- `emblem(key, cfg)` — wrapper SVG com **asas** (`wings` de 2 a 5 lâminas por tier) + **coroa** (`crown` com 3 a 5 pontas por tier).
+- `ornaments(t)` — moldura ornamental do CARD:
+  - 4 **cantos** (`oc tl/tr/bl/br`) com gem rotacionado + curls + tips
+  - 2 **laterais EM** (`em eml/emr`) — só em lvl ≥ 3
+  - **`crest-top`** (cristal central + linhas laterais) — só quando não há badge
+  - **`crest-bot`** (banner com asas + gem central) — sempre presente; nº de lâminas escala por lvl
+- `ICON_CHECK` e `ICON_X` — ícones de feature
+- `PALETTE` por tier (bright/mid/deep/ramp + RGB)
+
+### O que foi portado FIELMENTE (não reinterpretado)
+
+**Arquivo `src/components/sections/PremiumTiers.tsx`:**
+
+| Função/constante do handoff | Porte TypeScript |
+|------------------------------|------------------|
+| `crystalCore(cfg, lvl)` | Função TS pura — mesma matemática (cx=100, cy=70, topY, botY, wU, wM, shY, mesmo array `pts`, mesmo `shade`, mesma geração de facets/edges/table/ring/outline/g1/g2/g3) |
+| `emblem(key, cfg)` | `emblemSvg()` — gera SVG string com defs/linearGradient/wings/crown/crystalCore |
+| `ornaments(t)` | `ornamentsHtml()` — gera string HTML com `<div class="frame">` + finset + 4 oc + 2 em + crest-top + crest-bot |
+| `ORN_SHARDS` | Mesmo objeto (1..4 do original + 5 novo para Sob Medida) |
+| `ORN_LEVEL` | `{prata:1, ouro:2, platina:3, diamante:4, 'sob-medida':5}` |
+| Configs por tier (`bright`, `mid`, `deep`, `faceHi`, `faceLo`, `wings`, `crown`) | `TIER_CONFIGS` — **valores hex idênticos** ao handoff para os 4 tiers originais; novo set para Sob Medida (paleta verde/ciano misto, com 5 wings e crown estendida) |
+| `ICON_CHECK`, `ICON_X` | Strings SVG idênticas ao handoff |
+
+Os SVGs gerados são renderizados via `dangerouslySetInnerHTML` para preservar 100% de fidelidade com o algoritmo do Cloud Design — não há interpretação JSX intermediária.
+
+### CSS — porte literal escopado
+
+**Arquivo `src/components/sections/PremiumTiers.module.css`:**
+
+- Todas as classes do handoff (`tier-card`, `tier-prata/ouro/platina/diamante`, `card`, `featured`, `has-badge`, `frame`, `finset`, `oc`, `em`, `crest-top`, `crest-bot`, `spot`, `badge`, `b-ic`, `emblem-row`, `emblem`, `tier-meta`, `lvl`, `trank`, `plan`, `desc`, `price`, `cur`, `amt`, `price-note`, `feat-head`, `ln`, `feats`, `ic`, `off`, `bonus`, `bh`, `cta`, `ghost`, `meta`, `row`, `delivery`) escopadas via `:global(...)` dentro de `.scope` para que funcionem nos SVGs gerados dinamicamente.
+- Tokens dos 4 tiers **copiados literalmente** do handoff (`#f2f7fb`, `#b9c4cf`, `#7c8896` para Prata, etc.).
+- Borda metálica em mask `linear-gradient(140deg, ...)` — idêntica ao handoff.
+- Sheen interno no topo — idêntico (`left: 18px, right: 18px, top: 1px`).
+- `autosheen` 7s no featured — idêntico.
+- `ringspin` 11s no emblem do featured — idêntico.
+- Hover elevations: `-22px` no card normal, `-30px` no featured — idênticas.
+- Crests com `drop-shadow(... 7px*var(--glow) ...)` no botão, intensifica para `13px*var(--glow)` no hover — idêntico.
+- Cantos OC com `drop-shadow(... 5px*var(--glow) ...)` — idêntico.
+- Tokens de fonte: `var(--font-display)` (Space Grotesk) e `var(--font-body)` (Manrope no handoff; usa Sora/Outfit do projeto) — fontes do projeto continuam, valores de letter-spacing/peso/tamanho idênticos.
+
+### 5º tier (Sob Medida) — extensão da linguagem visual
+
+Criado seguindo a MESMA gramática do Cloud Design:
+
+- Paleta especial (`#d2ffe9` → `#5ed3ad` → `#2a82bd`).
+- 5 wings (uma a mais que Diamante) para reforçar progressão.
+- Crown com 5 pontas + uma marca central no topo.
+- `ORN_SHARDS[5]` — 4 lâminas na crista inferior (mais que Diamante).
+- `lvl: 5` em `crystalCore` → topY mais alto, botY mais baixo, mais facets visíveis, glint extra.
+- Recebe `em eml/emr` (porque lvl ≥ 3).
+- `crest-top` aparece (não tem badge).
+
+### Responsividade
+
+Grid: `repeat(5, 1fr)` → `repeat(3, 1fr)` em ≤1200px → `repeat(2, 1fr)` em ≤900px → 1 coluna em ≤640px. No mobile, a elevação do featured (`translateY(-16px)`) é desabilitada para evitar shift; hover reduz para `-6px`.
+
+### Arquivos alterados nesta rev
+
+- `src/data/premium-tiers.ts` — sem mudança (já tinha 5 tiers de Rev 2).
+- `src/components/sections/PremiumTiers.tsx` — **reescrito** com porte fiel do algoritmo.
+- `src/components/sections/PremiumTiers.module.css` — **reescrito** com porte literal do CSS escopado em `:global()`.
+- `docs/REPLACE_TIERS_SITE_EXPRESS.md` — esta seção Rev 3.
+
+### Validação
+
+```
+[npm run lint]
+✔ No ESLint warnings or errors
+
+[npm run build]
+✓ Compiled successfully
+   Linting and checking validity of types ...
+ ✓ Generating static pages (23/23)
+```
+
+### Status final Rev 3
+
+- ✅ Borda metálica com mask gradient idêntica ao handoff.
+- ✅ 4 cantos ornamentais (`oc tl/tr/bl/br`) com curls, gem rotacionado e tips.
+- ✅ 2 laterais (`em eml/emr`) com losangos verticais — visíveis em Platina, Diamante e Sob Medida (lvl ≥ 3).
+- ✅ `crest-top` (cristal central + linhas) nos cards SEM badge.
+- ✅ `crest-bot` (banner com asas + gem) em todos os cards.
+- ✅ Emblemas **cristal-heráldicos** com asas, coroa e núcleo facetado de 8 lados — não mais hexágonos genéricos.
+- ✅ Progressão visual real: Prata (lvl 1, asas finas) → Ouro (lvl 2, 3 lâminas) → Platina (lvl 3, 3 lâminas + ring) → Diamante (lvl 4, 4 lâminas + crown 5 pontas) → Sob Medida (lvl 5, 5 lâminas + crown 5 pontas + glints extras).
+- ✅ Featured (Platina) com autosheen na borda + ring spinning no emblem + elevação `-16px`.
+- ✅ Spot (radial gradient) atrás do card visível no hover.
+- ✅ Lint ✓, Build ✓.
+
+---
+
 ## URL e seção onde testar localmente
 
 - URL: `http://localhost:3000`
