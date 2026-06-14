@@ -1,43 +1,47 @@
 import type { CSSProperties, ReactNode } from 'react';
 import { Container, Section } from '@/components/ui';
-import { premiumTiers, type PremiumTier } from '@/data/premium-tiers';
+import {
+  premiumTiers,
+  type PremiumTier,
+  type PremiumTierId,
+} from '@/data/premium-tiers';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
-import type { TierSlug } from '@/types';
 import styles from './PremiumTiers.module.css';
 
-/* ── Mapping tier → classe do CSS Module ──────────────────── */
-const TIER_CLASS: Record<TierSlug, string> = {
-  prata:    styles.tierPrata,
-  ouro:     styles.tierOuro,
-  platina:  styles.tierPlatina,
-  diamante: styles.tierDiamante,
+/* ── Mapping tier → classe CSS Module ─────────────────────── */
+const TIER_CLASS: Record<PremiumTierId, string> = {
+  prata:        styles.tierPrata,
+  ouro:         styles.tierOuro,
+  platina:      styles.tierPlatina,
+  diamante:     styles.tierDiamante,
+  'sob-medida': styles.tierSobMedida,
 };
 
-/* ── Emblems (SVG inline, um por tier) ────────────────────── */
+/* ── Emblems (SVG inline, um por tier — joias/cristais) ───── */
 function EmblemPrata() {
   return (
-    <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <defs>
         <linearGradient id="prata-fill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stopColor="var(--c-bright)" />
-          <stop offset="60%"  stopColor="var(--c-mid)" />
+          <stop offset="55%"  stopColor="var(--c-mid)" />
           <stop offset="100%" stopColor="var(--c-deep)" />
         </linearGradient>
       </defs>
       <path
-        d="M48 8 L72 22 L72 56 L48 88 L24 56 L24 22 Z"
-        stroke="url(#prata-fill)" strokeWidth="2"
+        d="M55 8 L84 24 L84 64 L55 102 L26 64 L26 24 Z"
+        stroke="url(#prata-fill)" strokeWidth="2.2"
         fill="rgba(200,214,226,0.06)"
       />
-      <path d="M48 22 L60 30 L48 70 L36 30 Z" fill="url(#prata-fill)" opacity="0.85" />
-      <path d="M48 22 L48 70 M36 30 L60 30" stroke="var(--c-bright)" strokeWidth="1.5" />
+      <path d="M55 22 L70 30 L55 82 L40 30 Z" fill="url(#prata-fill)" opacity="0.9" />
+      <path d="M55 22 L55 82 M40 30 L70 30" stroke="var(--c-bright)" strokeWidth="1.5" />
     </svg>
   );
 }
 
 function EmblemOuro() {
   return (
-    <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <defs>
         <linearGradient id="ouro-fill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stopColor="var(--c-bright)" />
@@ -45,10 +49,10 @@ function EmblemOuro() {
           <stop offset="100%" stopColor="var(--c-deep)" />
         </linearGradient>
       </defs>
-      <circle cx="48" cy="48" r="34" stroke="url(#ouro-fill)" strokeWidth="2" fill="rgba(233,189,86,0.08)" />
+      <circle cx="55" cy="55" r="40" stroke="url(#ouro-fill)" strokeWidth="2" fill="rgba(233,189,86,0.08)" />
       <path
-        d="M48 22 L54 42 L74 42 L58 54 L64 74 L48 62 L32 74 L38 54 L22 42 L42 42 Z"
-        fill="url(#ouro-fill)" opacity="0.95"
+        d="M55 24 L62 47 L86 47 L67 60 L74 84 L55 70 L36 84 L43 60 L24 47 L48 47 Z"
+        fill="url(#ouro-fill)" opacity="0.96"
         stroke="var(--c-bright)" strokeWidth="0.6"
       />
     </svg>
@@ -57,7 +61,7 @@ function EmblemOuro() {
 
 function EmblemPlatina() {
   return (
-    <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <defs>
         <linearGradient id="platina-fill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stopColor="var(--c-bright)" />
@@ -66,23 +70,23 @@ function EmblemPlatina() {
         </linearGradient>
       </defs>
       <path
-        d="M48 6 L78 28 L66 78 L30 78 L18 28 Z"
-        stroke="url(#platina-fill)" strokeWidth="2"
+        d="M55 6 L90 32 L76 90 L34 90 L20 32 Z"
+        stroke="url(#platina-fill)" strokeWidth="2.2"
         fill="rgba(84,201,228,0.08)"
       />
       <path
-        d="M48 22 L66 34 L60 68 L36 68 L30 34 Z"
-        fill="url(#platina-fill)" opacity="0.85"
+        d="M55 24 L75 38 L68 78 L42 78 L35 38 Z"
+        fill="url(#platina-fill)" opacity="0.88"
       />
-      <path d="M48 22 L48 68 M30 34 L66 34" stroke="var(--c-bright)" strokeWidth="1.2" />
-      <circle cx="48" cy="48" r="4" fill="var(--c-bright)" />
+      <path d="M55 24 L55 78 M35 38 L75 38" stroke="var(--c-bright)" strokeWidth="1.2" />
+      <circle cx="55" cy="55" r="5" fill="var(--c-bright)" />
     </svg>
   );
 }
 
 function EmblemDiamante() {
   return (
-    <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+    <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
       <defs>
         <linearGradient id="diamante-fill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%"   stopColor="var(--c-bright)" />
@@ -91,29 +95,62 @@ function EmblemDiamante() {
         </linearGradient>
       </defs>
       <path
-        d="M48 10 L80 38 L48 90 L16 38 Z"
-        stroke="url(#diamante-fill)" strokeWidth="2"
+        d="M55 10 L92 42 L55 102 L18 42 Z"
+        stroke="url(#diamante-fill)" strokeWidth="2.2"
         fill="rgba(171,132,240,0.08)"
       />
       <path
-        d="M48 10 L80 38 L48 50 L16 38 Z"
-        fill="url(#diamante-fill)" opacity="0.7"
+        d="M55 10 L92 42 L55 56 L18 42 Z"
+        fill="url(#diamante-fill)" opacity="0.75"
       />
       <path
-        d="M48 50 L80 38 L48 90 L16 38 Z"
-        fill="url(#diamante-fill)" opacity="0.45"
+        d="M55 56 L92 42 L55 102 L18 42 Z"
+        fill="url(#diamante-fill)" opacity="0.48"
       />
-      <path d="M48 10 L48 50 M16 38 L80 38" stroke="var(--c-bright)" strokeWidth="1.2" />
-      <path d="M32 38 L48 90 L64 38" stroke="var(--c-bright)" strokeWidth="0.8" opacity="0.7" />
+      <path d="M55 10 L55 56 M18 42 L92 42" stroke="var(--c-bright)" strokeWidth="1.2" />
+      <path d="M35 42 L55 102 L75 42" stroke="var(--c-bright)" strokeWidth="0.8" opacity="0.7" />
     </svg>
   );
 }
 
-const EMBLEMS: Record<TierSlug, () => ReactNode> = {
-  prata:    EmblemPrata,
-  ouro:     EmblemOuro,
-  platina:  EmblemPlatina,
-  diamante: EmblemDiamante,
+function EmblemSobMedida() {
+  // Cristal facetado abstrato — para "sob medida" / personalizado
+  return (
+    <svg viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <defs>
+        <linearGradient id="sobmedida-fill" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%"   stopColor="var(--c-bright)" />
+          <stop offset="55%"  stopColor="var(--c-mid)" />
+          <stop offset="100%" stopColor="var(--c-deep)" />
+        </linearGradient>
+        <linearGradient id="sobmedida-stroke" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"  stopColor="var(--c-bright)" />
+          <stop offset="100%" stopColor="var(--c-mid)" />
+        </linearGradient>
+      </defs>
+      {/* hexágono externo */}
+      <path
+        d="M55 10 L92 30 L92 80 L55 100 L18 80 L18 30 Z"
+        stroke="url(#sobmedida-stroke)" strokeWidth="2.2"
+        fill="rgba(94,211,173,0.06)"
+      />
+      {/* facetas internas — 3 triângulos sugerindo personalização */}
+      <path d="M55 26 L78 55 L55 84 L32 55 Z" fill="url(#sobmedida-fill)" opacity="0.85" />
+      <path d="M55 26 L78 55 L55 55 Z" fill="var(--c-bright)" opacity="0.55" />
+      <path d="M55 55 L78 55 L55 84 Z" fill="var(--c-mid)" opacity="0.65" />
+      <path d="M55 55 L32 55 L55 26 Z" fill="var(--c-bright)" opacity="0.35" />
+      {/* ponto central — destaque */}
+      <circle cx="55" cy="55" r="4" fill="var(--c-bright)" />
+    </svg>
+  );
+}
+
+const EMBLEMS: Record<PremiumTierId, () => ReactNode> = {
+  prata:        EmblemPrata,
+  ouro:         EmblemOuro,
+  platina:      EmblemPlatina,
+  diamante:     EmblemDiamante,
+  'sob-medida': EmblemSobMedida,
 };
 
 /* ── Icons ─────────────────────────────────────────────────── */
@@ -132,6 +169,19 @@ function CheckIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function MinusIcon() {
+  return (
+    <svg
+      className={styles.featuresIcon}
+      viewBox="0 0 16 16"
+      fill="none"
+      aria-hidden
+    >
+      <path d="M3.5 8 L12.5 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }
@@ -165,6 +215,28 @@ function DeliveryIcon() {
   );
 }
 
+/* Cantos ornamentais — pequeno V duplo */
+function CornerOrn({ className }: { className: string }) {
+  return (
+    <svg className={className} viewBox="0 0 28 28" fill="none" aria-hidden>
+      <path
+        d="M2 2 L12 2 M2 2 L2 12"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M6 2 L6 6 L2 6"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        opacity="0.7"
+      />
+      <circle cx="2" cy="2" r="1.4" fill="currentColor" />
+    </svg>
+  );
+}
+
 /* ── Card ─────────────────────────────────────────────────── */
 function TierCard({ tier }: { tier: PremiumTier }) {
   const Emblem = EMBLEMS[tier.id];
@@ -194,7 +266,17 @@ function TierCard({ tier }: { tier: PremiumTier }) {
     .join(' ');
 
   return (
-    <article className={cardClass} aria-label={`Plano ${tier.name}`}>
+    <article className={cardClass} aria-label={`Tier ${tier.tierNumber} — ${tier.name}`}>
+      {/* Cantos ornamentais */}
+      <CornerOrn className={`${styles.cornerOrn} ${styles.cornerTL}`} />
+      <CornerOrn className={`${styles.cornerOrn} ${styles.cornerTR}`} />
+      <CornerOrn className={`${styles.cornerOrn} ${styles.cornerBL}`} />
+      <CornerOrn className={`${styles.cornerOrn} ${styles.cornerBR}`} />
+
+      {/* Frame interno discreto */}
+      <div className={styles.innerFrame} aria-hidden />
+
+      {/* Badge featured */}
       {isFeatured && tier.badgeText ? (
         <div className={styles.badge}>
           <StarIcon />
@@ -202,23 +284,31 @@ function TierCard({ tier }: { tier: PremiumTier }) {
         </div>
       ) : null}
 
+      {/* Ribbon "Tier N" */}
       <div className={styles.emblemRow}>
+        <span className={styles.tierNumber}>Tier {tier.tierNumber}</span>
         <div className={styles.emblem}>
           <Emblem />
         </div>
         <div className={styles.tierMeta}>
           <span className={styles.tierRank}>{tier.rankLabel}</span>
           <h3 className={styles.name}>{tier.name}</h3>
+          <p className={styles.idealFor}>{tier.idealFor}</p>
         </div>
       </div>
 
       <p className={styles.desc}>{tier.description}</p>
 
+      {/* Separador ornamental */}
+      <div className={styles.divider}>
+        <span className={styles.dividerDot} aria-hidden />
+      </div>
+
       <div className={styles.price}>
         {tier.currency ? <span className={styles.priceCur}>{tier.currency}</span> : null}
         <span className={priceAmtClass}>{tier.priceLabel}</span>
       </div>
-      <p className={styles.priceNote}>{tier.priceNote}</p>
+      <p className={styles.priceNote}>{tier.paymentNote}</p>
 
       <div className={styles.featuresHead}>
         <span>{tier.featuresHeader}</span>
@@ -226,9 +316,9 @@ function TierCard({ tier }: { tier: PremiumTier }) {
       </div>
       <ul className={styles.features}>
         {tier.features.map((f) => (
-          <li key={f}>
-            <CheckIcon />
-            <span>{f}</span>
+          <li key={f.label} className={f.included ? '' : styles.off}>
+            {f.included ? <CheckIcon /> : <MinusIcon />}
+            <span>{f.label}</span>
           </li>
         ))}
       </ul>
@@ -267,7 +357,7 @@ function TierCard({ tier }: { tier: PremiumTier }) {
 
 /* ── Component ────────────────────────────────────────────── */
 export default function PremiumTiers() {
-  const sectionStyle = { '--tier-glow': '0.7' } as CSSProperties;
+  const sectionStyle = { '--tier-glow': '0.75' } as CSSProperties;
 
   return (
     <Section
@@ -284,11 +374,11 @@ export default function PremiumTiers() {
             Tabela de planos
           </span>
           <h2 className={styles.title}>
-            Quatro níveis. <span className={styles.titleGrad}>Um padrão premium.</span>
+            Cinco níveis. <span className={styles.titleGrad}>Um padrão premium.</span>
           </h2>
           <p className={styles.subtitle}>
-            Do Prata ao Diamante, cada plano entrega presença digital profissional
-            com domínio incluso, hospedagem rápida e atendimento direto.
+            Do Tier 1 (Prata) ao Tier 5 (Sob Medida). Cada plano entrega presença digital
+            profissional com domínio próprio, hospedagem rápida e atendimento direto.
           </p>
         </header>
 
@@ -299,7 +389,7 @@ export default function PremiumTiers() {
         </div>
 
         <p className={styles.compareNote}>
-          Todos os planos incluem <strong>domínio .com.br por 1 ano</strong>,
+          Todos os planos com preço fixo incluem <strong>domínio .com.br por 1 ano</strong>,
           hospedagem em CDN global, SSL automático e botão de WhatsApp integrado.
         </p>
       </Container>

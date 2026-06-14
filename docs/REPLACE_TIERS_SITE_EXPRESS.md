@@ -299,6 +299,108 @@ Route (app)                                          Size     First Load JS
 
 ---
 
+## Rev 2 — 2026-06-14 — Correção cirúrgica (5 tiers + dados de plans.ts)
+
+### O que mudou
+
+A versão Rev 1 tinha 4 cards e informações simplificadas. A Rev 2 corrige:
+
+1. **5 tiers agora** (era 4):
+   - Tier 1 / **Prata** — Presença Inicial — **R$ 497** (restaurado)
+   - Tier 2 / **Ouro** — Presença Rápida — R$ 997
+   - Tier 3 / **Platina** — Profissional Express — R$ 1.497 (FEATURED)
+   - Tier 4 / **Diamante** — Empresarial Completo — R$ 2.997
+   - Tier 5 / **Sob Medida** — Projeto Sob Medida — sob consulta
+
+2. **Conteúdo comercial recuperado de `src/data/plans.ts`** (fonte da verdade), não mais inventado:
+   - **Nomes e preços** exatos dos 4 planos originais.
+   - **Features completas** (16 do Prata, 12 do Ouro, 13 do Platina, 14 do Diamante) — incluindo as **não inclusas** (riscadas no card do Prata e Ouro: "Textos personalizados para o seu nicho", "SEO técnico avançado por seção + indexação manual").
+   - **Bônus reais** de cada plano (4 do Prata, 4 do Ouro, 4 do Platina, 6 do Diamante).
+   - **Forma de pagamento** real (`à vista ou entrada para iniciar` no Prata/Ouro; `50% de entrada · 50% na entrega` no Platina/Diamante).
+   - **Prazo de entrega** real (3 dias úteis nos 3 primeiros; 5 a 10 dias úteis no Diamante).
+   - **Manutenção opcional** (R$ 60 / R$ 80 / R$ 150 / R$ 150).
+   - **CTAs originais** ("Quero começar agora", "Quero a Presença Rápida", etc.).
+   - **`idealFor`** original como subtítulo do nome.
+3. **Tier 5 "Sob Medida"** criado a partir do `saasOffer` (que existe em `plans.ts`): 8 features, 3 passos do processo como "bônus" (Conversa inicial / Proposta / Acompanhamento direto). Cor especial verde-ciano (`#d2ffe9 → #5ed3ad → #2a82bd`) que não conflita com os 4 tiers existentes.
+
+### Ajustes visuais para ficar mais fiel ao "Tiers Premium (download).html"
+
+| Mudança | Antes (Rev 1) | Agora (Rev 2) |
+|---------|---------------|---------------|
+| Altura mínima do card | sem mínimo | `min-height: 720px` (760px no featured) |
+| Ribbon "Tier N" | não existia | pílula com gradient bright→mid acima do emblem |
+| Cantos ornamentais | não existiam | 4 cantos com SVG pequeno + glow |
+| Frame interno | não existia | borda 1px dentro do card com cor do tier |
+| Separador entre desc e preço | não existia | linha + dot luminoso central |
+| Emblem | 96×96 | 110×110 (mais imponente) |
+| Borda metálica (mask gradient) | 1.4px | 1.6px com bright stops a 100% |
+| Sombra de glow | 34px | 38–60px (featured), responsiva a `--tier-glow` |
+| Features não inclusas | apenas inclusos | inclusos (check) **+ não inclusos (riscado com ícone minus)** |
+| Tipografia do preço | 38px | 42px |
+| Mostrar `idealFor` | não mostrava | itálico abaixo do nome |
+| Grid responsivo | 4 col → 2 → 1 | **5 col → 3 → 2 → 1** (breakpoints 1440 / 1200 / 900 / 640px) |
+
+### Mobile e responsividade
+
+- **Desktop ≥ 1201px:** 5 colunas. Featured (Tier 3 / Platina) elevado em `-16px`.
+- **1200–901px:** 3 colunas (5 cards quebram para a 2ª linha — featured continua destacado pela animação autosheen).
+- **900–641px:** 2 colunas.
+- **≤ 640px:** 1 coluna, gap maior (`28px`).
+- **Sem overflow horizontal:** glows e sombras ficam contidos por `isolation: isolate` na section e `overflow-x: hidden` herdado do body.
+- **Badges sem corte:** `white-space: nowrap` no badge "Mais escolhido" e nas pílulas "Tier N".
+
+### Arquivos alterados nesta rev
+
+| Arquivo | Mudança |
+|---------|---------|
+| `src/data/premium-tiers.ts` | Reescrito com 5 tiers usando dados de `plans.ts` + novo tipo `PremiumTierId` (TierSlug \| 'sob-medida') |
+| `src/components/sections/PremiumTiers.tsx` | 5 emblems (Prata/Ouro/Platina/Diamante/SobMedida), ribbon Tier N, cantos ornamentais, separador, features inclusos vs não inclusos, classes para tier `sob-medida` |
+| `src/components/sections/PremiumTiers.module.css` | Cards mais altos (720/760px), cantos ornamentais, ribbon Tier N, separador, tokens `--tierSobMedida`, grid 5-col, breakpoints novos |
+| `docs/REPLACE_TIERS_SITE_EXPRESS.md` | Esta seção Rev 2 |
+
+### Arquivos NÃO tocados
+
+- `src/data/plans.ts` (fonte da verdade comercial — segue intocado).
+- `src/components/sections/PlanFinder.tsx` (quiz funcional).
+- `src/app/(marketing)/page.tsx` (já tinha `<PremiumTiers />` na Rev 1).
+- `src/types/index.ts` (`TierSlug` mantido como `prata | ouro | platina | diamante`; "sob-medida" é local ao PremiumTiers).
+- `src/styles/tokens.css` (cores do Sob Medida ficam apenas no CSS Module).
+- SEO, metadata, rotas, formulários, WhatsApp, blog, layout, favicon — nada tocado.
+
+### Validação
+
+```
+[npm run lint]
+✔ No ESLint warnings or errors
+
+[npm run build]
+✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+ ✓ Generating static pages (23/23)
+   Finalizing page optimization ...
+
+Route (app)                                          Size     First Load JS
+┌ ○ /                                                18.7 kB         115 kB
+├ ƒ /comecar                                         1.04 kB        97.1 kB
+…
+```
+
+Home `/` saiu de 18.5 kB (Rev 1) para **18.7 kB** (Rev 2) — +200 bytes apenas, mesmo com 5 cards e visual mais elaborado. 23 páginas geradas, zero erros de TypeScript.
+
+### Status final Rev 2
+
+- ✅ 5 tiers renderizando (Prata, Ouro, **Platina featured**, Diamante, Sob Medida).
+- ✅ Plano R$ 497 (Presença Inicial) restaurado.
+- ✅ Features completas, bônus reais, prazos, manutenção opcional, CTAs originais — tudo de `plans.ts`.
+- ✅ Features **não inclusas** mostradas riscadas (Prata e Ouro).
+- ✅ Visual mais imponente: cantos ornamentais, ribbon "Tier N", separadores, emblem maior, borda metálica mais forte, autosheen no featured.
+- ✅ Mobile impecável: 1 coluna sem corte/overflow.
+- ✅ `plans.ts` intocado.
+- ✅ Lint e build limpos.
+
+---
+
 ## URL e seção onde testar localmente
 
 - URL: `http://localhost:3000`
