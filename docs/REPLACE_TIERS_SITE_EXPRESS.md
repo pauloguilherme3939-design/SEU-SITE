@@ -653,6 +653,108 @@ Mexido apenas:
 
 ---
 
+## Rev 5 — 2026-06-14 — Remove buracos verticais internos
+
+### Causa raiz do espaçamento gigante
+
+Depois do refinamento da Rev 4 (5–7 highlights em vez de 12–16 features), três regras herdadas do handoff original do Cloud Design combinaram para criar buracos verticais nos cards com menos conteúdo:
+
+| Regra | Onde | Efeito |
+|-------|------|--------|
+| `align-items: stretch` (padrão grid) | `.scope :global(.tiers)` | Esticava todos os cards para a altura do mais alto |
+| `display: flex; flex-direction: column` | `.scope :global(.card)` | Container flex vertical |
+| `margin-top: auto` | `.scope :global(.cta)` | Empurrava o CTA para o fim do espaço esticado |
+
+Com os 5 cards atuais tendo conteúdo diferente (Prata: 6 highlights + 3 bônus / Diamante: 7 highlights + 4 bônus / Sob Medida: 6 highlights + 3 bônus), os cards menores ficavam alongados, com um vazio gigante entre o bônus e o CTA.
+
+### Correção aplicada (cirúrgica — 2 linhas alteradas no CSS Module)
+
+**1) Grid passa a usar altura natural por card**
+
+```diff
+.scope :global(.tiers) {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+- align-items: stretch;
++ align-items: start;
+  padding: 56px 0 30px;
+}
+```
+
+**2) CTA não é mais empurrado para o fim**
+
+```diff
+.scope :global(.cta) {
+  ...
+  padding: 14px 16px;
+  border-radius: 12px;
+- margin-top: auto;
++ margin-top: 2px;
+  ...
+}
+```
+
+### O que isso resolve
+
+- **Card do Prata, do Ouro e do Sob Medida** não esticam mais até a altura do Diamante.
+- **CTA fica logo após o bloco de bônus** com 22px de respiro (do `margin-bottom: 22px` do `.bonus`) + 2px do próprio CTA.
+- **`<details>` "Ver tudo incluso"** funciona perfeitamente: quando expandido, o card cresce naturalmente sem afetar os vizinhos (cada card cresce sozinho graças ao `align-items: start`).
+- **Featured (Platina)** continua com `translateY(-16px)` — esse transform NÃO altera layout do grid, então não interfere na altura dos outros.
+
+### Hierarquia interna preservada
+
+Ordem dentro do card (não mudou — só ficou compacta):
+1. `.frame` + cantos + crests (z-index 5, posicionados)
+2. `.badge` (se featured)
+3. `.emblem-row` (emblem + TIER N + Nível + Nome)
+4. `.tagline` (microcopy de valor)
+5. `.price` + `.price-note`
+6. `.feat-head` ("Está incluso")
+7. `.feats-highlight` (5–7 bullets)
+8. `.see-all` (`<details>` "Ver tudo incluso")
+9. `.bonus` (bônus inclusos)
+10. `.cta` (botão dourado/contorno)
+11. `.meta` (prazo + ideal para + manutenção opcional)
+
+### Mobile
+
+Com `align-items: start`, no mobile (1 coluna) cada card aparece um abaixo do outro com altura natural — sem buracos, sem overflow lateral. O CTA continua junto do bônus. "Ver tudo incluso" continua funcionando (expande/recolhe com chevron).
+
+### Visual aprovado — confirmação de que NÃO foi alterado
+
+Mudanças nesta rev limitadas a 2 linhas em 2 regras CSS (`.tiers` align-items + `.cta` margin-top). Nada de borda, emblema, glow, ornamento, cor de tier, badge, fundo, transform/translateY do featured, autosheen, ring spinning, sombras ou hover behaviour foi tocado.
+
+### Arquivos alterados
+
+- `src/components/sections/PremiumTiers.module.css` — 2 propriedades alteradas com comentário explicativo.
+- `src/components/sections/PremiumTiers.tsx` — **não tocado**.
+- `src/data/premium-tiers.ts` — **não tocado**.
+- `docs/REPLACE_TIERS_SITE_EXPRESS.md` — esta seção Rev 5.
+
+### Validação
+
+```
+[npm run lint]
+✔ No ESLint warnings or errors
+
+[npm run build]
+✓ Compiled successfully
+```
+
+### Status final Rev 5
+
+- ✅ Espaço vazio entre bônus e CTA eliminado.
+- ✅ Cada card com altura natural (sem `stretch` artificial).
+- ✅ CTA logo após o bloco de bônus.
+- ✅ "Ver tudo incluso" funciona — card cresce sozinho quando expandido, vizinhos não esticam.
+- ✅ Visual aprovado (bordas, emblemas, glows, ornamentos, cores, badges) 100% intacto.
+- ✅ Preços, nomes, planos, copy comercial e bônus preservados.
+- ✅ Mobile sem buraco e sem overflow.
+- ✅ Lint ✓, Build ✓.
+
+---
+
 ## URL e seção onde testar localmente
 
 - URL: `http://localhost:3000`

@@ -133,7 +133,10 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  align-items: stretch;
+  /* Cards com altura natural — não esticam para a altura do maior.
+     Isso evita buraco vertical entre bônus e CTA nos cards com menos
+     conteúdo (Prata, Sob Medida). Cada card cresce só até precisar. */
+  align-items: start;
   padding: 56px 0 30px;
 }
 
@@ -757,7 +760,9 @@
   letter-spacing: 0.01em;
   padding: 14px 16px;
   border-radius: 12px;
-  margin-top: auto;
+  /* margin-top removido (era `auto`) — agora o CTA fica logo após o bônus,
+     sem empurrar pro fim do card. Cards têm altura natural via align-items:start. */
+  margin-top: 2px;
   color: #0a0f0e;
   position: relative;
   overflow: hidden;
