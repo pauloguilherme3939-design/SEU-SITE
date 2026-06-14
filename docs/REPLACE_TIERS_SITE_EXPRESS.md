@@ -755,6 +755,124 @@ Mudanças nesta rev limitadas a 2 linhas em 2 regras CSS (`.tiers` align-items +
 
 ---
 
+## Rev 6 — 2026-06-14 — Compacta conteúdo interno dos cards
+
+### Problema diagnosticado
+
+Após a Rev 5 (espaçamento), o conteúdo interno ainda gerava cards longos:
+- Listas de highlights com 6–7 itens em vez de 5.
+- 3–6 bônus visíveis (muito ruído).
+- `<details>` "Ver tudo incluso" entre os bullets e o bônus — empurrava CTA pra baixo.
+- Tagline com `min-height: 38px` forçando altura artificial.
+- Card Sob Medida com `features` e `bonus` repetindo informações similares.
+
+### Correções aplicadas (cirúrgicas, sem tocar no visual aprovado)
+
+#### 1. Conteúdo enxugado em `src/data/premium-tiers.ts`
+
+**Highlights reduzidos para 5 bullets curtos** em todos os tiers:
+
+| Tier | Antes | Depois |
+|------|-------|--------|
+| Prata | 6 bullets longos | 5 bullets curtos ("Site profissional no ar em até 3 dias", "Domínio .com.br por 1 ano", etc.) |
+| Ouro | 7 bullets | 5 bullets |
+| Platina | 6 bullets | 5 bullets |
+| Diamante | 7 bullets | 5 bullets |
+| Sob Medida | 6 bullets | 5 possibilidades (MicroSaaS, automações, sistemas, áreas de membros, integrações) |
+
+**Bônus reduzidos para 2–3 itens principais:**
+
+| Tier | Antes | Depois |
+|------|-------|--------|
+| Prata | 3 bônus | 2 bônus (WhatsApp + Favicon) |
+| Ouro | 4 bônus | 3 bônus (FAQ + Guia PDF + Modelos resposta WhatsApp) |
+| Platina | 4 bônus | 3 bônus (Prioridade fila + Página Obrigado + Script lançamento) |
+| Diamante | 6 bônus | 3 bônus (Meta Pixel + Eventos GA4 + Política + Termos) |
+| Sob Medida | 3 passos | 3 passos (mantidos — são o processo, não bônus) |
+
+#### 2. Sob Medida sem repetição
+
+A Rev 5 tinha `features` repetindo os mesmos itens da `featuresHighlight`. Agora:
+- `featuresHighlight` (5 itens visíveis): MicroSaaS, automações WhatsApp/APIs, sistemas, áreas de membros, integrações.
+- `features` (7 itens EXTRAS no "Ver possibilidades completas"): formulários inteligentes, páginas de captura, melhorias em sistemas existentes, dashboards, geração de PDFs, integração Pix/MP/Stripe, webhooks (Zapier/n8n).
+
+Zero overlap entre o aberto e o "Ver tudo".
+
+#### 3. Reordenação do JSX em `PremiumTiers.tsx`
+
+**Antes (Rev 5):**
+```
+emblem → tagline → preço → feat-head → highlights → details → bonus → CTA → meta
+```
+
+**Depois (Rev 6):**
+```
+emblem → tagline → preço → feat-head → highlights → bonus → CTA → meta → details
+```
+
+CTA fica logo após o bônus. "Ver tudo incluso" virou o ÚLTIMO elemento do card (abaixo do meta), como link discreto.
+
+#### 4. `<details>` continua RECOLHIDO por padrão
+
+Sem atributo `open` no JSX. Comportamento HTML nativo: `<details>` começa fechado. Visualmente:
+- Botão pequeno, borda discreta (1px sólida, cor do tier diluída).
+- Texto em uppercase pequeno, contagem "+N" como pill compacto.
+- No `:hover` ganha um leve background da cor do tier.
+- Ao abrir, chevron rotaciona 180° e mostra lista completa com fade-in.
+
+Label do Sob Medida: **"Ver possibilidades completas"** (em vez de "Ver tudo incluso").
+
+#### 5. CSS limpo em `PremiumTiers.module.css`
+
+- **Removido:** `.scope :global(.desc)` (regra órfã, classe não usada após Rev 4).
+- **Removido:** `min-height: 38px` do `.tagline` (forçava altura artificial em cards com tagline curta).
+- **Ajustado:** estilo do `.see-all` mais discreto (sem `dashed`, menor padding, cor `--ink-faint` no estado normal).
+- **Mantido intacto:** `.card`, `.frame`, `.finset`, `.oc`, `.em`, `.crest-top`, `.crest-bot`, `.spot`, `.badge`, `.emblem`, `.tier-meta`, `.cta`, `.bonus`, `.feats` — tudo do handoff visual aprovado.
+
+#### 6. Hierarquia visual final dentro do card
+
+1. `frame` + cantos ornamentais + crests (decorativo)
+2. `badge` "Mais escolhido" (só Platina)
+3. `emblem-row` (TIER N + emblem + nível + nome plano)
+4. `tagline` (1 linha de valor)
+5. `price` + `price-note`
+6. `feat-head` ("Está incluso" / "Tudo do Prata, e mais")
+7. `feats-highlight` (5 bullets curtos)
+8. `bonus` (2-3 bônus principais)
+9. `cta` (botão filled ou ghost, logo após bônus)
+10. `meta` (prazo + ideal para + manutenção opcional)
+11. **`details` "Ver tudo incluso"** (recolhido, discreto, abaixo do meta)
+
+### Arquivos alterados
+
+- `src/data/premium-tiers.ts` — 5 highlights + 2-3 bônus por tier, Sob Medida sem repetição
+- `src/components/sections/PremiumTiers.tsx` — reordenação do JSX (details vira último)
+- `src/components/sections/PremiumTiers.module.css` — limpeza (`.desc` removido, `min-height` da tagline removido, `.see-all` mais discreto)
+- `docs/REPLACE_TIERS_SITE_EXPRESS.md` — esta Rev 6
+
+### Validação
+
+```
+[npm run lint]
+✔ No ESLint warnings or errors
+
+[npm run build]
+✓ Compiled successfully
+```
+
+### Status final Rev 6
+
+- ✅ Visual externo aprovado (bordas, emblemas, glows, ornamentos, cores, badges, fundo, efeitos) **100% intacto**.
+- ✅ `<details>` "Ver tudo incluso" inicia **fechado** por padrão.
+- ✅ CTA fica logo após bônus (não no final de um card gigante).
+- ✅ Cards sem buracos verticais (altura natural via `align-items: start` + `margin-top: 2px` no CTA + sem `min-height` artificial).
+- ✅ 5 benefícios + 2-3 bônus visíveis — restante no details.
+- ✅ Sob Medida sem repetição (5 possibilidades visíveis + 7 EXTRAS no "Ver possibilidades completas").
+- ✅ Preços e nomes preservados (R$ 497, R$ 997, R$ 1.497, R$ 2.997, Sob consulta).
+- ✅ Lint ✓, Build ✓.
+
+---
+
 ## URL e seção onde testar localmente
 
 - URL: `http://localhost:3000`

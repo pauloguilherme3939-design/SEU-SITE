@@ -308,24 +308,6 @@ function TierCard({ tier }: { tier: PremiumTier }) {
         ))}
       </ul>
 
-      <details className="see-all">
-        <summary>
-          <span className="see-all-label">Ver tudo incluso</span>
-          <span className="see-all-count">{tier.features.length} itens</span>
-          <span className="see-all-chevron" aria-hidden>▾</span>
-        </summary>
-        <ul className="feats feats-full">
-          {tier.features.map((f) => (
-            <li key={f.label} className={f.included ? '' : 'off'}>
-              <span
-                dangerouslySetInnerHTML={{ __html: f.included ? ICON_CHECK : ICON_X }}
-              />
-              <span>{f.label}</span>
-            </li>
-          ))}
-        </ul>
-      </details>
-
       <div className="bonus">
         <div className="bh">✦ {tier.bonusHeader}</div>
         <ul>
@@ -356,6 +338,29 @@ function TierCard({ tier }: { tier: PremiumTier }) {
           </div>
         ) : null}
       </div>
+
+      {/* "Ver tudo incluso" — RECOLHIDO por padrão (sem atributo `open`).
+          Aparece como último elemento do card, discreto, abaixo do meta.
+          Sob Medida: label diferente ("Ver possibilidades completas"). */}
+      <details className="see-all">
+        <summary>
+          <span className="see-all-label">
+            {tier.id === 'sob-medida' ? 'Ver possibilidades completas' : 'Ver tudo incluso'}
+          </span>
+          <span className="see-all-count">+{tier.features.length}</span>
+          <span className="see-all-chevron" aria-hidden>▾</span>
+        </summary>
+        <ul className="feats feats-full">
+          {tier.features.map((f) => (
+            <li key={f.label} className={f.included ? '' : 'off'}>
+              <span
+                dangerouslySetInnerHTML={{ __html: f.included ? ICON_CHECK : ICON_X }}
+              />
+              <span>{f.label}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
     </article>
   );
 }

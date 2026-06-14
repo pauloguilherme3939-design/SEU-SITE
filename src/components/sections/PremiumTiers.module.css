@@ -488,23 +488,13 @@
   color: var(--ink);
 }
 
-.scope :global(.desc) {
-  position: relative;
-  z-index: 5;
-  color: var(--ink-dim);
-  font-size: 13.5px;
-  line-height: 1.6;
-  margin: 0 0 20px;
-  min-height: 62px;
-  text-wrap: pretty;
-  text-align: center;
-}
-
-/* ===== TAGLINE (microcopy de valor, 1 linha) ======================== */
+/* ===== TAGLINE (microcopy de valor, 1 linha) ========================
+   Rev 6: removido min-height pra não criar buraco em cards com texto curto.
+   Altura natural do parágrafo basta. */
 .scope :global(.tagline) {
   position: relative;
   z-index: 5;
-  margin: 4px 0 18px;
+  margin: 4px 0 16px;
   padding: 0 4px;
   font-family: var(--font-display);
   font-size: 13.5px;
@@ -513,16 +503,18 @@
   letter-spacing: -0.005em;
   color: var(--c-bright);
   text-align: center;
-  min-height: 38px;
   text-wrap: balance;
   opacity: 0.92;
 }
 
-/* ===== VER TUDO INCLUSO (details/summary nativo) =================== */
+/* ===== VER TUDO INCLUSO (details/summary nativo) ====================
+   Rev 6: aparece como ÚLTIMO elemento do card, abaixo do meta.
+   Estado inicial: RECOLHIDO (sem atributo `open` no JSX).
+   Visual mais discreto — não compete com bônus/CTA. */
 .scope :global(.see-all) {
   position: relative;
   z-index: 5;
-  margin: -4px 0 18px;
+  margin: 14px 0 0;
 }
 
 .scope :global(.see-all summary) {
@@ -530,27 +522,28 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 9px 12px;
+  padding: 8px 12px;
   cursor: pointer;
   list-style: none;
-  border-radius: 10px;
-  border: 1px dashed rgba(var(--c-rgb), 0.28);
-  background: rgba(var(--c-rgb), 0.04);
+  border-radius: 8px;
+  border: 1px solid var(--hair);
+  background: transparent;
   font-family: var(--font-display);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--c-mid);
-  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .scope :global(.see-all summary)::-webkit-details-marker { display: none; }
 .scope :global(.see-all summary)::marker { content: ''; }
 
 .scope :global(.see-all summary:hover) {
-  background: rgba(var(--c-rgb), 0.08);
-  border-color: rgba(var(--c-rgb), 0.5);
-  color: var(--c-bright);
+  background: rgba(var(--c-rgb), 0.06);
+  border-color: rgba(var(--c-rgb), 0.4);
+  color: var(--c-mid);
 }
 
 .scope :global(.see-all summary:focus-visible) {
@@ -561,37 +554,39 @@
 .scope :global(.see-all .see-all-label) {
   flex: 1;
   text-align: left;
-  text-transform: uppercase;
 }
 
 .scope :global(.see-all .see-all-count) {
-  font-size: 10.5px;
+  font-size: 10px;
   color: var(--ink-faint);
-  text-transform: none;
-  letter-spacing: 0.03em;
-  font-weight: 500;
+  letter-spacing: 0;
+  font-weight: 700;
+  background: var(--bg2);
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-family: var(--font-display);
 }
 
 .scope :global(.see-all .see-all-chevron) {
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1;
-  color: var(--c-mid);
+  color: var(--ink-faint);
   transition: transform 0.3s ease;
 }
 
 .scope :global(.see-all[open] .see-all-chevron) {
   transform: rotate(-180deg);
+  color: var(--c-mid);
 }
 
 .scope :global(.see-all[open] summary) {
-  border-style: solid;
-  border-color: rgba(var(--c-rgb), 0.5);
-  margin-bottom: 12px;
+  border-color: rgba(var(--c-rgb), 0.4);
+  color: var(--c-mid);
 }
 
 /* Lista completa dentro do details — mesmo estilo de feats, com fade-in */
 .scope :global(.feats-full) {
-  margin: 0;
+  margin: 10px 0 0;
   padding: 12px 4px 4px;
   border-top: 1px dashed rgba(var(--c-rgb), 0.18);
   animation: feats-fade-in 0.3s ease;

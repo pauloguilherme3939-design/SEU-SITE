@@ -2,21 +2,21 @@
  * Dados da seção PremiumTiers.
  *
  * Fonte comercial: src/data/plans.ts (verdade dos planos) + saasOffer.
- * Mapeamento alinhado ao briefing (5 tiers):
- *
+ * Mapeamento (5 tiers):
  *   Tier 1 / Prata     → Presença Inicial      (R$ 497)
  *   Tier 2 / Ouro      → Presença Rápida       (R$ 997)
  *   Tier 3 / Platina   → Profissional Express  (R$ 1.497)  ← FEATURED
  *   Tier 4 / Diamante  → Empresarial Completo  (R$ 2.997)
  *   Tier 5 / Sob Medida→ Projeto Sob Medida    (sob consulta)
  *
- * Estratégia de leitura por card (refinada 2026-06-14):
- *   - `tagline`           → 1 linha de valor (substitui o `description` longo)
- *   - `featuresHighlight` → 5–7 bullets comerciais SEMPRE visíveis
- *   - `features`          → lista completa (com inclusos/não inclusos),
- *                            mostrada dentro do <details> "Ver tudo incluso"
+ * Estratégia de leitura por card (refinada na Rev 6):
+ *   - `tagline`           → 1 linha de valor centrada
+ *   - `featuresHighlight` → 5 bullets curtos, SEMPRE visíveis
+ *   - `bonus`             → 2 a 3 bônus principais, SEMPRE visíveis
+ *   - `features`          → lista COMPLETA mostrada no <details> recolhido
+ *                            por padrão ("Ver tudo incluso")
  *
- * O visual aprovado (bordas, emblemas, ornamentos, cores) NÃO foi tocado.
+ * O visual aprovado (bordas, emblemas, ornamentos, cores) está intacto.
  * plans.ts segue intocado (alimenta quiz PlanFinder e JSON-LD da home).
  */
 
@@ -25,52 +25,34 @@ import type { TierSlug } from '@/types';
 export type PremiumTierId = TierSlug | 'sob-medida';
 
 export interface PremiumTierFeature {
-  /** Texto da feature. */
   label: string;
-  /** Se a feature está inclusa neste tier (riscado quando false). */
   included: boolean;
 }
 
 export interface PremiumTier {
   id: PremiumTierId;
-  /** Ordem no grid (1..5) e label "TIER N" visível no card. */
   tierNumber: 1 | 2 | 3 | 4 | 5;
-  /** Etiqueta do nível (ex: "Nível Prata"). */
   rankLabel: string;
-  /** Nome comercial do plano (ex: "Presença Inicial"). */
   name: string;
-  /** Frase curta de posicionamento (mostrada no rodapé como "Ideal para"). */
   idealFor: string;
-  /** Microcopy de VALOR — 1 linha, vai logo abaixo do nome do plano. */
   tagline: string;
-  /** Símbolo monetário visível (R$). */
   currency: string;
-  /** Preço numérico (null para "sob consulta"). */
   price: number | null;
-  /** Label visível do preço ("497", "1.497", "Sob consulta"). */
   priceLabel: string;
-  /** Forma de pagamento. */
   paymentNote: string;
-  /** Cabeçalho da lista de highlights (ex: "Está incluso"). */
   featuresHeader: string;
-  /** 5–7 bullets comerciais, SEMPRE visíveis. */
+  /** 5 bullets curtos, SEMPRE visíveis. */
   featuresHighlight: string[];
-  /** Lista COMPLETA (com check/x). Mostrada no <details> "Ver tudo incluso". */
+  /** Lista COMPLETA (com check/x). Mostrada APENAS quando o usuário clicar em "Ver tudo incluso". */
   features: PremiumTierFeature[];
-  /** Cabeçalho da caixa de bônus. */
   bonusHeader: string;
+  /** 2 a 3 bônus principais, SEMPRE visíveis. */
   bonus: string[];
-  /** Texto do CTA. */
   ctaLabel: string;
-  /** Mensagem pré-pronta de WhatsApp. */
   whatsappMessage: string;
-  /** Marcado se o card recebe destaque (badge + autosheen). */
   featured?: boolean;
-  /** Texto do badge quando featured. */
   badgeText?: string;
-  /** Selo de prazo de entrega. */
   deliveryTag: string;
-  /** Texto pequeno no rodapé (manutenção opcional). */
   footerNote?: string;
 }
 
@@ -90,11 +72,10 @@ export const premiumTiers: PremiumTier[] = [
     featuresHeader: 'Está incluso',
     featuresHighlight: [
       'Site profissional no ar em até 3 dias',
-      'Domínio .com.br seu por 1 ano (no seu CPF/CNPJ)',
-      'Botão de WhatsApp com mensagem pronta',
-      'Funciona perfeitamente no celular',
-      'SEO inicial pro Google entender seu site',
-      '1 rodada de ajustes após entrega',
+      'Domínio .com.br por 1 ano',
+      'Botão de WhatsApp pronto',
+      'SEO inicial para o Google',
+      'Publicação e hospedagem inclusas',
     ],
     features: [
       { label: '1 página completa com 5 seções essenciais', included: true },
@@ -116,8 +97,7 @@ export const premiumTiers: PremiumTier[] = [
     bonusHeader: 'Bônus inclusos',
     bonus: [
       'WhatsApp com mensagem pré-escrita por nicho',
-      'Favicon personalizado com sua logo ou iniciais',
-      'Checklist PDF: 10 ações para divulgar o site',
+      'Favicon personalizado com sua logo',
     ],
     ctaLabel: 'Quero começar agora',
     whatsappMessage:
@@ -141,12 +121,10 @@ export const premiumTiers: PremiumTier[] = [
     featuresHeader: 'Tudo do Prata, e mais',
     featuresHighlight: [
       'Landing page com 7+ seções estratégicas',
-      'Copy persuasiva personalizada para você',
-      'Galeria de portfólio com até 12 imagens',
-      'Depoimentos e FAQ que quebram objeções',
-      'Visual elaborado e marcante',
-      'Animações suaves ao rolar a página',
-      'Google Maps integrado com seu endereço',
+      'Copy persuasiva personalizada',
+      'Galeria de portfólio (até 12 imagens)',
+      'Depoimentos e FAQ inclusos',
+      'Google Maps com seu endereço',
     ],
     features: [
       { label: 'Landing page com 7+ seções de impacto', included: true },
@@ -165,7 +143,6 @@ export const premiumTiers: PremiumTier[] = [
     bonusHeader: 'Bônus do Ouro',
     bonus: [
       'FAQ com 10+ perguntas que quebram objeções',
-      'Google Maps com pin no endereço',
       'Guia PDF: Bombe seu WhatsApp (12 mensagens prontas)',
       'Modelos de resposta automática WhatsApp Business',
     ],
@@ -182,7 +159,7 @@ export const premiumTiers: PremiumTier[] = [
     tierNumber: 3,
     rankLabel: 'Nível Platina',
     name: 'Profissional Express',
-    idealFor: 'Quem quer ser encontrado no Google e converter visitas em contato',
+    idealFor: 'Quem quer ser encontrado no Google',
     tagline: 'O melhor equilíbrio entre preço, conversão e presença no Google.',
     currency: 'R$',
     price: 1497,
@@ -191,11 +168,10 @@ export const premiumTiers: PremiumTier[] = [
     featuresHeader: 'Tudo do Ouro, e mais',
     featuresHighlight: [
       'SEO técnico em cada seção (H1, H2, alt, meta)',
-      'Estrutura preparada para o Google (Schema markup)',
-      'PageSpeed 90+ no mobile (testado e comprovado)',
-      'Estrutura de conversão testada (CTA + prova social)',
-      'Página de Obrigado que rastreia conversão',
-      '30 dias de suporte + 2 rodadas de ajuste',
+      'Schema markup para o Google',
+      'PageSpeed 90+ no mobile',
+      'Estrutura de conversão testada',
+      '30 dias de suporte + 2 ajustes',
     ],
     features: [
       { label: 'Copy completa e personalizada de todas as seções', included: true },
@@ -215,7 +191,6 @@ export const premiumTiers: PremiumTier[] = [
     bonus: [
       'Prioridade absoluta na fila de entrega',
       'Página de Obrigado pós-conversão',
-      'Descrição completa do Perfil da Empresa no Google',
       'Script de lançamento pronto para suas redes',
     ],
     ctaLabel: 'Quero o Profissional Express',
@@ -233,7 +208,7 @@ export const premiumTiers: PremiumTier[] = [
     tierNumber: 4,
     rankLabel: 'Nível Diamante',
     name: 'Empresarial Completo',
-    idealFor: 'Empresas que querem estrutura institucional e presença máxima',
+    idealFor: 'Empresas que querem presença máxima',
     tagline: 'Estrutura completa para empresas que querem presença forte.',
     currency: 'R$',
     price: 2997,
@@ -241,13 +216,11 @@ export const premiumTiers: PremiumTier[] = [
     paymentNote: '50% de entrada · 50% na entrega',
     featuresHeader: 'Tudo do Platina, e mais',
     featuresHighlight: [
-      'Até 8 páginas (Home, Sobre, Serviços, Contato + 2)',
+      'Até 8 páginas (Home, Sobre, Serviços, Contato...)',
       'SEO individualizado em cada página',
-      'Formulário de contato integrado com notificação',
-      'Google Analytics 4 + Meta Pixel prontos',
-      'Política de Privacidade + Termos inclusos',
-      'Atendimento prioritário VIP (resposta em 2h)',
-      '60 dias de suporte + 1 ajuste de cortesia',
+      'Formulário de contato integrado',
+      'Google Analytics 4 + Meta Pixel',
+      '60 dias de suporte VIP (resposta em 2h)',
     ],
     features: [
       { label: 'Até 8 páginas (Home, Sobre, Serviços, Portfólio, Blog, Contato + 2)', included: true },
@@ -266,10 +239,9 @@ export const premiumTiers: PremiumTier[] = [
     ],
     bonusHeader: 'Bônus do Diamante',
     bonus: [
-      'Tudo do Platina, sem exceção',
       'Setup completo do Meta Pixel para campanhas',
       'Eventos personalizados no GA4',
-      'Atendimento prioritário VIP (resposta em 2h)',
+      'Política de Privacidade + Termos inclusos',
     ],
     ctaLabel: 'Quero o Empresarial Completo',
     whatsappMessage:
@@ -279,37 +251,37 @@ export const premiumTiers: PremiumTier[] = [
   },
 
   // ── Tier 5 / Sob Medida ────────────────────────────────────────────────
+  // Card consultivo, sem repetir as mesmas linhas em "features" e "bonus".
   {
     id: 'sob-medida',
     tierNumber: 5,
     rankLabel: 'Projeto Personalizado',
     name: 'Projeto Sob Medida',
-    idealFor: 'Quando o projeto precisa de algo único, sob escopo definido',
+    idealFor: 'Quando a ideia passa de site e vira sistema',
     tagline: 'Quando a ideia passa de site e vira sistema.',
     currency: '',
     price: null,
     priceLabel: 'Sob consulta',
     paymentNote: 'orçamento personalizado após análise do escopo',
-    featuresHeader: 'Possibilidades',
+    featuresHeader: 'O que cabe aqui',
     featuresHighlight: [
       'MicroSaaS e painéis sob medida',
       'Automações com WhatsApp e APIs',
       'Sistemas de cadastro e gestão',
       'Áreas de membros e login',
-      'Formulários inteligentes',
       'Integrações com ferramentas externas',
     ],
+    // Possibilidades adicionais (não repete os 5 da highlight)
     features: [
-      { label: 'MicroSaaS e painéis sob medida', included: true },
-      { label: 'Automações com WhatsApp e APIs', included: true },
-      { label: 'Sistemas de cadastro e gestão', included: true },
-      { label: 'Áreas de membros e login', included: true },
-      { label: 'Formulários inteligentes', included: true },
-      { label: 'Páginas de captura e campanhas', included: true },
-      { label: 'Integrações com ferramentas externas', included: true },
-      { label: 'Melhorias e ajustes em sistemas existentes', included: true },
+      { label: 'Formulários inteligentes (multi-etapas, validação avançada)', included: true },
+      { label: 'Páginas de captura e campanhas pontuais', included: true },
+      { label: 'Melhorias e ajustes em sistemas já existentes', included: true },
+      { label: 'Dashboards internos com métricas em tempo real', included: true },
+      { label: 'Geração e envio automático de PDFs/relatórios', included: true },
+      { label: 'Integração com Pix / Mercado Pago / Stripe', included: true },
+      { label: 'Webhooks e gatilhos automatizados (Zapier, n8n)', included: true },
     ],
-    bonusHeader: 'Como funciona',
+    bonusHeader: 'Como funciona o processo',
     bonus: [
       'Conversa inicial para entender o objetivo',
       'Proposta com escopo, prazo e investimento antes de começar',
