@@ -285,7 +285,7 @@ function TierCard({ tier }: { tier: PremiumTier }) {
         </div>
       </div>
 
-      <p className="desc">{tier.description}</p>
+      <p className="tagline">{tier.tagline}</p>
 
       <div className="price">
         {tier.currency ? <span className="cur">{tier.currency}</span> : null}
@@ -299,16 +299,32 @@ function TierCard({ tier }: { tier: PremiumTier }) {
         {tier.featuresHeader}
         <span className="ln" aria-hidden />
       </div>
-      <ul className="feats">
-        {tier.features.map((f) => (
-          <li key={f.label} className={f.included ? '' : 'off'}>
-            <span
-              dangerouslySetInnerHTML={{ __html: f.included ? ICON_CHECK : ICON_X }}
-            />
-            <span>{f.label}</span>
+      <ul className="feats feats-highlight">
+        {tier.featuresHighlight.map((label) => (
+          <li key={label}>
+            <span dangerouslySetInnerHTML={{ __html: ICON_CHECK }} />
+            <span>{label}</span>
           </li>
         ))}
       </ul>
+
+      <details className="see-all">
+        <summary>
+          <span className="see-all-label">Ver tudo incluso</span>
+          <span className="see-all-count">{tier.features.length} itens</span>
+          <span className="see-all-chevron" aria-hidden>▾</span>
+        </summary>
+        <ul className="feats feats-full">
+          {tier.features.map((f) => (
+            <li key={f.label} className={f.included ? '' : 'off'}>
+              <span
+                dangerouslySetInnerHTML={{ __html: f.included ? ICON_CHECK : ICON_X }}
+              />
+              <span>{f.label}</span>
+            </li>
+          ))}
+        </ul>
+      </details>
 
       <div className="bonus">
         <div className="bh">✦ {tier.bonusHeader}</div>

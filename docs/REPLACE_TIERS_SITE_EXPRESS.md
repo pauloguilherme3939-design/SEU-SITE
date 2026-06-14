@@ -511,6 +511,148 @@ Grid: `repeat(5, 1fr)` → `repeat(3, 1fr)` em ≤1200px → `repeat(2, 1fr)` em
 
 ---
 
+## Rev 4 — 2026-06-14 — Refino de conteúdo dos cards (visual aprovado intacto)
+
+### Premissa
+
+O visual da Rev 3 foi aprovado. **Nada de bordas, emblemas, glows, ornamentos, cores, badges, efeitos, fundo, layout ou posicionamento foi tocado nesta revisão.** O foco aqui é puramente comercial: tornar a leitura mais fluida sem perder valor percebido.
+
+### O que foi resumido
+
+**Antes da Rev 4** — cada card abria com:
+- Descrição longa (`description` / `forWho` do plans.ts, 2 frases).
+- Lista completa de 12–16 features (com check + minus riscado dos não inclusos).
+
+**Depois da Rev 4** — cada card abre com:
+- **`tagline`** — 1 linha de valor centrada acima do preço, em cor do tier (substitui a descrição longa).
+- **`featuresHighlight`** — 5–7 bullets curtos e comerciais sempre visíveis.
+- **`<details>` "Ver tudo incluso"** — mostra a lista COMPLETA (com check/x e a contagem de itens) quando o cliente quiser ver tudo. Fica colapsado por padrão.
+
+Isso reduz drasticamente a altura inicial de cada card sem perder uma única feature.
+
+### Microcopy de valor (`tagline`) — adicionado em todos os tiers
+
+| Tier | Tagline |
+|------|---------|
+| Prata / Presença Inicial | "Seu primeiro endereço profissional na internet." |
+| Ouro / Presença Rápida | "Mais presença, mais confiança e mais estrutura para vender." |
+| Platina / Profissional Express | "O melhor equilíbrio entre preço, conversão e presença no Google." |
+| Diamante / Empresarial Completo | "Estrutura completa para empresas que querem presença forte." |
+| Sob Medida / Projeto Sob Medida | "Quando a ideia passa de site e vira sistema." |
+
+### Quais benefícios continuam visíveis (highlights) por tier
+
+**Prata (6 bullets):**
+- Site profissional no ar em até 3 dias
+- Domínio .com.br seu por 1 ano (no seu CPF/CNPJ)
+- Botão de WhatsApp com mensagem pronta
+- Funciona perfeitamente no celular
+- SEO inicial pro Google entender seu site
+- 1 rodada de ajustes após entrega
+
+**Ouro (7 bullets):**
+- Landing page com 7+ seções estratégicas
+- Copy persuasiva personalizada para você
+- Galeria de portfólio com até 12 imagens
+- Depoimentos e FAQ que quebram objeções
+- Visual elaborado e marcante
+- Animações suaves ao rolar a página
+- Google Maps integrado com seu endereço
+
+**Platina (6 bullets):**
+- SEO técnico em cada seção (H1, H2, alt, meta)
+- Estrutura preparada para o Google (Schema markup)
+- PageSpeed 90+ no mobile (testado e comprovado)
+- Estrutura de conversão testada (CTA + prova social)
+- Página de Obrigado que rastreia conversão
+- 30 dias de suporte + 2 rodadas de ajuste
+
+**Diamante (7 bullets):**
+- Até 8 páginas (Home, Sobre, Serviços, Contato + 2)
+- SEO individualizado em cada página
+- Formulário de contato integrado com notificação
+- Google Analytics 4 + Meta Pixel prontos
+- Política de Privacidade + Termos inclusos
+- Atendimento prioritário VIP (resposta em 2h)
+- 60 dias de suporte + 1 ajuste de cortesia
+
+**Sob Medida (6 bullets):**
+- MicroSaaS e painéis sob medida
+- Automações com WhatsApp e APIs
+- Sistemas de cadastro e gestão
+- Áreas de membros e login
+- Formulários inteligentes
+- Integrações com ferramentas externas
+
+### "Ver tudo incluso" — sim, foi criado
+
+Implementação: `<details>` HTML nativo (sem React state, sem JS, funciona em Server Component).
+
+- `summary` mostra: "Ver tudo incluso" + contagem ("12 itens") + chevron ▾.
+- Quando expandido: rotação do chevron 180° + lista completa (com check/x) renderizada com fade-in suave.
+- Estilo: borda dashed na cor do tier, fundo translúcido (`rgba(var(--c-rgb), 0.04)`), hover intensifica.
+- Acessível: marker default removido (`::marker {content: ''}` + `::-webkit-details-marker {display: none}`), foco visível com outline da cor do tier.
+
+### Copy melhorada — antes vs depois (exemplos)
+
+| Antes (técnico) | Depois (comercial) |
+|-----------------|---------------------|
+| Meta title e description otimizados | SEO inicial pro Google entender seu site |
+| Open Graph configurado | Link bonito ao compartilhar no WhatsApp |
+| Hospedagem em CDN global (Vercel) | Hospedagem rápida — site no ar no Brasil todo |
+| Schema markup Service | Estrutura preparada para o Google encontrar |
+| HTML semântico (acessível e amigável ao Google) | (removido da Highlights, segue no "Ver tudo incluso" como "Estrutura preparada para o Google encontrar") |
+
+A lista completa do `<details>` mantém termos técnicos mais reconhecíveis (Schema markup LocalBusiness, AVIF/WebP, PageSpeed 90+) — quem quiser checar tecnicidade encontra; quem só quer ver o resumo, vê.
+
+### Confirmação — visual aprovado NÃO foi alterado
+
+Mexido apenas:
+- `src/data/premium-tiers.ts` — adicionei `tagline` e `featuresHighlight`; mantive `features` completa para o details.
+- `src/components/sections/PremiumTiers.tsx` — substituí `<p class="desc">` por `<p class="tagline">`; troquei `<ul class="feats">` da Rev 3 por `<ul class="feats feats-highlight">` com os highlights; adicionei `<details class="see-all">` com a lista completa.
+- `src/components/sections/PremiumTiers.module.css` — apenas regras NOVAS: `.tagline`, `.see-all`, `.see-all summary`, `.see-all-label/count/chevron`, `.feats-full`, animação `feats-fade-in`. **Nada das regras visuais aprovadas (card, frame, oc, em, crest-top, crest-bot, badge, emblem, tier-meta) foi tocado.**
+
+### Preços e nomes — preservados
+
+| Tier | Plano | Preço |
+|------|-------|-------|
+| 1 / Prata | Presença Inicial | **R$ 497** |
+| 2 / Ouro | Presença Rápida | **R$ 997** |
+| 3 / Platina | Profissional Express | **R$ 1.497** |
+| 4 / Diamante | Empresarial Completo | **R$ 2.997** |
+| 5 / Sob Medida | Projeto Sob Medida | **Sob consulta** |
+
+### Padronização de altura
+
+- `featuresHighlight` com 6–7 itens iguala o tamanho inicial dos cards entre si.
+- `<details>` colapsado por padrão evita que um card explosivo (Diamante com 13 features) vire muito mais alto que o Prata (6 features).
+- `.tagline` tem `min-height: 38px` para alinhar mesmo quando texto for curto.
+
+### Validação
+
+```
+[npm run lint]
+✔ No ESLint warnings or errors
+
+[npm run build]
+✓ Compiled successfully
+   Linting and checking validity of types ...
+ ✓ Generating static pages (23/23)
+```
+
+### Status final Rev 4
+
+- ✅ Card abre com tagline + 5–7 bullets comerciais (curtos).
+- ✅ `<details>` "Ver tudo incluso" expande para a lista COMPLETA com check/x e contagem.
+- ✅ Visual aprovado da Rev 3 (bordas, emblemas, ornamentos, glows, cores, badges) intacto.
+- ✅ Preços e nomes dos 5 planos preservados.
+- ✅ Domínio, WhatsApp, SEO inicial, Google Search Console, páginas, copy, suporte, prazos, manutenção, bônus e ajustes continuam comunicados (resumidamente nos highlights + completos no details).
+- ✅ Sob Medida com 6 possibilidades + 3 passos de processo — sem listão técnico.
+- ✅ Microcopy de valor em todos os tiers.
+- ✅ Lint ✓, Build ✓.
+
+---
+
 ## URL e seção onde testar localmente
 
 - URL: `http://localhost:3000`

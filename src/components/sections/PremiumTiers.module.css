@@ -497,6 +497,110 @@
   text-align: center;
 }
 
+/* ===== TAGLINE (microcopy de valor, 1 linha) ======================== */
+.scope :global(.tagline) {
+  position: relative;
+  z-index: 5;
+  margin: 4px 0 18px;
+  padding: 0 4px;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  color: var(--c-bright);
+  text-align: center;
+  min-height: 38px;
+  text-wrap: balance;
+  opacity: 0.92;
+}
+
+/* ===== VER TUDO INCLUSO (details/summary nativo) =================== */
+.scope :global(.see-all) {
+  position: relative;
+  z-index: 5;
+  margin: -4px 0 18px;
+}
+
+.scope :global(.see-all summary) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  cursor: pointer;
+  list-style: none;
+  border-radius: 10px;
+  border: 1px dashed rgba(var(--c-rgb), 0.28);
+  background: rgba(var(--c-rgb), 0.04);
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--c-mid);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.scope :global(.see-all summary)::-webkit-details-marker { display: none; }
+.scope :global(.see-all summary)::marker { content: ''; }
+
+.scope :global(.see-all summary:hover) {
+  background: rgba(var(--c-rgb), 0.08);
+  border-color: rgba(var(--c-rgb), 0.5);
+  color: var(--c-bright);
+}
+
+.scope :global(.see-all summary:focus-visible) {
+  outline: 2px solid var(--c-bright);
+  outline-offset: 2px;
+}
+
+.scope :global(.see-all .see-all-label) {
+  flex: 1;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.scope :global(.see-all .see-all-count) {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.scope :global(.see-all .see-all-chevron) {
+  font-size: 12px;
+  line-height: 1;
+  color: var(--c-mid);
+  transition: transform 0.3s ease;
+}
+
+.scope :global(.see-all[open] .see-all-chevron) {
+  transform: rotate(-180deg);
+}
+
+.scope :global(.see-all[open] summary) {
+  border-style: solid;
+  border-color: rgba(var(--c-rgb), 0.5);
+  margin-bottom: 12px;
+}
+
+/* Lista completa dentro do details — mesmo estilo de feats, com fade-in */
+.scope :global(.feats-full) {
+  margin: 0;
+  padding: 12px 4px 4px;
+  border-top: 1px dashed rgba(var(--c-rgb), 0.18);
+  animation: feats-fade-in 0.3s ease;
+}
+
+@keyframes feats-fade-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Os bullets compartilhados (.feats li) já têm estilo global do handoff */
+
 /* ===== PRICE ======================================================== */
 .scope :global(.price) {
   position: relative;
