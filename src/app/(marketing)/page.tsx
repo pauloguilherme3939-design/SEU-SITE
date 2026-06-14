@@ -12,8 +12,7 @@ import { plans } from '@/data/plans';
 import { faq } from '@/data/faq';
 import Hero from '@/components/sections/Hero';
 import ProblemaSolucao from '@/components/sections/ProblemaSolucao';
-import Pricing from '@/components/sections/Pricing';
-import ComparativoTiers from '@/components/sections/ComparativoTiers';
+import PremiumTiers from '@/components/sections/PremiumTiers';
 import Garantias from '@/components/sections/Garantias';
 import PlanFinder from '@/components/sections/PlanFinder';
 import Saas from '@/components/sections/Saas';
@@ -66,8 +65,7 @@ export default function HomePage() {
       <ProblemaSolucao />
       <Portfolio />
       <ComoFunciona />
-      <Pricing />
-      <ComparativoTiers />
+      <PremiumTiers />
       <Garantias />
       <PlanFinder />
       <Saas />
